@@ -1,0 +1,150 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: Helvetica;
+
+}
+
+body{
+	background: url('../img/fondo.jpg');
+	background-attachment: fixed;
+	/*margin-bottom: 1000px;*/
+
+}
+
+header{
+	background: rgba(0, 0, 0, 9);
+	width: 100%;
+	top: 0;
+	position: fixed;
+	z-index: 1000;
+	opacity: 0.98;
+}
+
+#global{
+	width: 80%;
+	margin: 0px auto;
+	margin-top: 100px;
+	box-shadow: 0px 0px 2px gray;
+	background: #FF9458;
+}
+
+
+nav{
+	/*outline: 1px solid yellow;*/
+}
+
+nav ul{
+	list-style: none;
+	overflow: hidden;
+}
+
+
+ul{
+	/*outline: 1px solid blue;*/
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	/*text-align: center;*/
+	background-color: #525252;
+	line-height: 100px;
+
+}
+
+li{
+	/*outline: 1px solid red;*/
+	width: 200px;
+	display: inline-block;
+
+
+}
+
+p{
+	margin-bottom: 20px;
+}
+
+
+#log{
+	right: 10px;
+
+	
+}
+
+a{
+	/*outline: 1px solid yellow;*/
+	font-size: 17px;
+	text-decoration: none;
+	color: #fff;
+	padding: 10px auto;
+	display: flex;
+	justify-content: center;
+	white-space: pre;
+	left: 100px;
+}
+
+a:hover {
+	background: #f9a91a;
+	color: #000;
+}
+
+
+
+.slider-frame{
+	width: auto;
+	height: auto;
+	margin: 50px auto 0;
+	overflow: hidden;
+
+	
+}
+
+.slider-frame ul{
+	display: flex;
+	padding: 0;
+	margin: 10px;
+	width: 400%;
+
+	animation: slide 15s infinite;
+}
+
+.slider-frame li{
+	list-style: none;
+	width: 160%;
+}
+
+.slider-frame img{
+	width: 100%;
+
+}
+
+@keyframes slide {
+	0% {margin-left: 0%}
+	20% {margin-left: 0%}
+
+	25% {margin-left: -100%}
+	45% {margin-left: -100%}
+
+	50% {margin-left: -200%}
+	70% {margin-left: -200%}
+
+	75% {margin-left: -300%}
+	95% {margin-left: -300%}
+}
+
+#imagen{
+	width: 1300px;
+	height: 1300px;
+}
+
+ #imghome{
+ 	position: absolute;
+ 	height: 100px;
+ 	width: 120px;
+ 	top: 0px;
+ 	left: 30px;
+
+ }
+
+
+
+
