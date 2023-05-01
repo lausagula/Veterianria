@@ -22,12 +22,35 @@ header{
 	opacity: 0.98;
 }
 
-#global{
+#box{
 	width: 80%;
-	margin: 0px auto;
+	height: 85%;
+	margin: auto;
 	margin-top: 110px;
 	box-shadow: 0px 0px 2px gray;
 	background: #FF9458;
+}
+
+#acerca{
+	padding: 150 50 0 50
+	
+
+}
+
+h3{
+	margin: 35 auto 10;
+	
+}
+
+h2{
+	padding: 0 ;
+	font-size: 60px;
+	font-family: Helvetica;
+	top: 100px;
+	margin: 50 0 0 50;
+	float: left;
+	text-decoration: underline;
+
 }
 
 
@@ -63,7 +86,7 @@ li{
 
 
 p{
-	margin-bottom: 20px;
+	margin-bottom: 70px;
 }
 
 
@@ -83,56 +106,6 @@ a{
 a:hover {
 	background: #f9a91a;
 	color: #000;
-}
-
-
-
-
-.slider-frame{
-	width: auto;
-	height: auto;
-	margin: 80px auto 0;
-	overflow: hidden;
-
-	
-}
-
-.slider-frame ul{
-	display: flex;
-	padding: 0;
-	margin: 30px;
-	width: 400%;
-
-	animation: slide 15s infinite;
-}
-
-.slider-frame li{
-	list-style: none;
-	width: 160%;
-}
-
-.slider-frame img{
-	width: 100%;
-
-}
-
-@keyframes slide {
-	0% {margin-left: 0%}
-	20% {margin-left: 0%}
-
-	25% {margin-left: -100%}
-	45% {margin-left: -100%}
-
-	50% {margin-left: -200%}
-	70% {margin-left: -200%}
-
-	75% {margin-left: -300%}
-	95% {margin-left: -300%}
-}
-
-#imagen{
-	width: 1300px;
-	height: 1300px;
 }
 
  #imghome{
