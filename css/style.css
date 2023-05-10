@@ -43,34 +43,44 @@ header{
 #imghome{
 	height: 100px;
 	width: 120px;
+	float: left;
+	background-color: #3e3e3e;
 }
 
-#menu-nav-bar{
-	list-style: none;
-	display: flex;
+#menu{
+	height: 100px;
 	color: #FFFFFF;
 	background-color:   #3e3e3e;
-	text-align: center;
-	overflow: auto;
-	white-space: nowrap;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.menu-nav-bar-item{
-	font-size: 15px;
-	width: 30%;
-	display: inline-block;
-	height: 
+#ul-style-menu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.border{
+	border-left: 1px solid #7a7a7a;
 }
 
 .link-style-menu{
-	display: block;
 	color: #FFFFFF;
 	text-decoration: none;
+	text-align: center;
+	padding: 14px 16px;
 }
 
 .link-style-menu:hover {
-	color: #FFFFFF;
-	background-color: #2e2e2e;
+	background-color: #353535;
+}
+
+.link-style-menu:active{
+	background-color: #313131;
 }
 
 #section-index{
