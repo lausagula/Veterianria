@@ -125,5 +125,70 @@ header{
 
 }
 
+/*-------------Registrar e iniciar sesion-------------*/
+
+
+#seccion-sign {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 110px ;
+    background: #FF9458;
+    box-shadow: 0 0 2px gray;
+    padding: 20px;
+  }
+  
+  #seccion-sign h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    
+}
+  
+  .form-group label {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    }
+  
+  .form-group input {
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 2px gray;
+    margin-bottom: 10px;
+
+}
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 2px gray;
+    background-color: #3e3e3e;
+    color: #fff;
+    
+  }
+  
+  .btn:hover {
+    background-color: #353535;
+  }
+  
+  .btn:active {
+    background-color: #313131;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    
+  }
+
 
 
