@@ -6,6 +6,13 @@
     src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2) format('woff2'),url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff) format('woff');
 }
 
+@font-face {
+    font-family: 'Netflix Sans-bold';
+    font-weight: 900;
+    font-display: optional;
+    src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2) format('woff2'),url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff) format('woff');
+}
+
 @keyframes slide {
 	0% {margin-left: 0%}
 	20% {margin-left: 0%}
@@ -33,6 +40,9 @@ html, body{
 	margin: 0px;
 	padding: 0px;
 	font-family: 'Netflix Sans-normal';
+	display: flex;
+	justify-content: center;
+	text-align: center;
 }
 
 header{
@@ -125,70 +135,90 @@ header{
 
 }
 
+
+
+
+
 /*-------------Registrar e iniciar sesion-------------*/
 
-
-#seccion-sign {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 110px ;
-    background: #FF9458;
-    box-shadow: 0 0 2px gray;
-    padding: 20px;
-  }
-  
-  #seccion-sign h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .form-group {
+.body-sign-in-and-up{
+    background: rgb(255, 139, 72, 0.9);    /*  80% opaco negro */ 
     display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+	vertical-align: middle;
+    border: 1px solid #3d3d3d;
+    border-radius: 10px;
+    width: 800px;
+    height: 580px;
+	margin-top: 200px;
 }
-  
-  .form-group label {
-    margin-bottom: 5px;
-    font-size: 1.2rem;
-    }
-  
-  .form-group input {
-    padding: 10px;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 2px gray;
-    margin-bottom: 10px;
 
+.sign-in-and-sign-up-label{
+	color: #3d3d3d;
+    font-size: 30px;
+    font-family: 'Netflix Sans-bold';
+    margin-bottom: 15px;
 }
-  
-  .btn {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0 2px gray;
-    background-color: #3e3e3e;
-    color: #fff;
-    
-  }
-  
-  .btn:hover {
-    background-color: #353535;
-  }
-  
-  .btn:active {
-    background-color: #313131;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    
-  }
+
+.input-style{
+    background-color:  #ffffff;
+    color: #000000;
+    width: 400px;
+    height: 40px;
+    border: solid;
+    border-radius: 6px;
+    border-color: #3d3d3d;
+    border-width: 2px;
+    margin-top: 18px;
+    padding-left: 10px;
+}
+
+.input-style:focus{
+    outline: 2px solid #3d3d3d;
+    transition: outline 0.1s linear;
+}
+
+.continuar-y-registrarme-btn{
+    background-color: #3d3d3d;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    font-size: 150%;
+    margin-top: 50px;
+    width: 400px;
+    height: 40px;
+}
+
+.continuar-y-registrarme-btn:hover{
+    background-color: #333333;
+    text-decoration: none;
+}
+
+.continuar-y-registrarme-btn:active{
+    text-decoration: none;
+    background-color: #2e2e2e;
+}
+
+.pregunta-link{
+    color: #ffffff;
+	text-decoration: none;
+}
+
+.pregunta-link:hover{
+    color: #d1d1d1;
+    text-decoration: none;
+}
+
+.pregunta-link:active{
+    text-decoration: none;
+    color: #c9c9c9;
+}
+
+.pregunta-label{
+    margin-top: 10px;
+}
 
 
 
