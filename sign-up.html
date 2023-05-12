@@ -29,11 +29,13 @@
 		<div class="body-sign-in-and-up">
             <form action="index.html" method="post">
                 <label class="sign-in-and-sign-up-label">Crear una cuenta</label><br>
-                <input type="email" name="email" class="input-style" placeholder="Email"><br>
+                <input type="email" id="email" name="email" class="input-style" placeholder="Email"><br>
 				Se te enviará un correo con una contraseña aleatoria. <br>
-                <input type="submit" value="Registrarme" class="continuar-y-registrarme-btn">
+				<p class="mensaje-error"></p>
+                <input type="submit" value="Registrarme" class="continuar-y-registrarme-btn" onclick="validarRegistro();">
             </form>
             <label class="pregunta-label">¿Ya ten&eacute;s una cuenta? <a href="sign-in.html" target="_blank" class="pregunta-link">Inici&aacute; sesi&oacute;n</a>.</label>
         </div>
 	</body>
+		<script src="js/validaciones.js"></script>
 </html>
