@@ -19,7 +19,7 @@ function validarContraseña(valor){
 
 }
 
-document.getElementById("submit")
+document.getElementById("submitLog")
     .addEventListener("click", function(event){
         var email = document.getElementById("log-in-email").value; 
         var pass = document.getElementById("log-in-password").value;
@@ -36,5 +36,6 @@ document.getElementById("submit")
         //Validacion de la DB 
 
 
+        localStorage.setItem('loggedIn', 'true');
         
 })
