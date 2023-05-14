@@ -35,7 +35,23 @@ document.getElementById("submitLog")
         
         //Validacion de la DB 
 
+        fetch("../php/sing-in.php",{
+            method: 'POST',
+            body: new URLSearchParams({
+                'email': email,
+                'passwaord': pass
+            })
+        })
+        .then(response => response.text())
+        .then(data => {
+            if(data == "1"){
+                localStorage.setItem('loggedIn', 'true');
+            }else{
+                alert("Email o contraseña incorrectos");
+            }
+        })
 
-        localStorage.setItem('loggedIn', 'true');
+        .catch(error => console.error(error));
+        
         
 })
