@@ -1,6 +1,6 @@
 const emailValido =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 var  formulario = document.getElementById('formulario');
-var url = 'http://localhost:8080/veterinaria/Veterinaria'
+var url = 'http://localhost:8080/vet/Veterinaria'
 var elemento = document.querySelector(".mensaje-error");
 
 
@@ -30,6 +30,7 @@ formulario.addEventListener('submit' , function(e){
 
     let datos = new FormData (formulario);
     let emailUsuario = datos.get('email');
+
 
     if (!emailValido.test(emailUsuario)) {
         event.preventDefault();
