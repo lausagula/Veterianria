@@ -2,6 +2,7 @@
 document.getElementById('logOut')
     .addEventListener("click", function(event){
         localStorage.setItem('loggedIn', 'false');
+        localStorage.setItem('loggedAdm', 'false');
     });
 
 

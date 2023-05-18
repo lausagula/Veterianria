@@ -3,7 +3,7 @@ const validarCaracteresEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const validarCaracteresContraseña = /^[A-Z][a-z]+[0-9]+/;
 var formulario = document.getElementById('formulario');
 var elemento = document.querySelector(".mensaje-error");
-var url = 'http://localhost:8080/vet/Veterinaria'
+var url = 'http://localhost/Veterinaria'
 
 
 function mostrarMensaje (elemento,mensaje){
@@ -33,10 +33,11 @@ formulario.addEventListener('submit', function(event) {
         let datos = new FormData (formulario);
         
         var email = datos.get('email'); 
-        var pass = datos.get('password');;
-        
+        var pass = datos.get('password');
+
         console.log (email);
         console.log (pass);
+                
 
         if (!validarEmail(email)) {
             event.preventDefault();
@@ -48,7 +49,6 @@ formulario.addEventListener('submit', function(event) {
             return;        
         }
         event.preventDefault(); 
-        //Validacion de la DB 
         fetch((url+"/php/sing-in.php"),{
             method: 'POST',
             body: datos
@@ -56,12 +56,17 @@ formulario.addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(data => {
             if(data.exito){
-                mostrarMensaje(elemento,data.mensaje);
+                mostrarMensaje(elemento,data.mensaje);               
+                if (data.es_administrador == 1){
+                    const es_administrador = data.es_administrador;                   
+                    localStorage.setItem('loggedAdm','true');
+                }else{
+                    localStorage.setItem('loggedAdm','false');
+                }
                 window.location.href = (url+'/index.html');
                 localStorage.setItem('loggedIn', 'true');
             }else{
                 mostrarMensaje(elemento,data.mensaje);
-                //alert("Email o contraseña incorrectos");
             }
         })
         .catch(error => console.error(error));

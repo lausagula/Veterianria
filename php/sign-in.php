@@ -14,7 +14,9 @@
     $resultado = $con->query($sql);
 
     if ($resultado->num_rows > 0){
-        echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));
+        $row = mysqli_fetch_assoc($resultado);
+        $es_administrador=$row['es_administrador'];
+        echo json_encode(array('exito' => true,'es_administrador' => $es_administrador, 'mensaje' => 'Se registró correctamente'));
     }else{
         echo json_encode(array('exito' => false, 'mensaje' => 'Mail o contraseña no son validos.'));
     }
