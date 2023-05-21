@@ -78,6 +78,8 @@ header{
 	border-left: 1px solid #7a7a7a;
 }
 
+
+
 .link-style-menu{
 	color: #FFFFFF;
 	text-decoration: none;
@@ -93,6 +95,8 @@ header{
 .link-style-menu:active{
 	background-color: #313131;
 }
+
+
 
 #section-index{
 	width: 80%;
@@ -227,4 +231,25 @@ header{
 
 .stateLogOut{
 	display: none;
+}
+
+.body-contenedor{
+	background: rgb(255, 139, 72, 0.9);    /*  80% opaco negro */ 
+	overflow: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+	vertical-align: middle;
+    border: 1px solid #3d3d3d;
+    border-radius: 10px;
+    width: 800px;
+    height: 600px;
+	margin-top: 200px;
+	padding-top: 100px;
+}
+
+.body-contenedor hr{
+	width: 600px;
+
 }

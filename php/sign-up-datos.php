@@ -9,7 +9,7 @@
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $admin = $_POST['admin'];
+    $id_cliente = 0;
 
     function generarContraseña($cantidad){
         $clave = "";
@@ -24,7 +24,7 @@
 
     if ((!empty($name)) && (!empty($lastName)) && (!empty($phone))){
         $contraseña =  generarContraseña(6);        
-        $insertar = "INSERT INTO clientes (nombre,apellido,mail,contraseña,telefono,es_administrador) VALUES ('$name','$lastName','$email','$contraseña','$phone','$admin')";
+        $insertar = "INSERT INTO clientes (nombre,apellido,mail,contraseña,telefono,es_administrador) VALUES ('$name','$lastName','$email','$contraseña','$phone','$id_cliente')";
         $query = mysqli_query($con,$insertar);
         echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));
     }else{  

@@ -1,17 +1,16 @@
-<!DOCTYPE <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="es">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="initial-scale=1">
-		<title>¡Oh My Dog!</title>
+		<title>¡Oh My Dog! - Registrar adopción</title>
 		<link rel="stylesheet" href="css/style.css">
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 	</head>
 
 	<body>
-
 		<header>
-			<img src="img/Logo1-removebg-preview.png" id="imghome">
+			<img src="img/Logo1-removebg-preview.png" id="imghome">    
 			<div id="menu">
 				<ul id="ul-style-menu">
 					<div class="border"></div>
@@ -28,12 +27,9 @@
 							<option value="verAdopciones.html">Mostrar Adopciones</option>
 						</select>
 					</li>
-					<div class="border"></div>
 					<li><a class="link-style-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
 					<div class="border"></div>
 					<li><a class="link-style-menu" href="contact-us.html">CONTACTO</a></li>
-					<div class="border"></div>
-					<li><a class="link-style-menu stateSing" href="sign-in.html">INICIAR SESION</a></li>
 					<div class="border"></div>
 					<li><a class="link-style-menu stateSing registrar-menu" href="sign-up.html">REGISTRAR USUARIO</a></li>
 					<div class="border"></div>
@@ -43,18 +39,25 @@
 			</div>
 		</header>
 
-		<section id="section-index">
-			<div class="slider-frame">
-				<ul>
-					<li><a href="https://www.google.com" target="_blank"><img src="img/general.jpg"></a></li>
-					<li><a href="https://www.google.com" target="_blank"><img src="img/paseador.jpg"></a></li>
-					<li><a href="https://www.google.com" target="_blank"><img src="img/adopción.jpg"></a></li>
-					<li><a href="https://www.google.com" target="_blank"><img src="img/guarderia.jpg"></a></li>
-				</ul>
-			</div>
-		</section>	
-
+		<div class="body-sign-in-and-up">
+			<form id="formulario" action="adopciones.html" method="post">        <!-- redirige a la pagina de adopciones-->
+				<label class="form-label">Registrar adopción</label><br>
+				<input type="text" name="raza_perro" class="input-style" placeholder="Raza" required><br>
+                <select name="sexo" class="input-style"  required>
+                    <option value="M">Macho</option>
+                    <option value="H">Hembra</option>
+                </select><br>
+				<input type="text" name="edad" class="input-style" placeholder="Edad" required><br>
+				<input type="text" name="zona" class="input-style" placeholder="Zona" required><br>
+                <input type="text" name="caracteristicas" class="input-style" placeholder="Caracteristicas" required><br>
+                <input type="text" name="comportamiento" class="input-style" placeholder="Comportamiento" required><br>
+                <input type="email" name="email" class="input-style" placeholder="email" required><br>
+                <p class="mensaje-error"></p>	
+				<input type="submit" id="submitLog" value="Registrar" class="continuar-y-registrarme-btn">
+			</form>
+        </div>
 	</body>
-	<script src="js/cambiarEstadoBotones.js"></script>	
+    <script src="js/cargarAdopcion.js"></script>
+	<script src="js/cambiarEstadoBotones.js"></script>
 	<script src="js/cerrarSesion.js"></script>
 </html>

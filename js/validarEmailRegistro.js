@@ -1,6 +1,6 @@
 const emailValido =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 var  formulario = document.getElementById('formulario');
-var url = 'http://localhost/Veterinaria'
+var url = 'http://localhost:8080/Veterinaria';
 var elemento = document.querySelector(".mensaje-error");
 
 
@@ -11,12 +11,13 @@ function mostrarMensaje (elemento,mensaje){
 }
 
 function enviarDatos(datos){
-    fetch( (url+"/php/sign-up-email.php"), {
+    fetch((url+"/php/sign-up-email.php"), {
         method : 'POST' ,
         body : datos
     })
     .then(res => res.json())
     .then(data  => { 
+        console.log (data);
         if (data.exito){
             mostrarMensaje(elemento,data.mensaje);
             window.location.href = (url+'/sign-up-datos.html');
@@ -28,7 +29,7 @@ function enviarDatos(datos){
 
 formulario.addEventListener('submit' , function(e){
     e.preventDefault
-
+    
     let datos = new FormData (formulario);
     let emailUsuario = datos.get('email');
 
@@ -40,5 +41,6 @@ formulario.addEventListener('submit' , function(e){
     event.preventDefault();
     localStorage.setItem('email',emailUsuario);
     enviarDatos(datos);
+    
     return mostrarMensaje(elemento,"");
 })

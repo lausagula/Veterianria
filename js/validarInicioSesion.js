@@ -3,7 +3,7 @@ const validarCaracteresEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const validarCaracteresContraseña = /^[A-Z][a-z]+[0-9]+/;
 var formulario = document.getElementById('formulario');
 var elemento = document.querySelector(".mensaje-error");
-var url = 'http://localhost/Veterinaria'
+var url = 'http://localhost:8080/Veterinaria'
 
 
 function mostrarMensaje (elemento,mensaje){
@@ -28,8 +28,10 @@ function validarContraseña(valor){
 
 }
 
+
+
 formulario.addEventListener('submit', function(event) {
-        event.preventDefault
+        event.preventDefault();
         let datos = new FormData (formulario);
         
         var email = datos.get('email'); 
@@ -48,18 +50,19 @@ formulario.addEventListener('submit', function(event) {
             event.preventDefault();   
             return;        
         }
-        event.preventDefault(); 
-        fetch((url+"/php/sing-in.php"),{
+        fetch((url+"/php/sign-in.php"),{
             method: 'POST',
             body: datos
         })
         .then(response => response.json())
         .then(data => {
             if(data.exito){
+                console.log (data);
                 mostrarMensaje(elemento,data.mensaje);               
                 if (data.es_administrador == 1){
-                    const es_administrador = data.es_administrador;                   
+                    const es_administrador = data.$id_cliente;
                     localStorage.setItem('loggedAdm','true');
+                    
                 }else{
                     localStorage.setItem('loggedAdm','false');
                 }
