@@ -18,24 +18,24 @@ if (localStorage.getItem('loggedIn') === 'true') {
     
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
-
+    solicitarTurno.style.display = 'none';
+    
     if (localStorage.getItem('loggedAdm') === 'true') {    
 
         if (registrarButton === null){
             registroPerro.style.display = 'flex';
             verUsuarios.style.display = 'flex';     
-            solicitarTurno.style.display = 'flex';       
+            
         }else{
           registrarButton.style.display = 'flex';
           registroPerro.style.display = 'flex';
           verUsuarios.style.display = 'flex';
-          solicitarTurno.style.display = 'flex';
         }
     }else{
         registroCP.style.display = 'none';
         verUsuarios.style.display = 'none';
         registroPerro.style.display = 'none';
-        solicitarTurno.style.display = 'none';
+        solicitarTurno.style.display = 'flex';
     }
 
 }else{
