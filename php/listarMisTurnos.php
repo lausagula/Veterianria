@@ -3,10 +3,11 @@
     header('Content-Type: application/json');
 
     $inc = include ("conexion.php");
+    $id_cliente = $_GET['id'];
 
     if($inc){
 
-        $consulta = "SELECT * FROM turnos WHERE ()";
+        $consulta = "SELECT * FROM turnos WHERE (id_cliente = '$id_cliente')";
         $resultado = mysqli_query($con, $consulta);
 
         if (mysqli_num_rows($resultado) > 0){

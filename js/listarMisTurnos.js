@@ -1,9 +1,11 @@
 import {url} from './url.js'
 var contenedor = document.getElementById('contenedorDatos');
 var datos = new FormData();
+var idUrl = new URL(window.location.href);
+var idCliente = idUrl.searchParams.get("id");
+console.log(idCliente);
 
-
-fetch ((url+"/php/listarMisTurnos.php"),{
+fetch ((url+"/php/listarMisTurnos.php?id="+idCliente),{
     method: 'POST',
     body: datos
 })
@@ -14,32 +16,40 @@ fetch ((url+"/php/listarMisTurnos.php"),{
             var div = document.createElement('div');  
             var form = document.createElement('form');
 
-            // nombre
+            // fecha
             var fechaTitulo = document.createElement('strong');
             fechaTitulo.textContent = 'Fecha: ';
             div.appendChild(fechaTitulo);
             div.appendChild(document.createTextNode(datos.dia));
 
-            // Apellido
+            // servicio
             var servicioTitulo = document.createElement('strong');
             servicioTitulo.textContent = 'Servicio: ';
             div.appendChild(document.createElement('br'));
             div.appendChild(servicioTitulo);
             div.appendChild(document.createTextNode(datos.servicio));
 
-            // Email
+            // horario
             var horarioTitulo = document.createElement('strong');
             horarioTitulo.textContent = 'Email: ';
             div.appendChild(document.createElement('br'));
             div.appendChild(horarioTitulo);
-            div.appendChild(document.createTextNode(datos.bloque_horario));    
+            div.appendChild(document.createTextNode(datos.horario));    
+
+            //id cliente
+            var idInputCliente = document.createElement('input');
+            idInputCliente.setAttribute("id", "id_cliente");
+            idInputCliente.setAttribute("type", "text");
+            idInputCliente.setAttribute("value", idCliente);
+            form.appendChild(idInputCliente);
+            div.appendChild(document.createElement('br'));
             
-            //id
-            var id = document.createElement('input');
-            id.setAttribute("id", "id_turno");
-            id.setAttribute("type", "text");
-            id.setAttribute("value", datos.id_turno);
-            form.appendChild(id);
+            //id turno
+            var idInputTurno = document.createElement('input');
+            idInputTurno.setAttribute("id", "id_turno");
+            idInputTurno.setAttribute("type", "text");
+            idInputTurno.setAttribute("value", datos.id_turno);
+            form.appendChild(idInputTurno);
             div.appendChild(document.createElement('br'));
 
             //boton cancelar turno
