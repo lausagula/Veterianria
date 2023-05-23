@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="initial-scale=1">
-		<title>¡Oh My Dog! - Regístrate</title>
+		<title>¡Oh My Dog! - Regístrar perro</title>
 		<link rel="stylesheet" href="css/style.css">
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 	</head>
@@ -33,31 +33,28 @@
 					<div class="border"></div>
 					<li><a class="link-style-menu ocultar-con" href="contact-us.html">CONTACTO</a></li>
 					<div class="border"></div>
-					<li><a class="link-style-menu stateSing registrar-perro" href="verificarEmailPerros.html">REGISTRAR PERRO</a></li>
+					<li><a class="link-style-menu stateSing" href="sign-in.html">INICIAR SESION</a></li>
 					<div class="border"></div>
 					<li><a class="link-style-menu solicitar-turno" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
 					<div class="border"></div>
 					<li><a class="link-style-menu stateSing registrar-menu" href="sign-up.html">REGISTRAR USUARIO</a></li>
 					<div class="border"></div>
 					<li><a class="link-style-menu stateLogOut" id="logOut" href="index.html">CERRAR SESION</a></li>
-					
 					<div class="border"></div>
 				</ul>
 			</div>
 		</header>
 
 		<div class="body-sign-in-and-up">
-			<form id="formulario" action="index.html" method="post">
-				<label class="form-label">Iniciar sesi&oacute;n</label><br>
-				<input type="email" name="email" id="log-in-email" class="input-style" placeholder="Email"><br>
-				<input type="password" name="password" id="log-in-password" class="input-style" placeholder="Contraseña"><br>
-				<p class="mensaje-error"></p>	
-				<input type="submit"  value="Continuar" class="continuar-y-registrarme-btn">
-			</form>
-			<label class="pregunta-label">¿No ten&eacute;s una cuenta? <a href="sign-up.html" target="_blank" class="pregunta-link">Registrate</a>.</label>
+            <form id="formulario" action="registrar-perro.html" method="post" >
+                <label class="form-label">Registrar perro</label><br>
+                <input type="email" id="email" name="email" class="input-style" placeholder="Email"><br>
+				<p class="mensaje-error"></p>
+                <input type="submit" value="Registrarme" class="continuar-y-registrarme-btn" >
+            </form>
         </div>
 	</body>
-	<script src="js/validarInicioSesion.js" type="module"></script>
-	<script src="js/cambiarEstadoBotones.js"></script>
-	<script src="js/cerrarSesion.js"></script>
+		<script src="js/validarEmailPerros.js" type="module"></script>
+		<script src="js/cambiarEstadoBotones.js"></script>
+	    <script src="js/cerrarSesion.js"></script>
 </html>

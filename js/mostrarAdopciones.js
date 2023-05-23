@@ -1,5 +1,5 @@
+import {url} from './url.js';
 var  contenedor = document.getElementById('contenedorDatos');
-var url = 'http://localhost:8080/Veterinaria'
 
 
 fetch (url+"/php/mostrar-adopciones.php")

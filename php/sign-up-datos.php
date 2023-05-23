@@ -30,8 +30,6 @@
     }else{  
      echo json_encode(array('exito' => false, 'mensaje' => 'Error al procesar la solicitud'));
     }
-
-
     
 ?>
 

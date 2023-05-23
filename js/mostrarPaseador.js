@@ -1,5 +1,5 @@
+import {url} from './url.js'
 var  contenedor = document.getElementById('contenedorDatos');
-var url = 'http://localhost:8080/Veterinaria'
 
 var datos = new FormData();
 datos.append('tipo','paseador');
