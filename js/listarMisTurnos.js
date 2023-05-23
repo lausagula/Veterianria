@@ -1,6 +1,6 @@
+import {url} from './url.js'
 var contenedor = document.getElementById('contenedorDatos');
 var datos = new FormData();
-import {url} from './url.js'
 
 
 fetch ((url+"/php/listarMisTurnos.php"),{
@@ -42,10 +42,21 @@ fetch ((url+"/php/listarMisTurnos.php"),{
             form.appendChild(id);
             div.appendChild(document.createElement('br'));
 
+            //boton cancelar turno
+            var buttonCancelar = document.createElement('input');
+            buttonCancelar.setAttribute("type", "submit");
+            buttonCancelar.setAttribute("value", "Cancelar turno");
+            form.appendChild(buttonCancelar);
+
             //ponemos todo
             div.appendChild(form);
             document.getElementById('contenedorDatos').appendChild(div);
             document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
+
+            buttonAceptar.addEventListener('click', function(event) {
+                window.location.href = (url+'/php/cancelarTurno.php');
+                console.log("cancelado js");
+            });
         });
         console.log(data);
     }else{
