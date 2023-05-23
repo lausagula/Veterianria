@@ -10,7 +10,7 @@
     $email = $_POST['email'];
     $contraseña = $_POST['password']; 
 
-    $sql = "SELECT * FROM clientes WHERE (mail = '$email') AND (contraseña = '$contraseña')";
+    $sql = "SELECT * FROM clientes WHERE (mail = '$email') AND (contrasenia = '$contraseña')";
     $resultado = $con->query($sql);
 
     if ($resultado->num_rows > 0){

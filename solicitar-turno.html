@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <title>¡Oh My Dog! - Solicitar turno</title>
+    </head>
+    <body>
+        <header>
+			<img src="img/Logo1-removebg-preview.png" id="imghome">
+			<div id="menu">
+				<ul id="ul-style-menu">
+					<div class="border"></div>
+					<li><a class="link-style-menu" href="index.html">INICIO</a></li>
+					<div class="border"></div>
+					<li>
+						<label class="link-style-menu">Servicios</label>
+						<select onchange="if (this.value) window.location.href = this.value;">
+							<option value="" selected disabled>Selecciona una opción</option>
+							<option value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
+							<option value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option value="mostrarPaseador.html">Mostrar Paseadores</option>
+							<option value="mostrarCuidador.html">Mostrar Cuidadores</option>
+							<option value="verAdopciones.html">Mostrar Adopciones</option>
+						</select>
+					</li>
+					<li><a class="link-style-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu" href="contact-us.html">CONTACTO</a></li>
+					<li><a class="link-style-menu stateLogOut" id="logOut" href="index.html">CERRAR SESION</a></li>
+					<div class="border"></div>
+					
+				</ul>
+			</div>
+		</header>
+
+		<div class="body-sign-in-and-up">
+            <form id="formulario" action="php/solicitar-turno.php?id=" method="post" >
+                <label class="form-label">Solicitar turno</label><br>
+                <input type="date" id="fecha" name="fecha" class="input-style" placeholder="Fecha" required><br>
+                Servicio:
+                <select name="servicio" id="servicio" required>
+                    <option value="castracion">Castraci&oacute;n</option>
+                    <option value="a">a</option>
+                </select> <br>
+                Horario:
+                <input type="radio" name="horario" value="horario-maniana" required>Mañana 
+                <input type="radio" name="horario" value="horario-tarde" required>Tarde <br>
+				<input type="hidden" name="email" id="email" value="">
+				<script>
+					email = document.getElementById("email");
+					email.value = localStorage.getItem("email");
+					console.log(email.value);
+				</script>
+				<p class="mensaje-error"></p>
+                <input type="submit" value="Enviar" id="submit-turno" class="continuar-y-registrarme-btn" > <br>
+				<label class="pregunta-label">¿Ya ten&eacute;s una cuenta? <a href="sign-up.html" target="_blank" class="pregunta-link">Inici&aacute; sesi&oacute;n</a>.</label>
+            </form>
+        </div>
+    </body>
+    <script src="js/cambiarEstadoBotones.js"></script>	
+	<script src="js/cerrarSesion.js"></script>
+</html>

@@ -36,6 +36,8 @@ formulario.addEventListener('submit', function(event) {
         
         var email = datos.get('email'); 
         var pass = datos.get('password');
+        localStorage.setItem('email', email);
+        console.log(localStorage.getItem("email"));
 
         console.log (email);
         console.log (pass);
