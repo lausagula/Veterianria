@@ -3,7 +3,6 @@ var  formulario = document.getElementById('formulario');
 var elemento = document.querySelector(".mensaje-error");
 
 
-
 function mostrarMensaje (elemento,mensaje){
     elemento.innerHTML = mensaje;
 }
@@ -18,7 +17,10 @@ function enviarDatos(datos){
         console.log (data);
         if (data.exito){
             mostrarMensaje(elemento,data.mensaje);
-            window.location.href = (url+'/index.html');
+            var urlCLiente = new URL(window.location.href);
+            var idCliente = urlCLiente.searchParams.get("id");
+            console.log(idCliente+" validar perro");
+            window.location.href = (url+'/index.html?id='+idCliente);
         }else{ 
             mostrarMensaje(elemento,data.mensaje);
         }

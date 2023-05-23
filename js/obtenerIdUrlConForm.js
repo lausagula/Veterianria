@@ -1,5 +1,5 @@
 var elements = document.querySelectorAll(".option-select-menu");
-var form = document.getElementById("formulario");
+var form = document.querySelector("#formulario");
 var url = new URL(window.location.href);
 var idUrl = url.searchParams.get("id");
 console.log(idUrl+" CASASDASDSACXC");

@@ -18,8 +18,11 @@ function enviarDatos(datos){
     .then(res => res.json())
     .then(data  => { 
         if (data.exito){
+            var urlCliente = new URL(window.location.href);
+            var idcliente = urlCliente.searchParams.get("id");
+            console.log(idCliente+" valiadaemailperros");
             mostrarMensaje(elemento,data.mensaje);
-            window.location.href = (url+'/registrar-perro.html');
+            window.location.href = (url+'/registrar-perro.html?id='+idcliente);
         }else{ 
             mostrarMensaje(elemento,data.mensaje);
         }

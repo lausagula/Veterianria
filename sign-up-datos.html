@@ -14,31 +14,31 @@
 			<div id="menu">
 				<ul id="ul-style-menu">
 					<div class="border"></div>
-					<li><a class="link-style-menu" href="index.html">INICIO</a></li>
+					<li><a class="link-style-menu option-menu" href="index.html">INICIO</a></li>
 					<div class="border"></div>
 					<li>
-						<a class="link-style-menu" href="index.html">SERVICIOS</a>
+						<a class="link-style-menu option-menu">SERVICIOS</a>
 						<select onchange="if (this.value) window.location.href = this.value;">
-							<option value="" selected disabled>Selecciona una opción</option>
-							<option value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
-							<option value="cargarAdopcion.html">Registrar Perro para adopcion</option>
-							<option value="mostrarPaseador.html">Mostrar Paseadores</option>
-							<option value="mostrarCuidador.html">Mostrar Cuidadores</option>
-							<option value="verAdopciones.html">Mostrar Adopciones</option>
+							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
+							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
+							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
+							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
 						</select>
 					</li>
 					<div class="border"></div>
-					<li><a class="link-style-menu ver-usuarios" href="mostrarUsuarios.html">LISTAR USUSARIOS</a></li>	
+					<li><a class="link-style-menu ver-usuarios option-menu" href="mostrarUsuarios.html">LISTAR USUSARIOS</a></li>	
 					<div class="border"></div>
-					<li><a class="link-style-menu ocultar-nos" href="about-us.html">SOBRE NOSOTROS</a></li>
+					<li><a class="link-style-menu ocultar-nos option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
 					<div class="border"></div>
-					<li><a class="link-style-menu ocultar-con" href="contact-us.html">CONTACTO</a></li>
+					<li><a class="link-style-menu ocultar-con option-menu" href="contact-us.html">CONTACTO</a></li>
 					<div class="border"></div>
-					<li><a class="link-style-menu stateSing registrar-perro" href="verificarEmailPerros.html">REGISTRAR PERRO</a></li>
+					<li><a class="link-style-menu stateSing registrar-perro option-menu" href="verificarEmailPerros.html">REGISTRAR PERRO</a></li>
 					<div class="border"></div>
-					<li><a class="link-style-menu solicitar-turno" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
+					<li><a class="link-style-menu solicitar-turno option-menu" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
 					<div class="border"></div>
-					<li><a class="link-style-menu solicitar-turno" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
+					<li><a class="link-style-menu solicitar-turno option-menu" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
 					<div class="border"></div>
 					<li><a class="link-style-menu stateLogOut" id="logOut" href="index.html">CERRAR SESION</a></li>
 					<div class="border"></div>	
@@ -65,6 +65,7 @@
 			</form>
         </div>
 	</body>
+	<script src="js/obtenerIdUrlConForm.js"></script>
 	<script src="js/validarDatosRegistro.js" type="module"></script>
 	<script src="js/cerrarSesion.js"></script>
 	<script src="js/cambiarEstadoBotones.js"></script>	

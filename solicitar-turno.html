@@ -13,23 +13,23 @@
 			<div id="menu">
 				<ul id="ul-style-menu">
 					<div class="border"></div>
-					<li><a class="link-style-menu" href="index.html">INICIO</a></li>
+					<li><a class="link-style-menu option-menu" href="index.html">INICIO</a></li>
 					<div class="border"></div>
 					<li>
 						<label class="link-style-menu">SERVICIOS</label>
 						<select onchange="if (this.value) window.location.href = this.value;">
-							<option value="" selected disabled>Selecciona una opción</option>
-							<option value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
-							<option value="cargarAdopcion.html">Registrar Perro para adopcion</option>
-							<option value="mostrarPaseador.html">Mostrar Paseadores</option>
-							<option value="mostrarCuidador.html">Mostrar Cuidadores</option>
-							<option value="verAdopciones.html">Mostrar Adopciones</option>
-							<option value="listar-mis-turnos.html">Listar mis turnos</option>
+							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
+							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
+							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
+							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
+							<option class="option-select-menu" value="listar-mis-turnos.html">Listar mis turnos</option>
 						</select>
 					</li>
-					<li><a class="link-style-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
+					<li><a class="link-style-menu option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
 					<div class="border"></div>
-					<li><a class="link-style-menu" href="contact-us.html">CONTACTO</a></li>
+					<li><a class="link-style-menu option-menu" href="contact-us.html">CONTACTO</a></li>
 					<li><a class="link-style-menu stateLogOut" id="logOut" href="index.html">CERRAR SESION</a></li>
 					<div class="border"></div>
 					
@@ -61,6 +61,7 @@
             </form>
         </div>
     </body>
+	<script src="js/obtenerIdUrlConForm.js"></script>
     <script src="js/cambiarEstadoBotones.js"></script>	
 	<script src="js/cerrarSesion.js"></script>
 </html>
