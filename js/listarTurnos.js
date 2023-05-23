@@ -1,7 +1,6 @@
 var contenedor = document.getElementById('contenedorDatos');
 var datos = new FormData();
-
-url = "https://localhost/Veterinaria";
+import {url} from './url.js'
 
 
 fetch ((url+"/php/listarTurnos.php"),{
