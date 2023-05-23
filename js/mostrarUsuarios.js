@@ -2,17 +2,13 @@ import {url} from './url.js'
 var  contenedor = document.getElementById('contenedorDatos');
 
 
-var datos = new FormData();
-datos.append('tipo','cuidador');
 
-fetch (( url+"/php/mostrarCuidador.php"),{
-    method: 'POST',
-    body: datos   
-})
+fetch (url+"/php/mostrarUsuarios.php")
 .then(res => res.json())
 .then(data  => {
     console.log (data); 
     if(data.exito){
+        
         data.data.forEach(datos => {
             var div = document.createElement('div');        
         // nombre
@@ -35,50 +31,38 @@ fetch (( url+"/php/mostrarCuidador.php"),{
         div.appendChild(emailTitulo);
         div.appendChild(document.createTextNode(datos.mail));
 
-        // Zona
-        var zonaTitulo = document.createElement('strong');
-        zonaTitulo.textContent = 'Zona: ';
+        // Telefono
+        var telefonoTitulo = document.createElement('strong');
+        telefonoTitulo.textContent = 'Telefono: ';
         div.appendChild(document.createElement('br'));
-        div.appendChild(zonaTitulo);
-        div.appendChild(document.createTextNode(datos.zona));
+        div.appendChild(telefonoTitulo);
+        div.appendChild(document.createTextNode(datos.telefono));
 
-        // Disponibilidad
-        var disTitulo = document.createElement('strong');
-        disTitulo.textContent = 'Disponibilidad: ';
-        div.appendChild(document.createElement('br'));
-        div.appendChild(disTitulo);
-        console.log ("ver");
-        console.log (datos.estado == 0);
-        if (datos.disponibilidad == 1){
-            div.appendChild(document.createTextNode("Disponible"));
-        }else{
-            div.appendChild(document.createTextNode("No Disponible"));
-        }
+          // Tipo usuario
+          var tipoTitulo = document.createElement('strong');
+          tipoTitulo.textContent = 'Tipo Usuario: ';
+          div.appendChild(document.createElement('br'));
+          div.appendChild(tipoTitulo);
+          console.log ("ver");
+          console.log (datos.es_administrador == 1);
+          if (datos.es_administrador == 1){
+              div.appendChild(document.createTextNode("Administrador"));
+          }else{
+              div.appendChild(document.createTextNode("Usuario Comun"));
+          }
+
         
         div.appendChild(document.createElement('br'));
         div.appendChild(document.createElement('br'));
 
-        var button = document.createElement('button');
-        button.textContent = 'Contactar';
-        button.setAttribute('data-email', datos.mail);
 
         document.getElementById('contenedorDatos').appendChild(div);
-        var button = document.createElement('button');
-        button.textContent = 'Contactar';
-        button.setAttribute('data-email', datos.mail);
-        document.getElementById('contenedorDatos').appendChild(button);
         document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
         document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
-        
-
-        button.addEventListener('click', function(event) {
-            var email = event.target.dataset.email;
-            window.location.href = (url+'/formCuidador.html');
-            console.log('Email de contacto:', email);
-          });            
+                
         });
     }else{
-        console.log("No hay cuidador");
+        console.log("No hay Usuarios");
         var p = document.createElement('p');
         p.textContent = data.mensaje;
         contenedor.appendChild(p);
@@ -86,4 +70,3 @@ fetch (( url+"/php/mostrarCuidador.php"),{
     
 })
 .catch(error => console.error(error));
-

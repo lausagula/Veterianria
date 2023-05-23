@@ -1,6 +1,11 @@
 var registroCP = document.querySelector('option[value="form-RegistroCP.html"]');
 var registroAdopcion = document.querySelector('option[value="cargarAdopcion.html"]');
-
+var verUsuarios = document.querySelector('.ver-usuarios');
+var registroPerro = document.querySelector('.registrar-perro');
+var registrarButton = document.querySelector('.registrar-menu');
+var ocultarContacto = document.querySelector('.ocultar-con');
+var ocultarNosotros = document.querySelector('.ocultar-nos');
+var solicitarTurno = document.querySelector('.solicitar-turno');
 
 if (localStorage.getItem('loggedIn') === 'true') {
     var elements = document.querySelectorAll('.stateSing');
@@ -10,12 +15,27 @@ if (localStorage.getItem('loggedIn') === 'true') {
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.display = 'none';
     }
+    
+    ocultarContacto.style.display = 'none';
+    ocultarNosotros.style.display = 'none';
 
-    if (localStorage.getItem('loggedAdm') === 'true') {
-        var registrarButton = document.querySelector('.registrar-menu');
-        registrarButton.style.display = 'flex';
+    if (localStorage.getItem('loggedAdm') === 'true') {    
+
+        if (registrarButton === null){
+            registroPerro.style.display = 'flex';
+            verUsuarios.style.display = 'flex';     
+            solicitarTurno.style.display = 'flex';       
+        }else{
+          registrarButton.style.display = 'flex';
+          registroPerro.style.display = 'flex';
+          verUsuarios.style.display = 'flex';
+          solicitarTurno.style.display = 'flex';
+        }
     }else{
         registroCP.style.display = 'none';
+        verUsuarios.style.display = 'none';
+        registroPerro.style.display = 'none';
+        solicitarTurno.style.display = 'none';
     }
 
 }else{
@@ -26,7 +46,13 @@ if (localStorage.getItem('loggedIn') === 'true') {
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.display = 'flex';
     } 
+    
     registrarButton.style.display = 'none';
     registroCP.style.display = 'none';
     registroAdopcion.style.display = 'none';
+    verUsuarios.style.display = 'none';
+    registroPerro.style.display = 'none';
+    ocultarContacto.style.display = 'none';
+    ocultarNosotros.style.display = 'none';
+    solicitarTurno.style.display = 'none';
 }

@@ -1,6 +1,6 @@
+import {url} from './url.js'
 var formulario = document.getElementById('formulario');
 var elemento = document.querySelector(".mensaje-error");
-var url = 'http://localhost:8080/Veterinaria'
 
 
 function mostrarMensaje (elemento,mensaje){
@@ -31,7 +31,7 @@ formulario.addEventListener('submit', function(event) {
             console.log (data);
             if(data.exito){
                 mostrarMensaje(elemento,data.mensaje);               
-                window.location.href = (url+'/index.html');
+                formulario.reset();
             }else{
                 mostrarMensaje(elemento,data.mensaje);
             }

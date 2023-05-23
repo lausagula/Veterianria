@@ -1,9 +1,9 @@
-
+import {url} from './url.js'
 const validarCaracteresEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const validarCaracteresContraseña = /^[A-Z][a-z]+[0-9]+/;
 var formulario = document.getElementById('formulario');
 var elemento = document.querySelector(".mensaje-error");
-var url = 'http://localhost:8080/Veterinaria'
+
 
 
 function mostrarMensaje (elemento,mensaje){

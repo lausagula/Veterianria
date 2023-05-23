@@ -1,6 +1,6 @@
+import {url} from './url.js'
 const emailValido =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 var  formulario = document.getElementById('formulario');
-var url = 'http://localhost:8080/vet/Veterinaria'
 var elemento = document.querySelector(".mensaje-error");
 
 

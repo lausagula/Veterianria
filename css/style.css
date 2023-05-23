@@ -36,13 +36,14 @@
 html, body{
 	background: url('../img/fondo.jpg');
 	background-attachment: fixed;
-	overflow: hidden;
+	overflow:auto;
 	margin: 0px;
 	padding: 0px;
 	font-family: 'Netflix Sans-normal';
 	display: flex;
 	justify-content: center;
 	text-align: center;
+	
 }
 
 header{
@@ -147,7 +148,8 @@ header{
 /*-------------Registrar e iniciar sesion-------------*/
 
 .body-sign-in-and-up{
-    background: rgb(255, 139, 72, 0.9);    /*  80% opaco negro */ 
+    overflow:auto;
+	background: rgb(255, 139, 72, 0.9);    /*  80% opaco negro */ 
     display: flex;
     flex-flow: column;
     justify-content: center;
