@@ -37,7 +37,7 @@ fetch ((url+"/php/listarTurnos.php"),{
             //id
             var id = document.createElement('input');
             id.setAttribute("id", "id_turno");
-            id.setAttribute("type", "text");
+            id.setAttribute("type", "hidden");
             id.setAttribute("value", datos.id_turno);
             form.appendChild(id);
             div.appendChild(document.createElement('br'));

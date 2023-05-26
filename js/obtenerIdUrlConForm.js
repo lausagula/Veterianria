@@ -1,4 +1,4 @@
-var elements = document.querySelectorAll(".option-select-menu");
+var elementsIdUrl = document.querySelectorAll(".option-select-menu");
 var form = document.querySelector("#formulario");
 var url = new URL(window.location.href);
 var idUrl = url.searchParams.get("id");
@@ -8,16 +8,16 @@ value = form.getAttribute("action");
 form.setAttribute("action", value+"?id="+idUrl);
 console.log("AAAAAA"+form.getAttribute("action"));
 
-for (var i = 0; i < elements.length; i++) {
-    value = elements[i].getAttribute("value");
-    elements[i].setAttribute("value", value+"?id="+idUrl);
-    console.log(elements[i].getAttribute("value"));
+for (var i = 0; i < elementsIdUrl.length; i++) {
+    value = elementsIdUrl[i].getAttribute("value");
+    elementsIdUrl[i].setAttribute("value", value+"?id="+idUrl);
+    console.log(elementsIdUrl[i].getAttribute("value"));
 }
 
 console.log("OTROSSSSSSSSSS");
-elements = document.querySelectorAll(".option-menu");
-for (var i = 0; i < elements.length; i++) {
-    value = elements[i].getAttribute("href");
-    elements[i].setAttribute("href", value+"?id="+idUrl);
-    console.log(elements[i].getAttribute("href"));
+elementsIdUrl = document.querySelectorAll(".option-menu");
+for (var i = 0; i < elementsIdUrl.length; i++) {
+    value = elementsIdUrl[i].getAttribute("href");
+    elementsIdUrl[i].setAttribute("href", value+"?id="+idUrl);
+    console.log(elementsIdUrl[i].getAttribute("href"));
 }

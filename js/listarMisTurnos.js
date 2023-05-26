@@ -39,7 +39,7 @@ fetch ((url+"/php/listarMisTurnos.php?id="+idCliente),{
             //id cliente
             var idInputCliente = document.createElement('input');
             idInputCliente.setAttribute("id", "id_cliente");
-            idInputCliente.setAttribute("type", "text");
+            idInputCliente.setAttribute("type", "hidden");
             idInputCliente.setAttribute("value", idCliente);
             form.appendChild(idInputCliente);
             div.appendChild(document.createElement('br'));
@@ -47,7 +47,7 @@ fetch ((url+"/php/listarMisTurnos.php?id="+idCliente),{
             //id turno
             var idInputTurno = document.createElement('input');
             idInputTurno.setAttribute("id", "id_turno");
-            idInputTurno.setAttribute("type", "text");
+            idInputTurno.setAttribute("type", "hidden");
             idInputTurno.setAttribute("value", datos.id_turno);
             form.appendChild(idInputTurno);
             div.appendChild(document.createElement('br'));

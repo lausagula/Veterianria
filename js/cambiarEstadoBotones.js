@@ -6,6 +6,7 @@ var registrarButton = document.querySelector('.registrar-menu');
 var ocultarContacto = document.querySelector('.ocultar-con');
 var ocultarNosotros = document.querySelector('.ocultar-nos');
 var solicitarTurno = document.querySelector('.solicitar-turno');
+var listarTurnos = document.querySelector('.lsitar-turnos');
 
 if (localStorage.getItem('loggedIn') === 'true') {
     var elements = document.querySelectorAll('.stateSing');
@@ -18,9 +19,10 @@ if (localStorage.getItem('loggedIn') === 'true') {
     
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
-    solicitarTurno.style.display = 'none';
     
     if (localStorage.getItem('loggedAdm') === 'true') {    
+
+        listarTurnos.style.display = 'none';
 
         if (registrarButton === null){
             registroPerro.style.display = 'flex';
@@ -36,6 +38,7 @@ if (localStorage.getItem('loggedIn') === 'true') {
         verUsuarios.style.display = 'none';
         registroPerro.style.display = 'none';
         solicitarTurno.style.display = 'flex';
+        listarTurnos.style.display = 'flex';
     }
 
 }else{
@@ -55,4 +58,5 @@ if (localStorage.getItem('loggedIn') === 'true') {
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
     solicitarTurno.style.display = 'none';
+    listarTurnos.style.display = 'none';
 }
