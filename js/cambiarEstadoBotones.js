@@ -1,5 +1,6 @@
 var registroCP = document.querySelector('option[value="form-RegistroCP.html"]');
 var registroAdopcion = document.querySelector('option[value="cargarAdopcion.html"]');
+var cargarCampaña = document.querySelector('option[value="formCampaniaDonacion.html"]');
 var verUsuarios = document.querySelector('.ver-usuarios');
 var registroPerro = document.querySelector('.registrar-perro');
 var registrarButton = document.querySelector('.registrar-menu');
@@ -23,15 +24,19 @@ if (localStorage.getItem('loggedIn') === 'true') {
     if (localStorage.getItem('loggedAdm') === 'true') {    
 
         listarTurnos.style.display = 'none';
-
+        cargarCampaña.style.display = 'flex';
+        
+        
         if (registrarButton === null){
             registroPerro.style.display = 'flex';
             verUsuarios.style.display = 'flex';     
+            
             
         }else{
           registrarButton.style.display = 'flex';
           registroPerro.style.display = 'flex';
           verUsuarios.style.display = 'flex';
+          
         }
     }else{
         registroCP.style.display = 'none';
@@ -52,6 +57,7 @@ if (localStorage.getItem('loggedIn') === 'true') {
     
     registrarButton.style.display = 'none';
     registroCP.style.display = 'none';
+    cargarCampaña.style.display = 'none';
     registroAdopcion.style.display = 'none';
     verUsuarios.style.display = 'none';
     registroPerro.style.display = 'none';
