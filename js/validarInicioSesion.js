@@ -59,13 +59,13 @@ formulario.addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(data => {
             if(data.exito){
-                console.log (data.id_cliente);
                 mostrarMensaje(elemento,data.mensaje);           
                 if (data.es_administrador == 1){
-                    //const es_administrador = data.$id_cliente;
                     localStorage.setItem('loggedAdm','true');
                     
                 }else{
+                    var id_usuario = data.id_cliente;
+                    localStorage.setItem('idUsuario', id_usuario);
                     localStorage.setItem('loggedAdm','false');
                 }
                 window.location.href = (url+'/index.html?id='+data.id_cliente);
