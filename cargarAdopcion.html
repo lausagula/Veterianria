@@ -5,7 +5,7 @@
 		<meta name="viewport" content="initial-scale=1">
 		<title>¡Oh My Dog! - Registrar adopción</title>
 		<link rel="stylesheet" href="css/style.css">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="https://code.jquery.com/jquery-latest.js"></script>
 	</head>
 
 	<body>
@@ -46,19 +46,42 @@
 			</div>
 		</header>
 
-		<div class="body-sign-in-and-up">
+		<div class="body-contenedor">
 			<form id="formulario" action="adopciones.html" method="post">        <!-- redirige a la pagina de adopciones-->
-				<label class="form-label">Registrar adopción</label><br>
-				<input type="text" name="raza_perro" class="input-style" placeholder="Raza" required><br>
+				<label class="form-label">Registrar adopción</label><br><br>
+				Raza:
+				<select name="raza_perro" class="input-style" required>
+					<option value="mestizo">Mestizo</option>
+					<option value="caniche">Caniche</option>
+					<option value="pitbull">Pitbull</option>					
+					<option value="labrador">Labrador</option>
+					<option value="salchicha">Salchicha</option>
+				</select><br>
+				Sexo:
                 <select name="sexo" class="input-style"  required>
                     <option value="M">Macho</option>
                     <option value="H">Hembra</option>
                 </select><br>
+				Edad:
 				<input type="text" name="edad" class="input-style" placeholder="Edad" required><br>
-				<input type="text" name="zona" class="input-style" placeholder="Zona" required><br>
+				Ubicacion:
+				<select name="zona" class="input-style"required>
+					<option value="moreno">Plaza Moreno</option>
+					<option value="facultad">Facultad</option>
+					<option value="estadio">Estadio</option>
+					<option value="hospital">Hospital</option>
+					<option value="catedral">Catedral</option>
+				</select><br>
+				Caracteristicas
                 <input type="text" name="caracteristicas" class="input-style" placeholder="Caracteristicas" required><br>
+				Comportamiento:
                 <input type="text" name="comportamiento" class="input-style" placeholder="Comportamiento" required><br>
-                <input type="email" name="email" class="input-style" placeholder="email" required><br>
+				Email
+                <input type="email" name="email" class="input-style" placeholder="email" id="read-only" style="color: #808080;" readonly><br>
+				<script>	
+					const aux = localStorage.getItem('email');
+					document.getElementById('read-only').value = aux;
+				</script>
                 <p class="mensaje-error"></p>	
 				<input type="submit" id="submitLog" value="Registrar" class="continuar-y-registrarme-btn">
 			</form>

@@ -13,10 +13,11 @@
     $comportamiento = $_POST['comportamiento'];
     $email = $_POST['email'];
     $estado = 0;
+    $id_cliente = $_POST['id_cliente'];
 
 
     
-    $insertar = "INSERT INTO adopciones (raza_perro,sexo,edad,zona,caracteristicas,comportamiento,mail,estado) VALUES ('$raza_perro','$sexo','$edad','$zona','$caracteristicas','$comportamiento','$email',$estado)";
+    $insertar = "INSERT INTO adopciones (raza_perro,sexo,edad,zona,caracteristicas,comportamiento,mail,estado,id_cliente) VALUES ('$raza_perro','$sexo','$edad','$zona','$caracteristicas','$comportamiento','$email',$estado,$id_cliente)";
     $query = mysqli_query($con,$insertar);
     if($query){
         echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));

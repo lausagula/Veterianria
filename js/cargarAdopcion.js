@@ -11,6 +11,8 @@ function mostrarMensaje (elemento,mensaje){
 formulario.addEventListener('submit', function(event) {
 
         let datos = new FormData (formulario);
+
+        datos.append('id_cliente', localStorage.getItem('idUsuario'));
         
         var raza_perro = datos.get('raza_perro'); 
         var sexo = datos.get('sexo');
@@ -32,6 +34,7 @@ formulario.addEventListener('submit', function(event) {
             if(data.exito){
                 mostrarMensaje(elemento,data.mensaje);               
                 formulario.reset();
+                window.location.href = (url+'/index.html');
             }else{
                 mostrarMensaje(elemento,data.mensaje);
             }

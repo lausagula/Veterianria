@@ -4,38 +4,46 @@ var cargarCampaña = document.querySelector('option[value="formCampaniaDonacion.
 var verUsuarios = document.querySelector('.ver-usuarios');
 var registroPerro = document.querySelector('.registrar-perro');
 var registrarButton = document.querySelector('.registrar-menu');
+var registrarUsuario = document.querySelector('.registrar-usuario');
 var ocultarContacto = document.querySelector('.ocultar-con');
 var ocultarNosotros = document.querySelector('.ocultar-nos');
 var solicitarTurno = document.querySelector('.solicitar-turno');
-var listarTurnos = document.querySelector('.lsitar-turnos');
+var listarTurnos = document.querySelector('.listar-turnos');
+
+
 
 if (localStorage.getItem('loggedIn') === 'true') {
     var elements = document.querySelectorAll('.stateSing');
     var elementsCS = document.querySelector('#logOut');
     elementsCS.style.display = 'flex';
     
+    
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.display = 'none';
     }
     
+    
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
+
+    
     
     if (localStorage.getItem('loggedAdm') === 'true') {    
-
-        listarTurnos.style.display = 'none';
-        cargarCampaña.style.display = 'flex';
         
+
+        listarTurnos.style.display = 'none';        
+        cargarCampaña.style.display = 'flex';
         
         if (registrarButton === null){
             registroPerro.style.display = 'flex';
             verUsuarios.style.display = 'flex';     
-            
+                
             
         }else{
           registrarButton.style.display = 'flex';
           registroPerro.style.display = 'flex';
           verUsuarios.style.display = 'flex';
+          
           
         }
     }else{
@@ -44,6 +52,7 @@ if (localStorage.getItem('loggedIn') === 'true') {
         registroPerro.style.display = 'none';
         solicitarTurno.style.display = 'flex';
         listarTurnos.style.display = 'flex';
+        cargarCampaña.style.display = 'none';
     }
 
 }else{
