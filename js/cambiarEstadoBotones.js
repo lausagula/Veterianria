@@ -1,6 +1,7 @@
 var registroCP = document.querySelector('option[value="form-RegistroCP.html"]');
 var registroAdopcion = document.querySelector('option[value="cargarAdopcion.html"]');
 var cargarCampaña = document.querySelector('option[value="formCampaniaDonacion.html"]');
+var mostrarCampaña = document.querySelector('option[value="mostrarCampañasD.html"]');
 var verUsuarios = document.querySelector('.ver-usuarios');
 var registroPerro = document.querySelector('.registrar-perro');
 var registrarButton = document.querySelector('.registrar-menu');
@@ -25,6 +26,7 @@ if (localStorage.getItem('loggedIn') === 'true') {
     
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
+    mostrarCampaña.style.display = 'flex';
 
     
     
@@ -74,4 +76,5 @@ if (localStorage.getItem('loggedIn') === 'true') {
     ocultarNosotros.style.display = 'none';
     solicitarTurno.style.display = 'none';
     listarTurnos.style.display = 'none';
+    mostrarCampaña.style.display = 'none';
 }
