@@ -50,11 +50,18 @@
             <label class="form-label">Registrar perro</label><br>
             <input type="email" name="mail" id="read-only" class="input-style" readonly required><br>
             <script>	
-                const aux = localStorage.getItem('emailRegistroPerro');
+                const aux = localStorage.getItem('emailTitulo');
                 document.getElementById('read-only').value = aux;
             </script>
             <input type="text" name="name" class="input-style" placeholder="Nombre del perro" required><br>
-            <input type="text" name="raza" class="input-style" placeholder="Raza" required><br>
+            <select name="raza" class="input-style" required>
+                <option value="">Selecciona una raza</option>
+                <option value="Labrador Retriever">Labrador Retriever</option>
+                <option value="Golden Retriever">Dogo Argentino</option>
+                <option value="Bulldog">Bulldog</option>
+                <option value="Caniche">Caniche</option>
+                <option value="Mestizo">Mestizo</option>
+              </select>
             <input type="text" name="color" class="input-style" placeholder="Color" required><br>
             <input type="date" name="nacimiento" class="input-style" placeholder="Fecha de nacimiento" required><br>
             <input type="text" name="observaciones" class="input-style" value="Sin Observaciones" placeholder="Observaciones (opcional)"><br><br>

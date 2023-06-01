@@ -3,7 +3,6 @@ var registroAdopcion = document.querySelector('option[value="cargarAdopcion.html
 var cargarCampaña = document.querySelector('option[value="formCampaniaDonacion.html"]');
 var mostrarCampaña = document.querySelector('option[value="mostrarCampañasD.html"]');
 var verUsuarios = document.querySelector('.ver-usuarios');
-var registroPerro = document.querySelector('.registrar-perro');
 var registrarButton = document.querySelector('.registrar-menu');
 var registrarUsuario = document.querySelector('.registrar-usuario');
 var ocultarContacto = document.querySelector('.ocultar-con');
@@ -37,13 +36,11 @@ if (localStorage.getItem('loggedIn') === 'true') {
         cargarCampaña.style.display = 'flex';
         
         if (registrarButton === null){
-            registroPerro.style.display = 'flex';
             verUsuarios.style.display = 'flex';     
                 
             
         }else{
           registrarButton.style.display = 'flex';
-          registroPerro.style.display = 'flex';
           verUsuarios.style.display = 'flex';
           
           
@@ -51,7 +48,6 @@ if (localStorage.getItem('loggedIn') === 'true') {
     }else{
         registroCP.style.display = 'none';
         verUsuarios.style.display = 'none';
-        registroPerro.style.display = 'none';
         solicitarTurno.style.display = 'flex';
         listarTurnos.style.display = 'flex';
         cargarCampaña.style.display = 'none';
@@ -71,7 +67,6 @@ if (localStorage.getItem('loggedIn') === 'true') {
     cargarCampaña.style.display = 'none';
     registroAdopcion.style.display = 'none';
     verUsuarios.style.display = 'none';
-    registroPerro.style.display = 'none';
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
     solicitarTurno.style.display = 'none';

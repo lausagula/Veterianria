@@ -21,6 +21,6 @@
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }
-    header('Location: https://localhost/Veterinaria/index.html');
+    header('Location: http://localhost:8080/Veterinaria/index.html');
     exit;
 ?>

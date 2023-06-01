@@ -1,9 +1,8 @@
-import {url} from './url.js'
 const validarCaracteresEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const validarCaracteresContraseña = /^[A-Z][a-z]+[0-9]+/;
 var formulario = document.getElementById('formulario');
 var elemento = document.querySelector(".mensaje-error");
-
+var url = 'http://localhost:8080/Veterinaria'
 
 
 function mostrarMensaje (elemento,mensaje){
@@ -36,8 +35,6 @@ formulario.addEventListener('submit', function(event) {
         
         var email = datos.get('email'); 
         var pass = datos.get('password');
-        localStorage.setItem('email', email);
-        console.log(localStorage.getItem("email"));
 
         console.log (email);
         console.log (pass);
@@ -59,16 +56,16 @@ formulario.addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(data => {
             if(data.exito){
-                mostrarMensaje(elemento,data.mensaje);           
+                console.log (data);
+                mostrarMensaje(elemento,data.mensaje);               
                 if (data.es_administrador == 1){
+                    const es_administrador = data.$id_cliente;
                     localStorage.setItem('loggedAdm','true');
                     
                 }else{
-                    var id_usuario = data.id_cliente;
-                    localStorage.setItem('idUsuario', id_usuario);
                     localStorage.setItem('loggedAdm','false');
                 }
-                window.location.href = (url+'/index.html?id='+data.id_cliente);
+                window.location.href = (url+'/index.html');
                 localStorage.setItem('loggedIn', 'true');
             }else{
                 mostrarMensaje(elemento,data.mensaje);

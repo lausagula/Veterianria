@@ -51,10 +51,37 @@ fetch (url+"/php/mostrarUsuarios.php")
               div.appendChild(document.createTextNode("Usuario Comun"));
           }
 
+        // Boton registrar Perro
+        var botonRegistrar = document.createElement('button');
+        botonRegistrar.textContent = 'Registrar Perro';
+
+        botonRegistrar.addEventListener('click', function () {
+        console.log('Se hizo clic en el botón');
+          localStorage.setItem('emailTitulo',datos.mail );
+          window.location.href = (url+'/registrar-perro.html');
+        });
+
+
+        // Boton Ver perfil
+        var botonPerfil = document.createElement('button');
+        botonPerfil.textContent = 'Ver Perfil';
+
+        botonPerfil.addEventListener('click', function () {
+            console.log('Se hizo clic en el botón');
+            // window.location.href = (url+'/registrar-perro.html');  Modificar url
+        });
+
+        // Agregar el botón al contenedor
+        div.appendChild(document.createElement('br'));
+        div.appendChild(botonRegistrar);
+
+        div.appendChild(document.createElement('br'));
+        div.appendChild(botonPerfil);
+
+        
         
         div.appendChild(document.createElement('br'));
         div.appendChild(document.createElement('br'));
-
 
         document.getElementById('contenedorDatos').appendChild(div);
         document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));

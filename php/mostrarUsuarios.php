@@ -6,7 +6,7 @@
 
     if($inc){
 
-        $consulta = "SELECT * FROM clientes";
+        $consulta = "SELECT * FROM clientes WHERE es_administrador=0"  ;
         $resultado = mysqli_query($con,$consulta);
 
         if (mysqli_num_rows($resultado) > 0){

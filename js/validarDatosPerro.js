@@ -18,9 +18,10 @@ function enviarDatos(datos){
         if (data.exito){
             mostrarMensaje(elemento,data.mensaje);
             var urlCLiente = new URL(window.location.href);
-            var idCliente = urlCLiente.searchParams.get("id");
-            console.log(idCliente+" validar perro");
-            window.location.href = (url+'/index.html?id='+idCliente);
+           // var idCliente = urlCLiente.searchParams.get("id");
+            //console.log(idCliente+" validar perro");
+            //window.location.href = (url+'/index.html?id='+idCliente);
+             window.location.href = (url+'/index.html');
         }else{ 
             mostrarMensaje(elemento,data.mensaje);
         }
