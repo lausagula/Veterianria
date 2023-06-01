@@ -56,8 +56,11 @@ formulario.addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(data => {
             if(data.exito){
-                console.log (data);
-                mostrarMensaje(elemento,data.mensaje);               
+                mostrarMensaje(elemento,data.mensaje);                
+                const id_usuario = data.id_cliente;
+                const email = data.email;
+                localStorage.setItem('email', email);
+                localStorage.setItem('idUsuario', id_usuario);
                 if (data.es_administrador == 1){
                     const es_administrador = data.$id_cliente;
                     localStorage.setItem('loggedAdm','true');

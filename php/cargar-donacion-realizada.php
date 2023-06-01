@@ -12,7 +12,7 @@
     $motivo = $_POST['motivoCampaña'];
     $fecha = date('Y-m-d');
     $monto = $_POST['monto'];
-
+    $tiene_descuento = true;                 
 
     if ($con){
         $consulta = "SELECT id_cliente FROM clientes WHERE mail = '$email'";
@@ -25,7 +25,7 @@
         $actualizar = "UPDATE clientes SET descuentos = '$descuentos_realizados' WHERE id_cliente = '$id_cliente'";
         $query_actualizar = mysqli_query($con,$actualizar);
 
-        $insertar = "INSERT INTO donacion_realizadas (id_campaña,nombre,motivo,fecha,monto,id_cliente) VALUES ('$id_campaña','$name','$motivo','$fecha','$monto','$id_cliente')";
+        $insertar = "INSERT INTO donacion_realizadas (id_campaña,nombre,motivo,fecha,monto,tiene_descuento,id_cliente) VALUES ('$id_campaña','$name','$motivo','$fecha','$monto', '$tiene_descuento','$id_cliente')";
         $query = mysqli_query($con,$insertar);
         
         if(!$query){

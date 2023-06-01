@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="initial-scale=1">
+		<title>¡Oh My Dog! - Perfil</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://code.jquery.com/jquery-latest.js"></script>
+	</head>
+
+	<body class="adopcion">
+		<header>
+			<a class="option-menu" href="index.html"><img src="img/Logo1-removebg-preview.png" id="imghome"></a>
+			<div id="menu">
+				<ul id="ul-style-menu">
+					<div class="border"></div>
+					<li><a class="link-style-menu" href="index.html">INICIO</a></li>
+					<div class="border"></div>
+					<li>
+						<a class="link-style-menu">SERVICIOS</a>
+						<select onchange="if (this.value) window.location.href = this.value;">
+							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
+							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
+							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
+							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
+							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
+						</select>
+					</li>
+					<div class="border"></div>
+                	<li><a class="link-style-menu ver-usuarios option-menu" href="mostrarUsuarios.html">LISTAR USUSARIOS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-nos option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-con option-menu" href="contact-us.html">CONTACTO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateSing option-menu" href="sign-in.html">INICIAR SESION</a></li>
+                	<div class="border"></div>
+					<li><a class="link-style-menu solicitar-turno option-menu" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateSing registrar-menu option-menu" href="sign-up.html">REGISTRAR USUARIO</a></li>
+                	<div class="border"></div>
+					<li><a class="link-style-menu stateLogOut" id="logOut" href="index.html">CERRAR SESION</a></li>
+					<div class="border"></div>
+				</ul>
+			</div>
+		</header>
+        
+        <div class="body-contenedor" id="contenedorDatos">
+            <h1>Mi Perfil</h1><br>
+            <hr>
+        </div>
+		<script src="js/obtenerIdUrlConForm.js"></script>
+        <script src="js/miPerfil.js" type="module"></script>
+	    <script src="js/cambiarEstadoBotones.js"></script>
+	    <script src="js/cerrarSesion.js"></script>
+	</body>
+</html>

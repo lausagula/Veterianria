@@ -17,7 +17,8 @@
         $row = mysqli_fetch_assoc($resultado);
         $es_administrador=$row['es_administrador'];
         $id_cliente = $row['id_cliente'];
-        echo json_encode(array('exito' => true,'es_administrador' => $es_administrador, 'id_cliente' => $id_cliente, 'mensaje' => 'Se registró correctamente'));
+        $email = $row['mail'];
+        echo json_encode(array('exito' => true,'es_administrador' => $es_administrador, 'id_cliente' => $id_cliente, 'email' => $email, 'mensaje' => 'Se registró correctamente'));
     }else{
         echo json_encode(array('exito' => false, 'mensaje' => 'Mail o contraseña no son validos.'));
     }
