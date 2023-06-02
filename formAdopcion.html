@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="initial-scale=1">
+		<title>¡Oh My Dog! - Adopcion</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://code.jquery.com/jquery-latest.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<img src="img/Logo1-removebg-preview.png" id="imghome">
+			<div id="menu">
+				<ul id="ul-style-menu">
+					<div class="border"></div>
+					<li><a class="link-style-menu option-menu" href="index.html">INICIO</a></li>
+					<div class="border"></div>
+                    <li>
+						<a class="link-style-menu">SERVICIOS</a>
+						<select onchange="if (this.value) window.location.href = this.value;">
+							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
+							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
+							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
+							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
+							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
+						</select>
+					</li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ver-usuarios" class="option-menu" href="mostrarUsuarios.html">LISTAR USUSARIOS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-nos" class="option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-con" class="option-menu" href="contact-us.html">CONTACTO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateSing" class="option-menu" href="sign-in.html">INICIAR SESION</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu solicitar-turno" class="option-menu" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateSing registrar-menu registrar-ususario" class="option-menu" href="sign-up.html">REGISTRAR USUARIO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateLogOut" id="logOut" href="index.html">CERRAR SESION</a></li>
+					<div class="border"></div>
+				</ul>
+			</div>
+		</header>
+
+		<div class="body-contenedor">
+			<form id="formulario" action="index.html" method="post">
+				<label class="form-label">Formulario de Adopcion</label><br><br>
+                <label>Nombre completo</label><br>
+				<input type="text" name="name" class="input-style" placeholder="Nombre" required><br><br>
+                <label>Email</label><br>
+				<input type="email" name="email" class="input-style" id="read-only" placeholder="Email" style="color: #808080;" readonly required><br><br>
+				<script>	
+					const aux = localStorage.getItem('email');
+					document.getElementById('read-only').value = aux;
+				</script>
+                <label>Telefono</label><br>
+                <input type="number" name="telefono" class="input-style" minlength="7" maxlength="7" placeholder="Telefono" required><br><br>
+                <label>Sobre ti</label><br>
+				<input type="text" name="resumen" class="input-style" placeholder="Sobre ti" required><br><br>
+				<p class="mensaje-error"></p>
+				<input type="submit" id="submitLog" value="Registrar" class="continuar-y-registrarme-btn">
+				
+			</form>
+        </div>
+	</body>
+	<script src="js/obtenerIdUrlConForm.js"></script>
+	<script src="js/envioEmailAdopcion.js" type="module"></script>
+	<script src="js/cambiarEstadoBotones.js"></script>
+	<script src="js/cerrarSesion.js"></script>
+</html>

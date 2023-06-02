@@ -2,35 +2,20 @@
 
     header('Content-Type: application/json');
 
-    include ("./php/conexion.php");
+    include ("conexion.php");
 
 
 
 
 $name = $_POST["name"];
-$lastName = $_POST["lastName"];
 $email = $_POST["email"];
-$phone = $_POST["phone"];
+$emailDueño = $_POST["emailDueño"];
+$telefono = $_POST["telefono"];
+$resumen = $_POST["resumen"];
+$raza = $_POST["raza"];
 
+$body = "Asunto: adopcion del " . $raza . "<br>Nombre: " . $name . "<br>Correo: " . $email . "<br>Telefono: " . $telefono . "<br>Resumen: " . $resumen;
 
-$query = " SELECT contraseña FROM clientes WHERE mail='$email' ";
-$result = mysqli_query($con, $query);
-$row = mysqli_fetch_assoc($result);
-
-if ($row !== null) {
-    $contraseña = $row['contraseña'];
-} else {
-    $contraseña = '';
-}
-
-if ($result) {
-    $response = array('exito' => true, 'mensaje' => 'Se registró correctamente', 'clave' => $contraseña);
-} else {
-    $response = array('exito' => false, 'mensaje' => 'Error al procesar la solicitud',  'clave' => 'null');
-}
-
-$body = "Nombre: " . $name . "<br>Apellido: " . $lastName . "<br>Correo: " . $email . "<br>Telefono: " . $phone . "<br>Contraseña: " . $contraseña;
-$concatenar = $name . ' ' . $lastName;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -53,7 +38,7 @@ try {
     $mail->Port = 465;
 
     $mail->setFrom('veterinariaohmydoglp@gmail.com', 'Veterinaria - Oh My Dog!');
-    $mail->addAddress($email, $concatenar);
+    $mail->addAddress($emailDueño, $name);
 
     $mail->isHTML(true);
     $mail->Subject = 'Aviso';
@@ -61,12 +46,12 @@ try {
     $mail->CharSet = 'UTF-8';
     $mail->send();
 
-
     $response['exito'] = true;
     $response['mensaje'] = 'Correo enviado correctamente';
     
 } catch (Exception $e) {
     $response['exito'] = false;
+    $response['error'] = $mail->ErrorInfo;
     $response['mensaje'] = 'Hubo un error al enviar el correo';
 }
 

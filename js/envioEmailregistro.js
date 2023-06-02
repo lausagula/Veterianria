@@ -2,6 +2,10 @@ import {url} from './url.js'
 var formulario = document.getElementById('formulario');
 var elemento = document.querySelector(".mensaje-error");
 
+function mostrarMensaje (elemento,mensaje){
+    elemento.innerHTML = mensaje;
+}
+
 formulario.addEventListener('submit', function(event) {
     event.preventDefault(); // Evitar el envío del formulario por defecto
 

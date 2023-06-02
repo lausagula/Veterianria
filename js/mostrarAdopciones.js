@@ -5,9 +5,9 @@ var  contenedor = document.getElementById('contenedorDatos');
 fetch (url+"/php/mostrar-adopciones.php")
 .then(res => res.json())
 .then(data  => {
+    var div = document.createElement('div');
     if(data.exito){
-        data.data.forEach(datos => {
-            var div = document.createElement('div');
+        data.data.forEach(datos => {            
 
             console.log(data.data.length);
             
@@ -69,15 +69,13 @@ fetch (url+"/php/mostrar-adopciones.php")
                 
                 div.appendChild(document.createElement('br'));
                 div.appendChild(document.createElement('br'));
-
-                var button = document.createElement('button');
-                button.textContent = 'Adoptar';
-                button.setAttribute('data-email', datos.mail);
-
+                
                 document.getElementById('contenedorDatos').appendChild(div);
                 var button = document.createElement('button');
                 button.textContent = 'Adoptar';
                 button.setAttribute('data-email', datos.mail);
+                button.setAttribute('data-raza_perro', datos.raza_perro);
+
                 if (datos.estado == 1){
                     button.disabled = true;
                 }
@@ -88,8 +86,10 @@ fetch (url+"/php/mostrar-adopciones.php")
 
                 button.addEventListener('click', function(event) {
                     var email = event.target.dataset.email;
+                    var raza = event.target.dataset.raza_perro;
+                    localStorage.setItem('razaPerro', raza);
+                    localStorage.setItem('emailAdopcion', email);
                     window.location.href = (url+'/formAdopcion.html');
-                    console.log('Email de contacto:', email);
                 });
             }else if (data.data.length = 1){
                 div.appendChild(document.createTextNode('No hay adopciones disponibles por el momento'));
