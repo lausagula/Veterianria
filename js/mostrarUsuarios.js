@@ -65,10 +65,11 @@ fetch (url+"/php/mostrarUsuarios.php")
         // Boton Ver perfil
         var botonPerfil = document.createElement('button');
         botonPerfil.textContent = 'Ver Perfil';
+        localStorage.setItem('idUsuario',datos.id_cliente ); 
 
         botonPerfil.addEventListener('click', function () {
             console.log('Se hizo clic en el botón');
-            // window.location.href = (url+'/registrar-perro.html');  Modificar url
+            window.location.href = (url+'/miPerfil.html');  //------Modificar url
         });
 
         // Agregar el botón al contenedor
