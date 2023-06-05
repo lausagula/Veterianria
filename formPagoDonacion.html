@@ -58,7 +58,11 @@
                 <label class="form-label">Codigo de Seguridad</label><br>
                 <input type="number" name="codigo" class="input-style" placeholder="CVC" required><br>				
                 <label class="form-label">Monto</label><br>
-                $<input type="number" name="monto" class="input-style" placeholder="0" required><br>
+                <select name="monto" class="input-style" required>
+					<option value="500">$500</option>
+					<option value="1000">$1000</option>
+					<option value="5000">$5000</option>
+				  </select><br>
 				<p class="mensaje-error"></p>
 				<input type="submit" id="submitLog" value="Realizar donacion" class="continuar-y-registrarme-btn">
 				

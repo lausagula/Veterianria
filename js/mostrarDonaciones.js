@@ -10,11 +10,10 @@ fetch ((url+"/php/mostrar_donaciones.php"),{
 })
 .then(res => res.json())
 .then(data  => {
-    var div = document.createElement('div');  
     if(data.exito){
-        data.data.forEach(datos => {    
-                      
-            
+        data.data.forEach(datos => { 
+              
+            var div = document.createElement('div');   
             // NOMBRE
             var nombreTitulo = document.createElement('strong');
             nombreTitulo.textContent = 'Nombre: ';
@@ -51,8 +50,9 @@ fetch ((url+"/php/mostrar_donaciones.php"),{
 
         });
     }else{
-        div.appendChild(document.createTextNode('No hay donaciones registradas por el momento'));
-        document.getElementById('contenedorDatos').appendChild(div);
+       var p = document.createElement('p');
+        p.textContent = data.mensaje;
+        contenedor.appendChild(p);
     }
     
 })

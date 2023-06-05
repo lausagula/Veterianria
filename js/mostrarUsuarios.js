@@ -8,9 +8,9 @@ fetch (url+"/php/mostrarUsuarios.php")
 .then(data  => {
     console.log (data); 
     if(data.exito){
-        
         data.data.forEach(datos => {
-            var div = document.createElement('div');        
+
+        var div = document.createElement('div');        
         // nombre
         var nombreTitulo = document.createElement('strong');
         nombreTitulo.textContent = 'Nombre: ';
@@ -65,10 +65,11 @@ fetch (url+"/php/mostrarUsuarios.php")
         // Boton Ver perfil
         var botonPerfil = document.createElement('button');
         botonPerfil.textContent = 'Ver Perfil';
-        localStorage.setItem('idUsuario',datos.id_cliente ); 
+        
 
         botonPerfil.addEventListener('click', function () {
             console.log('Se hizo clic en el botón');
+            localStorage.setItem('idUsuario',datos.id_cliente ); 
             window.location.href = (url+'/miPerfil.html');  //------Modificar url
         });
 

@@ -15,12 +15,12 @@
     $tiene_descuento = true;                 
 
     if ($con){
-        $consulta = "SELECT id_cliente FROM clientes WHERE mail = '$email'";
+        $consulta = "SELECT id_cliente, descuentos FROM clientes WHERE mail = '$email'";
         $resultado = mysqli_query($con,$consulta);
         $row = mysqli_fetch_assoc($resultado);
         $id_cliente = $row['id_cliente'];
-        $descuentos_realizados = $row['descuentos'];
-        $descuentos_realizados++;
+        $descuentos_realizadoss = $row['descuentos'];
+        $descuentos_realizados = $descuentos_realizadoss + 1;
 
         $actualizar = "UPDATE clientes SET descuentos = '$descuentos_realizados' WHERE id_cliente = '$id_cliente'";
         $query_actualizar = mysqli_query($con,$actualizar);
@@ -35,7 +35,7 @@
         }elseif(!$query_actualizar){
             echo json_encode(array('exito' => false, 'mensaje' => 'Error al actualizar la informacion:   ' . mysqli_error($con)));
         }else{
-            echo json_encode(array('exito' => true, 'mensaje' => 'El registro se hizo correctament'));
+            echo json_encode(array('exito' => true, 'mensaje' => 'El registro se hizo correctamente'));
         }
         
     }else{
