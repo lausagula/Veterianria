@@ -1,26 +1,33 @@
 <?php 
-    require 'conexion.php';
 
     $inc = include ("conexion.php");
 
-    $id_turno = $_REQUEST['id_turno'];
-
     if($inc){
-        $consulta = "SELECT * FROM turnos_pendientes WHERE (id_turno = '$id_turno')";
+
+        $id_turno = $_POST['id_turno'];
+        $dia = $_POST['dia'];
+        $servicio = $_POST['servicio'];
+        $id_cliente = $_POST['id_cliente'];
+        $horario = $_POST['horario'];
+
+
+        $consulta = "INSERT INTO turnos (id_turno, dia, servicio, horario, id_cliente) VALUES ('$id_turno', '$dia', '$servicio', '$horario', '$id_cliente')";
         $resultado = mysqli_query($con, $consulta);
-        $fila = $resultado->fetch_assoc(); //obtengo fila.
+        $eliminar = "DELETE FROM turnos_pendientes WHERE id_turno = '$id_turno'";
+        $result = mysqli_query($con, $eliminar);
+        if(($resultado) && ($result)){
+            echo json_encode(array('exito' => true, 'mensaje' => 'Truno aceptado con exito y eliminardo de pendientes'));    
+        }else{
+            echo json_encode(array('exito' => false, 'mensaje' => 'Error al aceptar el turno o al eliminarlo'));
+        }
+
         
-        $dia = $fila['dia'];
-        $servicio = $fila['servicio'];
-        $horario = $fila['bloque_horario'];
-        $id_cliente = $fila['id_cliente'];
-        $id_turno = $fila['id_turno'];
+        // if($result){
+        //     echo json_encode(array('exito' => true, 'mensaje' => 'Turno eliminardo de pendientes'));
+        // }else{
+        //     echo json_encode(array('exito' => false, 'mensaje' => 'Error de conexión'));
+        // }
 
-        $consulta = "INSERT INTO turnos (dia, servicio, horario, id_cliente, id_turno) VALUES ('$dia', '$servicio', '$horario', '$id_cliente', '$id_turno')";
-        $resultado = mysqli_query($con, $consulta);
-
-        $consulta = "DELETE FROM turnos_pendientes WHERE id_turno = '$id_turno'";
-        $resultado = mysqli_query($con, $consulta);
     }else{
         echo json_encode(array('exito' => false, 'mensaje' => 'Error de conexión'));
     }

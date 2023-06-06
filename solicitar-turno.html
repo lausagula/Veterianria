@@ -6,6 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
         <title>¡Oh My Dog! - Solicitar turno</title>
+		<script>
+			function validarFecha() {
+				var fechaInput = document.getElementById("fecha").value;
+				var fechaSeleccionada = new Date(fechaInput);
+				var fechaActual = new Date();
+	
+				if (fechaSeleccionada < fechaActual) {
+					alert("La fecha seleccionada debe ser mayor a la fecha actual.");
+					return false;
+				}
+	
+				return true;
+			}
+		</script>
     </head>
     <body>
         <header>
@@ -38,20 +52,20 @@
 		</header>
 
 		<div class="body-sign-in-and-up">
-            <form id="formulario" action="php/solicitar-turno.php?id=" method="post" >
+            <form id="formulario" action="php/solicitar-turno.php?id=" method="post" onsubmit="return validarFecha()" >
                 <label class="form-label">Solicitar turno</label><br>
                 <input type="date" id="fecha" name="fecha" class="input-style" placeholder="Fecha" required><br>
                 Servicio:
                 <select name="servicio" id="servicio" required>
-                    <option value="castracion">Castraci&oacute;n</option>
-                    <option value="aplicacion-vacuna">Aplicación de vacuna</option>
+					<option value="aplicacion-vacuna">Aplicación de vacuna</option>
+                    <!--<option value="castracion">Castraci&oacute;n</option>                    
 					<option value="desparacitacion">Desparasitaci&oacute;n</option>
 					<option value="consulta-general">Consulta general</option>
-					<option value="urgencias">Urgencias</option>
+					<option value="urgencias">Urgencias</option>-->
                 </select> <br>
                 Horario:
-                <input type="radio" name="horario" value="horario-maniana" required>Mañana 
-                <input type="radio" name="horario" value="horario-tarde" required>Tarde <br>
+                <input type="radio" name="horario" value="Mañana" required>Mañana 
+                <input type="radio" name="horario" value="Tarde" required>Tarde <br>
 				<input type="hidden" name="email" id="email" value="">
 				<script>
 					email = document.getElementById("email");
@@ -59,8 +73,7 @@
 					console.log(email.value);
 				</script>
 				<p class="mensaje-error"></p>
-                <input type="submit" value="Enviar" id="submit-turno" class="continuar-y-registrarme-btn" > <br>
-				<label class="pregunta-label">¿Ya ten&eacute;s una cuenta? <a href="sign-up.html" target="_blank" class="pregunta-link">Inici&aacute; sesi&oacute;n</a>.</label>
+                <input type="submit" value="Enviar" id="submit-turno" class="continuar-y-registrarme-btn"> <br>
             </form>
         </div>
     </body>

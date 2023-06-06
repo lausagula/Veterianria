@@ -1,15 +1,13 @@
 <?php 
-    require 'conexion.php';
+    include ("conexion.php");
 
     $email = $_POST['email'];
-    echo "el email es $email";
 
     $sql = "SELECT id_cliente FROM clientes WHERE (mail = '$email')";
     $resultado = mysqli_query($con, $sql);
     $fila = $resultado->fetch_assoc(); //obtengo fila.
     
     $idCliente = $fila['id_cliente'];
-    echo "el id es $idCliente";
 
     $fecha = $_POST['fecha'];
     $servicio =  $_POST['servicio'];
@@ -17,10 +15,10 @@
 
     $sql = "INSERT INTO turnos_pendientes (dia, servicio, bloque_horario, id_cliente) VALUES ('$fecha', '$servicio', '$horario', '$idCliente')";
     if (mysqli_query($con, $sql)) {
+        echo '<script language="javascript">alert("Pedido de turno enviado");window.location.href="http://localhost/Veterinaria/index.html";</script>';
+        // -----------------------------^^ MODIFICAR URL ^^-------------------------------------
         echo "Insercion turno exitosa";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }
-    header('Location: http://localhost:8080/Veterinaria/index.html');
-    exit;
 ?>
