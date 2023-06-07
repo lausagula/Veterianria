@@ -15,7 +15,9 @@ var listarTurnos = document.querySelector('.listar-turnos');
 if (localStorage.getItem('loggedIn') === 'true') {
     var elements = document.querySelectorAll('.stateSing');
     var elementsCS = document.querySelector('#logOut');
+    var elementsBV = document.querySelector('#bienvenida');
     elementsCS.style.display = 'flex';
+    elementsBV.style.display = 'flex';
     
     
     for (var i = 0; i < elements.length; i++) {
@@ -56,8 +58,10 @@ if (localStorage.getItem('loggedIn') === 'true') {
 }else{
     var elements = document.querySelectorAll('.stateSing');  
     var elementsCS = document.querySelector('#logOut');
+    var elementsBV = document.querySelector('#bienvenida');
     var registrarButton = document.querySelector('.registrar-menu');
     elementsCS.style.display = 'none'
+    elementsBV.style.display = 'none'
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.display = 'flex';
     } 
