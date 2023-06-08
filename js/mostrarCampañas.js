@@ -1,6 +1,9 @@
 import {url} from './url.js';
 var  contenedor = document.getElementById('contenedorDatos');
 
+var datos = new FormData();                                 //  CONSULTAR CON
+datos.append('es_adm',localStorage.getItem('loggedAdm'));   //    AYUDANTE
+
 
 fetch (url+"/php/mostrar-campañas.php")
 .then(res => res.json())
@@ -29,6 +32,13 @@ fetch (url+"/php/mostrar-campañas.php")
             div.appendChild(document.createElement('br'));
             div.appendChild(resumenTitulo);
             div.appendChild(document.createTextNode(datos.resumen));
+
+            // TOTAL
+            var totalTitulo = document.createElement('strong');
+            totalTitulo.textContent = 'Total: $';
+            div.appendChild(document.createElement('br'));
+            div.appendChild(totalTitulo);
+            div.appendChild(document.createTextNode(datos.monto_acumulado));
 
             //ESTADO
             var estadoTitulo = document.createElement('strong');
