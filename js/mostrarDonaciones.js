@@ -3,6 +3,7 @@ var  contenedor = document.getElementById('contenedorDatos');
 
 var datos = new FormData();
 datos.append('id_cliente',localStorage.getItem('idUsuario'));
+datos.append('es_adm',localStorage.getItem('loggedAdm'));
 
 fetch ((url+"/php/mostrar_donaciones.php"),{ 
     method: 'POST',

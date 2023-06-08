@@ -5,11 +5,17 @@
     include ("conexion.php");
 
     $id_cliente = $_POST['id_cliente'];
+    $es_adm = $_POST['es_adm'];
 
 
     if($con){
 
-        $consulta = "SELECT * FROM donacion_realizadas WHERE id_cliente = '$id_cliente'";
+        if($es_adm = true){
+            $consulta = "SELECT * FROM donacion_realizadas";
+        }else{
+            $consulta = "SELECT * FROM donacion_realizadas WHERE id_cliente = '$id_cliente'";
+        };
+
         $resultado = mysqli_query($con,$consulta);
 
         if (mysqli_num_rows($resultado) > 0){
