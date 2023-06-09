@@ -1,6 +1,7 @@
 var contenedor = document.getElementById('contenedorDatos');
 var datos = new FormData();
 var formatoHora = /^([01]\d|2[0-3]):([0-5]\d)$/;
+
 import {url} from './url.js'
 
 var fecha;
@@ -119,7 +120,7 @@ fetch ((url+"/php/listarTurnos.php"),{
                     fromD.append('servicio',event.target.dataset.servicio);
                     fromD.append('id_cliente',event.target.dataset.id_cliente);
                     fromD.append('horario',horario);
-
+                    
 
                     fetch( (url+"/php/aceptarTurno.php"), {
                         method : 'POST' ,
@@ -136,7 +137,7 @@ fetch ((url+"/php/listarTurnos.php"),{
                         }
                     });
 
-                    console.log("aceptado js");
+                    console.log("aceptado jsa");
                 }
 
             });        
@@ -150,12 +151,13 @@ fetch ((url+"/php/listarTurnos.php"),{
                     from.append('servicio',event.target.dataset.servicio);
                     from.append('id_cliente',event.target.dataset.id_cliente);
                     from.append('motivo',motivo);
+                    from.append('horario',0);
 
                     fetch((url + "/rechazarTurno.php"), {
                         method : 'POST' ,
                         body : from
                     })
-                    .then(res => res.json())
+                    .then(res => res.text())
                     .then(data  => { 
                         console.log (data);
                         if (data.exito){

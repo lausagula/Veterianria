@@ -6,7 +6,7 @@
 
     if($inc){
 
-        $consulta = "SELECT * FROM turnos_pendientes";
+        $consulta = "SELECT * FROM turnos_pendientes WHERE estado = 1";
         $resultado = mysqli_query($con, $consulta);
 
         if (mysqli_num_rows($resultado) > 0){
@@ -16,7 +16,7 @@
             }
             echo json_encode(array('exito' => true, 'data' => $dato ,'mensaje' => 'Se realizo la consulta con exito'));
         } else {
-            echo json_encode(array('exito' => false, 'mensaje' =>  'No hay ningún '. $tipo .' publicado'));
+            echo json_encode(array('exito' => false, 'mensaje' =>  'No hay turnos pendientes'));
         }
 
     }else{

@@ -1,1 +1,1 @@
-export var url = 'http://localhost:8080/Veterinaria';
+export var url = 'http://localhost:8080/v/Veterinaria';

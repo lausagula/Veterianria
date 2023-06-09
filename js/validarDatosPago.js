@@ -15,7 +15,7 @@ function verificarCantidadCaracteres(numero, cant){
 }
 
 function verificarFecha(mes,año){
-    if((mes === " ") || año === " "){
+    if((mes === "") || año === ""){
         return false;
     }else{
         let fechaA = new Date();
@@ -37,7 +37,7 @@ function enviarDatos(datos){
         if (data.exito){
             mostrarMensaje(data.mensaje);
             window.location.href = (url+'/index.html');
-            window.alert('Se realizo el pago exitosamente');
+            //window.alert('Se realizo el pago exitosamente');
         }else{ 
             mostrarMensaje(elemento,data.mensaje);
         }

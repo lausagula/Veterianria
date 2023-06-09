@@ -15,23 +15,24 @@
     $id_cliente = $_POST['id_cliente'];
     $motivo = $_POST['motivo'];
     $dia = $_POST['dia'];
-    //$horario = 'null';
+    $horario =  $_POST['horario'];;
     $servicio = $_POST['servicio'];
-    $estado = 'RECHAZADO';
+    $estado = 'Rechazado';
 
     if($inc){
         
         $consulta = "SELECT mail FROM clientes WHERE id_cliente = '$id_cliente'";
         $resultado = mysqli_query($inc,$consulta);
 
-        $eliminar = "DELETE FROM turnos_pendientes WHERE id_turno = '$id_turno'";
-        $result = mysqli_query($inc, $eliminar);
+        $eliminarPendientes = "UPDATE turnos_pendientes SET estado = 0 WHERE id_turno = '$id_turno'";
+        
+        $result = mysqli_query($inc, $eliminarPendientes);
 
-        $actualizar = "INSERT INTO turnos (id_turno, dia, servicio, horario, id_cliente, estado) VALUES ('$id_turno', '$dia', '$servicio', NULL, '$id_cliente', '$estado')";
+        $actualizar = "INSERT INTO turnos (id_turno, dia, servicio, horario, id_cliente, estado) VALUES ('$id_turno', '$dia', '$servicio', '$horario', '$id_cliente', '$estado')";
         $update = mysqli_query($inc, $actualizar);
 
 
-        if ((!$resultado) || (!$result) || (!$update)){
+        if ((!$resultado) ||  (!$update) || (!$eliminarPendientes)){
             echo json_encode(array('exito' => false, 'mensaje' => 'Error al cargar datos  ' . mysqli_error($inc)));
             exit;
 

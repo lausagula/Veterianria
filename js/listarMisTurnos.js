@@ -5,17 +5,18 @@ var idUrl = new URL(window.location.href);
 var idCliente = idUrl.searchParams.get("id");
 console.log(idCliente);
 
+
 fetch ((url+"/php/listarMisTurnos.php?id="+idCliente),{
     method: 'POST',
     body: datos
 })
 .then(res => res.json())
 .then(data  => {
+    console.log (data);
     if(data.exito){
         data.data.forEach(datos => {
             var div = document.createElement('div');  
             var form = document.createElement('form');
-
             // fecha
             var fechaTitulo = document.createElement('strong');
             fechaTitulo.textContent = 'Fecha: ';
@@ -29,21 +30,30 @@ fetch ((url+"/php/listarMisTurnos.php?id="+idCliente),{
             div.appendChild(servicioTitulo);
             div.appendChild(document.createTextNode(datos.servicio));
 
-            // horario
-            var horarioTitulo = document.createElement('strong');
-            horarioTitulo.textContent = 'Email: ';
-            div.appendChild(document.createElement('br'));
-            div.appendChild(horarioTitulo);
-            div.appendChild(document.createTextNode(datos.horario));    
+            if ((datos.estado == 'Aceptado')||((datos.estado == 'Cancelado'))){
+                // Horario
+                var horarioTitulo = document.createElement('strong');
+                horarioTitulo.textContent = 'Horario: ';
+                div.appendChild(document.createElement('br'));
+                div.appendChild(horarioTitulo);
+                div.appendChild(document.createTextNode(datos.horario));
+              }
+    
+             // Estado
+             var estadoTitulo = document.createElement('strong');
+             estadoTitulo.textContent = 'Estado: ';
+             div.appendChild(document.createElement('br'));
+             div.appendChild(estadoTitulo);
+             div.appendChild(document.createTextNode(datos.estado));
 
-            //id cliente
+             //id cliente
             var idInputCliente = document.createElement('input');
             idInputCliente.setAttribute("id", "id_cliente");
-            idInputCliente.setAttribute("type", "hidden");
+             idInputCliente.setAttribute("type", "hidden");
             idInputCliente.setAttribute("value", idCliente);
             form.appendChild(idInputCliente);
-            div.appendChild(document.createElement('br'));
-            
+             div.appendChild(document.createElement('br'));
+    
             //id turno
             var idInputTurno = document.createElement('input');
             idInputTurno.setAttribute("id", "id_turno");
@@ -52,21 +62,42 @@ fetch ((url+"/php/listarMisTurnos.php?id="+idCliente),{
             form.appendChild(idInputTurno);
             div.appendChild(document.createElement('br'));
 
-            //boton cancelar turno
-            var buttonCancelar = document.createElement('input');
-            buttonCancelar.setAttribute("type", "submit");
-            buttonCancelar.setAttribute("value", "Cancelar turno");
-            form.appendChild(buttonCancelar);
+  
+            if ((datos.estado == 'Aceptado')){
+             //boton cancelar turno
+             var buttonCancelar = document.createElement('input');
+             buttonCancelar.setAttribute("type", "submit");
+             buttonCancelar.setAttribute("value", "Cancelar turno");
+             form.appendChild(buttonCancelar);
+            }
 
             //ponemos todo
             div.appendChild(form);
             document.getElementById('contenedorDatos').appendChild(div);
             document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
 
-            buttonAceptar.addEventListener('click', function(event) {
-                window.location.href = (url+'/php/cancelarTurno.php');
-                console.log("cancelado js");
+            if ((datos.estado == 'Aceptado')){
+              buttonCancelar.addEventListener('click', function(event) {
+                var from = new FormData();
+                from.append('id_turno',datos.id_turno);
+                
+
+                event.preventDefault();
+                fetch((url + "/php/cancelarTurno.php"), {
+                    method : 'POST' ,
+                    body : from
+                })
+                .then(res => res.json())
+                .then(data  => { 
+                    console.log (data);
+                    if (data.exito){
+                        location.reload();
+                    }else{ 
+                        alert(data.mensaje);
+                    }
+                });
             });
+        }
         });
         console.log(data);
     }else{
