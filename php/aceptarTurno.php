@@ -9,9 +9,10 @@
         $servicio = $_POST['servicio'];
         $id_cliente = $_POST['id_cliente'];
         $horario = $_POST['horario'];
+        $estado = 'ACEPTADO';
 
 
-        $consulta = "INSERT INTO turnos (id_turno, dia, servicio, horario, id_cliente) VALUES ('$id_turno', '$dia', '$servicio', '$horario', '$id_cliente')";
+        $consulta = "INSERT INTO turnos (id_turno, dia, servicio, horario, id_cliente, estado) VALUES ('$id_turno', '$dia', '$servicio', '$horario', '$id_cliente', '$estado')";
         $resultado = mysqli_query($con, $consulta);
         $eliminar = "DELETE FROM turnos_pendientes WHERE id_turno = '$id_turno'";
         $result = mysqli_query($con, $eliminar);

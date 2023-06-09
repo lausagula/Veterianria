@@ -50,18 +50,13 @@
 		<div class="body-contenedor">
 			<form id="formulario" action="index.html" method="post">
                 <h1>Forma de pago</h1><br><hr><hr><br>
-				<label class="form-label">Metodo de Pago</label><br>
-                <select name="tarjeta" required>
-                    <option value="visa">Visa</option>
-                    <option value="masterCard">Master Card</option>
-                    <option value="american">American Express</option>
-                </select><br><br>
                 <label class="form-label">Nombre completo</label><br>
                 <input type="text" name="name" class="input-style" placeholder="Nombre" required><br>
                 <label class="form-label">Numero de Tarjeta</label><br>
-                <input type="number" name="numero" class="input-style" placeholder="Numero de tarjeta" required><br>
+                <input type="number" name="numero" class="input-style" placeholder="Numero de tarjeta" required><br><br>
                 <label class="form-label">Fecha de vencimiento</label><br>
-                <input type="date" name="date" class="input-style" required><br>
+                <input type="number" name="mes" placeholder="Mes" required>/
+				<input type="number" name="año" placeholder="año" required><br><br>
                 <label class="form-label">Codigo de Seguridad</label><br>
                 <input type="number" name="codigo" class="input-style" placeholder="CVC" required><br>				
                 <label class="form-label">Monto</label><br>

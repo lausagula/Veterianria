@@ -95,8 +95,10 @@ fetch ((url+"/php/listarTurnos.php"),{
             //boton rechazar
             var buttonRechazar = document.createElement('input');
             buttonRechazar.setAttribute("type", "submit");
+            buttonRechazar.setAttribute('data-dia', datos.dia);
             buttonRechazar.setAttribute("value", "Rechazar");
             buttonRechazar.setAttribute('data-id_turno', datos.id_turno);
+            buttonRechazar.setAttribute('data-servicio', datos.servicio);
             buttonRechazar.setAttribute('data-id_cliente', datos.id_cliente);
             form.appendChild(buttonRechazar);
 
@@ -144,6 +146,8 @@ fetch ((url+"/php/listarTurnos.php"),{
                 if ((motivo != "") && (motivo.trim() != "")){
                     var from = new FormData();
                     from.append('id_turno',event.target.dataset.id_turno);
+                    from.append('dia',event.target.dataset.dia);
+                    from.append('servicio',event.target.dataset.servicio);
                     from.append('id_cliente',event.target.dataset.id_cliente);
                     from.append('motivo',motivo);
 

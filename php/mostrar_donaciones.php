@@ -10,7 +10,7 @@
 
     if($con){
 
-        if($es_adm = true){
+        if($es_adm == 'true'){            
             $consulta = "SELECT * FROM donacion_realizadas";
         }else{
             $consulta = "SELECT * FROM donacion_realizadas WHERE id_cliente = '$id_cliente'";

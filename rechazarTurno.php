@@ -14,6 +14,10 @@
     $id_turno = $_POST['id_turno'];
     $id_cliente = $_POST['id_cliente'];
     $motivo = $_POST['motivo'];
+    $dia = $_POST['dia'];
+    //$horario = 'null';
+    $servicio = $_POST['servicio'];
+    $estado = 'RECHAZADO';
 
     if($inc){
         
@@ -23,8 +27,12 @@
         $eliminar = "DELETE FROM turnos_pendientes WHERE id_turno = '$id_turno'";
         $result = mysqli_query($inc, $eliminar);
 
-        if ((!$resultado) || (!$result)){
-            echo json_encode(array('exito' => false, 'mensaje' => 'Error al cargar datos'));
+        $actualizar = "INSERT INTO turnos (id_turno, dia, servicio, horario, id_cliente, estado) VALUES ('$id_turno', '$dia', '$servicio', NULL, '$id_cliente', '$estado')";
+        $update = mysqli_query($inc, $actualizar);
+
+
+        if ((!$resultado) || (!$result) || (!$update)){
+            echo json_encode(array('exito' => false, 'mensaje' => 'Error al cargar datos  ' . mysqli_error($inc)));
             exit;
 
         }else{

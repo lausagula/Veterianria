@@ -96,7 +96,7 @@ fetch (url+"/php/mostrar-campañas.php")
                 
 
 
-            } else if((localStorage.getItem('loggedAdm') === 'false') && (datos.estado === '1')){
+            } else if(((localStorage.getItem('loggedAdm') === 'false') || (localStorage.getItem('loggedAdm') != 'false')) && (datos.estado === '1')){
                 console.log('3')
                 var button = document.createElement('button');
                 button.className = 'botonDonar';
