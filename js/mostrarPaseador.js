@@ -66,6 +66,35 @@ fetch (( url+"/php/mostrarCuidador.php"),{
         button.textContent = 'Contactar';
         button.setAttribute('data-email', datos.mail);
         document.getElementById('contenedorDatos').appendChild(button);
+
+        if (localStorage.getItem('loggedAdm') === 'true'){
+            var buttonEstado = document.createElement('button');
+            buttonEstado.textContent = 'Cambiar estado';
+            buttonEstado.setAttribute('data-id_paseador', datos.id_paseador);
+            document.getElementById('contenedorDatos').appendChild(buttonEstado);
+
+            buttonEstado.addEventListener('click', function(event) {
+                var formD = new FormData();
+                var id_paseador = event.target.dataset.id_paseador;
+                formD.append('id_paseador',id_paseador);
+                formD.append('tipo','paseador');
+                fetch (( url+"/php/cambiarEstadoP.php"),{
+                    method: 'POST',
+                    body: formD   
+                })
+                .then(res => res.json())
+                .then(data  => {
+                    if(data.exito){
+                        window.location.href = (url+'/mostrarPaseador.html');
+                        alert('Estado actualizado');
+                    }else{
+                        console.log(data.mensaje);
+                    }
+                })
+              })         
+
+        }        
+
         document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
         document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
         

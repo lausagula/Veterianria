@@ -67,6 +67,36 @@ fetch (( url+"/php/mostrarCuidador.php"),{
         button.textContent = 'Contactar';
         button.setAttribute('data-email', datos.mail);
         document.getElementById('contenedorDatos').appendChild(button);
+
+        if (localStorage.getItem('loggedAdm') === 'true'){
+            var buttonEstado = document.createElement('button');
+            buttonEstado.textContent = 'Cambiar estado';
+            buttonEstado.setAttribute('data-id_cuidador', datos.id_cuidador);
+            document.getElementById('contenedorDatos').appendChild(buttonEstado);
+
+            buttonEstado.addEventListener('click', function(event) {
+                var formD = new FormData();
+                var id_cuidador = event.target.dataset.id_cuidador;
+                formD.append('id_cuidador',id_cuidador);
+                formD.append('tipo','cuidador');
+                fetch (( url+"/php/cambiarEstadoC.php"),{
+                    method: 'POST',
+                    body: formD   
+                })
+                .then(res => res.json())
+                .then(data  => {
+                    if(data.exito){
+                        window.location.href = (url+'/mostrarCuidador.html');
+                        alert('Estado actualizado');
+                    }else{
+                        consola.log('hubo un error');
+                    }
+                })
+              })         
+
+            
+        }
+
         document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
         document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
         
