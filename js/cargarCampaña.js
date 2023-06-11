@@ -7,15 +7,12 @@ function mostrarMensaje (mensaje){
     elemento.innerHTML = mensaje;
 }
 
-function validarFechas(inicio,fin){
+function validarFechas(fin){
     let fechaActual = new Date();
 
-    if ((inicio < fechaActual ) || (fin < fechaActual)){
+    if (fin < fechaActual){
 
-        mostrarMensaje('Ingrese una fecha mayor a la actual.');
-        return false;
-    }else if(fin < inicio){
-        mostrarMensaje('Ingrese una fecha de fin mayor a la fecha de inicio.');
+        mostrarMensaje('Ingrese una fecha mayor a la fecha actual.');
         return false;
     }
     return true;
@@ -30,14 +27,12 @@ formulario.addEventListener('submit', function(event) {
         var resumen = datos.get('resumen');
         var motivo = datos.get('motivo');
 
-        var inicio = datos.get('inicio');
-        var fechaInicio = new Date(inicio);
         var fin = datos.get('fin');
         var fechaFin = new Date(fin);
 
         event.preventDefault();
 
-        if (validarFechas(fechaInicio,fechaFin)){ 
+        if (validarFechas(fechaFin)){ 
             console.log('paso');
             fetch( (url+"/php/cargar-campaña.php"),{  
                 method: 'POST',

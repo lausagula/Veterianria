@@ -8,7 +8,7 @@
     $name = $_POST['name'];
     $motivo = $_POST['motivo'];
     $resumen = $_POST['resumen'];
-    $fechaInicio = $_POST['inicio'];
+    $fechaInicio = date('Y-m-d'); 
     $fechaFin = $_POST['fin'];
     
     $estado = true;
