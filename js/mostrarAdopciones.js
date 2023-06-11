@@ -11,7 +11,7 @@ fetch (url+"/php/mostrar-adopciones.php")
 
             console.log(data.data.length);
             
-            if (localStorage.getItem('email') != datos.mail){
+            if ((localStorage.getItem('email') != datos.mail) || (localStorage.getItem('loggedAdm') === 'true')){
                 // Raza
                 var razaTitulo = document.createElement('strong');
                 razaTitulo.textContent = 'Raza: ';
@@ -80,6 +80,35 @@ fetch (url+"/php/mostrar-adopciones.php")
                     button.disabled = true;
                 }
                 document.getElementById('contenedorDatos').appendChild(button);
+
+                if (localStorage.getItem('loggedAdm') === 'true'){
+                    var buttonEstado = document.createElement('button');
+                    buttonEstado.textContent = 'Cambiar estado';
+                    buttonEstado.setAttribute('data-id_adopcion', datos.id_adopcion); 
+                    document.getElementById('contenedorDatos').appendChild(buttonEstado);
+        
+                    buttonEstado.addEventListener('click', function(event) {
+                        var formD = new FormData();
+                        var id_adopcion = event.target.dataset.id_adopcion;
+                        formD.append('id_adopcion',id_adopcion);
+                        fetch (( url+"/php/cambiarEstadoAdopcion.php"),{
+                            method: 'POST',
+                            body: formD   
+                        })
+                        .then(res => res.json())
+                        .then(data  => {
+                            if(data.exito){
+                                window.location.href = (url+'/verAdopciones.html');
+                                alert('Estado actualizado');
+                            }else{
+                                console.log(data.mensaje);
+                            }
+                        })
+                      })         
+        
+                } 
+
+
                 document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
                 document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
                 
