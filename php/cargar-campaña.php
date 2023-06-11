@@ -8,11 +8,14 @@
     $name = $_POST['name'];
     $motivo = $_POST['motivo'];
     $resumen = $_POST['resumen'];
+    $fechaInicio = $_POST['inicio'];
+    $fechaFin = $_POST['fin'];
+    
     $estado = true;
 
 
     if (($name != " ") && ($motivo != " ") && ($resumen != " ")){
-        $insertar = "INSERT INTO campaña_donacion (nombre,motivo,resumen,estado) VALUES ('$name','$motivo','$resumen',$estado)";
+        $insertar = "INSERT INTO campaña_donacion (nombre,motivo,resumen,inicio,fin,estado) VALUES ('$name','$motivo','$resumen', '$fechaInicio', '$fechaFin',$estado)";
         $query = mysqli_query($con,$insertar);
         if($query){
             echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));
