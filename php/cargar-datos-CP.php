@@ -28,16 +28,15 @@
         $query = mysqli_query($con,$insertar);
     }
 
-
-    if (validarEspaciosVacios ($nombre,$apellido,$email,$servicio,$lugar)){       
-        if (!buscarEmail($con,$email,$nombreTabla)){
+    if($con){
+        if (validarEspaciosVacios ($nombre,$apellido,$email,$servicio,$lugar)){
             insertarEnTabla($con,$nombre,$apellido,$email,$servicio,$lugar,$disponibilidad,$nombreTabla,);
             echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));
         }else{
             echo json_encode(array('exito' => false, 'mensaje' => 'El email ya se encuentra registrado'));
         }
     }else{  
-     echo json_encode(array('exito' => false, 'mensaje' => 'Error al procesar la solicitud'));
+        echo json_encode(array('exito' => false, 'mensaje' => 'Error al procesar la solicitud'));
     }
 
 
