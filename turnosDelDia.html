@@ -6,20 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
         <title>¡Oh My Dog! - Turnos</title>
-		<script>
-			function validarFecha() {
-				var fechaInput = document.getElementById("fecha").value;
-				var fechaSeleccionada = new Date(fechaInput);
-				var fechaActual = new Date();
-                                <!-- ----------------------------------MODIFICAR ------------------------------------------ -->
-				if (fechaSeleccionada < fechaActual) {
-					alert("La fecha seleccionada debe ser mayor a la fecha actual.");
-					return false;
-				}
-	
-				return true;
-			}
-		</script>
     </head>
     <body>
         <header>
@@ -39,7 +25,7 @@
 							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
 							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
 							<option class="option-select-menu" value="listar-mis-turnos.html">Listar mis turnos</option>
-                            <option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
+                            <option class="option-select-menu stateSing" value="turnosDelDia.html">Turnos del dia</option>
 						</select>
 					</li>
 					<li><a class="link-style-menu option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
@@ -60,15 +46,15 @@
 		</header>
 
 		<div class="body-sign-in-and-up">
-            <form id="formulario" action="php/solicitar-turno.php" method="post" onsubmit="return validarFecha()" >
+            <form id="formulario" action="mostrarTurnosDia.html" method="post">
                 <label class="form-label">Turnos del dia</label><br><br>
                 Seleccione un dia: <br>
                 <input type="date" id="fecha" name="fecha" class="input-style" placeholder="Fecha" required><br>
 				<p class="mensaje-error"></p>
-                <input type="submit" value="Buscar" id="submit-turno" class="continuar-y-registrarme-btn"> <br>
+                <input type="submit" value="Buscar" id="submit-turno" class="continuar-y-registrarme-btn" onclick="localStorage.setItem('fechaT',document.getElementById('fecha').value)"> <br>
             </form>
         </div>
     </body>
-    <script src="js/cambiarEstadoBotones.js"></script>	
+    <script src="js/cambiarEstadoBotones.js"></script>
 	<script src="js/cerrarSesion.js"></script>
 </html>

@@ -2,6 +2,7 @@ var registroCP = document.querySelector('option[value="form-RegistroCP.html"]');
 var registroAdopcion = document.querySelector('option[value="cargarAdopcion.html"]');
 var cargarCampaña = document.querySelector('option[value="formCampaniaDonacion.html"]');
 var mostrarCampaña = document.querySelector('option[value="mostrarCampañasD.html"]');
+var turnosDelDia = document.querySelector('option[value="turnosDelDia.html"]');
 var verUsuarios = document.querySelector('.ver-usuarios');
 var registrarButton = document.querySelector('.registrar-menu');
 var registrarUsuario = document.querySelector('.registrar-usuario');
@@ -9,6 +10,7 @@ var ocultarContacto = document.querySelector('.ocultar-con');
 var ocultarNosotros = document.querySelector('.ocultar-nos');
 var solicitarTurno = document.querySelector('.solicitar-turno');
 var listarTurnos = document.querySelector('.listar-turnos');
+
 
 
 
@@ -53,6 +55,7 @@ if (localStorage.getItem('loggedIn') === 'true') {
         solicitarTurno.style.display = 'flex';
         listarTurnos.style.display = 'flex';
         cargarCampaña.style.display = 'none';
+        turnosDelDia.style.display = 'none';
     }
 
 }else{
@@ -76,4 +79,5 @@ if (localStorage.getItem('loggedIn') === 'true') {
     solicitarTurno.style.display = 'none';
     listarTurnos.style.display = 'none';
     mostrarCampaña.style.display = 'none';
+    turnosDelDia.style.display = 'none';
 }

@@ -59,13 +59,13 @@ formulario.addEventListener('submit', function(event) {
                 mostrarMensaje(elemento,data.mensaje);                
                 const id_usuario = data.id_cliente;
                 const email = data.email;
-                localStorage.setItem('email', email);
-                localStorage.setItem('idUsuario', id_usuario);
+                localStorage.setItem('email', email);                
                 if (data.es_administrador == 1){
                     const es_administrador = data.$id_cliente;
                     localStorage.setItem('loggedAdm','true');
                     
                 }else{
+                    localStorage.setItem('idUsuario', id_usuario);
                     localStorage.setItem('loggedAdm','false');
                 }
                 window.location.href = (url+'/index.html');
