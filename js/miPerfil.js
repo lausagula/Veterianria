@@ -4,6 +4,7 @@ var  contenedor = document.getElementById('contenedorDatos');
 var datos = new FormData();
 datos.append('id_cliente',localStorage.getItem('idUsuario'));
 
+
 fetch ((url+"/php/mi-perfil.php"),{ 
     method: 'POST',
     body: datos
@@ -53,17 +54,34 @@ fetch ((url+"/php/mi-perfil.php"),{
             div.appendChild(document.createElement('br'));
             div.appendChild(document.createElement('br'));
 
-            var button = document.createElement('button');
-            button.textContent = 'Ver donaciones';
+            var buttonDonaciones = document.createElement('button');
+            buttonDonaciones.textContent = 'Ver donaciones';
 
-            document.getElementById('contenedorDatos').appendChild(div);
-            document.getElementById('contenedorDatos').appendChild(button);
-            document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
+            var buttonVerPerros = document.createElement('button');
+            buttonVerPerros.textContent = 'Informacion Perros';
+
+            div.appendChild(document.createElement('br'));
+            div.appendChild(buttonDonaciones);
+    
+            div.appendChild(document.createElement('br'));
+            div.appendChild(buttonVerPerros);
+    
             
-
-            button.addEventListener('click', function(event) {
+            div.appendChild(document.createElement('br'));
+            div.appendChild(document.createElement('br'));
+    
+            document.getElementById('contenedorDatos').appendChild(div);
+            document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
+            document.getElementById('contenedorDatos').appendChild(document.createElement('hr'));
+    
+            buttonDonaciones.addEventListener('click', function(event) {
                 console.log('Mostrar donaciones realizadas');
                 window.location.href = (url+'/mostrarDonaciones.html');
+            });
+
+            buttonVerPerros.addEventListener('click', function(event) {
+                console.log('Mostrar Informacion de perros');
+                window.location.href = (url+'/mostrarInformacionPerro.html');
             });
             
         });

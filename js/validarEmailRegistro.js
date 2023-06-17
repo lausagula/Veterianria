@@ -40,7 +40,7 @@ formulario.addEventListener('submit' , function(e){
         return mostrarMensaje(elemento, "El email es invalido. Ingrese nuevamente");
     }
     event.preventDefault();
-    localStorage.setItem('email',emailUsuario);
+    localStorage.setItem('emailTitulo',emailUsuario);
     enviarDatos(datos);
     
     return mostrarMensaje(elemento,"");

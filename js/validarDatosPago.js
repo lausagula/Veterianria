@@ -75,14 +75,21 @@ formulario.addEventListener('submit' , function(e){
     if(nombre === " "){
         mostrarMensaje ('Complete el campo nombre');
     }else if((numeroTarjeta === " ") || (verificarCantidadCaracteres(numeroTarjeta, 16))){
-        mostrarMensaje ('Ingrese un numero de tarjeta valido');
+        mostrarMensaje ('Los datos de la tarjeta son incorrectos');
     }else if((verificarFecha(mes,año)) || (fechaTarjeta.getTime() < fechaActual.getTime())){
-        mostrarMensaje ('Ingrese una fecha valida');
+        mostrarMensaje ('Los datos de la tarjeta son incorrectos');
     }else if((codigo === " ") || verificarCantidadCaracteres(codigo,3)){
-        mostrarMensaje ('Ingrese un codigo de seguridad valido');
+        mostrarMensaje ('Los datos de la tarjeta son incorrectos');
     }else{
-        enviarDatos(datos);
-        return;
+        if(numeroTarjeta != 4111411141114111){
+            mostrarMensaje('Los datos de la tarjeta son incorrectos');
+        }else if (nombre != 'Adrian'){
+            mostrarMensaje('Los datos de la tarjeta son incorrectos');
+        }else{
+            enviarDatos(datos);
+            return;
+        }
+       
     };
       
 })

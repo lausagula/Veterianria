@@ -17,7 +17,7 @@
         $eliminar = "DELETE FROM turnos_pendientes WHERE id_turno = '$id_turno'";
         $result = mysqli_query($con, $eliminar);
         if(($resultado) && ($result)){
-            echo json_encode(array('exito' => true, 'mensaje' => 'Turno aceptado con exito y eliminardo de pendientes'));    
+            echo json_encode(array('exito' => true, 'mensaje' => 'El turno fue aceptado correctamente'));    
         }else{
             echo json_encode(array('exito' => false, 'mensaje' => 'Error al aceptar el turno o al eliminarlo'));
         }

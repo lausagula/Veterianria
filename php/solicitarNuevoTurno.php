@@ -15,10 +15,8 @@
 
     $sql = "INSERT INTO turnos_pendientes (dia, servicio, bloque_horario, id_cliente) VALUES ('$fecha', '$servicio', '$horario', '$idCliente')";
     if (mysqli_query($con, $sql)) {
-        echo '<script language="javascript">alert("La solicitud del turno ha sido enviada correctamente");window.location.href="http://localhost:8080/nueva/Veterinaria/index.html";</script>';
-        //--------------------------------------------------------------------------------------------^^ MODIFICAR URL ^^----------------
-        echo "Insercion turno exitosa";
+        echo json_encode(array('exito' => true, 'mensaje' => 'Se registro turno correctamente'));
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+        echo json_encode(array('exito' => false, 'mensaje' => 'Error en la consultas'));
     }
 ?>

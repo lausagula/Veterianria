@@ -3,18 +3,21 @@ var registroAdopcion = document.querySelector('option[value="cargarAdopcion.html
 var cargarCampaña = document.querySelector('option[value="formCampaniaDonacion.html"]');
 var mostrarCampaña = document.querySelector('option[value="mostrarCampañasD.html"]');
 var turnosDelDia = document.querySelector('option[value="turnosDelDia.html"]');
+var listarTurnosPendientes = document.querySelector('option[value="listar-turnos.html"]');
+var listarMisTurnos = document.querySelector('option[value="listar-mis-turnos.html"]');
+var perfilUsuario = document.querySelector('option[value="miPerfil.html"]');
 var verUsuarios = document.querySelector('.ver-usuarios');
 var registrarButton = document.querySelector('.registrar-menu');
 var registrarUsuario = document.querySelector('.registrar-usuario');
 var ocultarContacto = document.querySelector('.ocultar-con');
 var ocultarNosotros = document.querySelector('.ocultar-nos');
 var solicitarTurno = document.querySelector('.solicitar-turno');
-var listarTurnos = document.querySelector('.listar-turnos');
 
 
 
 
-if (localStorage.getItem('loggedIn') === 'true') {
+
+if (localStorage.getItem('loggedIn') == 'true') {
     var elements = document.querySelectorAll('.stateSing');
     var elementsCS = document.querySelector('#logOut');
     var elementsBV = document.querySelector('#bienvenida');
@@ -25,37 +28,39 @@ if (localStorage.getItem('loggedIn') === 'true') {
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.display = 'none';
     }
-    
-    
+
+
+    listarMisTurnos.style.display = 'none';
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
     mostrarCampaña.style.display = 'flex';
+    solicitarTurno.style.display = 'none';
+    perfilUsuario.style.display = 'none';
+    turnosDelDia.style.display = 'none';
 
-    
-    
-    if (localStorage.getItem('loggedAdm') === 'true') {    
-        
+    if (localStorage.getItem('loggedAdm') == 'true') {    
 
-        listarTurnos.style.display = 'none';        
+        listarTurnosPendientes.style.display = 'flex';        
         cargarCampaña.style.display = 'flex';
-        
+        listarMisTurnos.style.display = 'none';
+        turnosDelDia.style.display = 'flex';
         if (registrarButton === null){
-            verUsuarios.style.display = 'flex';     
-                
-            
+            verUsuarios.style.display = 'flex'; 
         }else{
           registrarButton.style.display = 'flex';
-          verUsuarios.style.display = 'flex';
-          
-          
+          verUsuarios.style.display = 'flex';   
         }
+
     }else{
+        turnosDelDia.style.display = 'none';
         registroCP.style.display = 'none';
         verUsuarios.style.display = 'none';
         solicitarTurno.style.display = 'flex';
-        listarTurnos.style.display = 'flex';
+        listarTurnosPendientes.style.display = 'none';
+        listarMisTurnos.style.display = 'flex';
         cargarCampaña.style.display = 'none';
-        turnosDelDia.style.display = 'none';
+        perfilUsuario.style.display = 'flex';
+        
     }
 
 }else{
@@ -77,7 +82,9 @@ if (localStorage.getItem('loggedIn') === 'true') {
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
     solicitarTurno.style.display = 'none';
-    listarTurnos.style.display = 'none';
-    mostrarCampaña.style.display = 'none';
+    listarTurnosPendientes.style.display = 'none';
+    mostrarCampaña.style.display = 'flex';
     turnosDelDia.style.display = 'none';
+    listarMisTurnos.style.display = 'none';
+    perfilUsuario.style.display = 'none';
 }

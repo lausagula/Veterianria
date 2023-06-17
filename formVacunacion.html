@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="initial-scale=1">
-		<title>¡Oh My Dog! - Realizar donacion</title>
+		<title>¡Oh My Dog! - Registrar Vacunacion</title>
 		<link rel="stylesheet" href="css/style.css">
 		<script src="https://code.jquery.com/jquery-latest.js"></script>
 	</head>
@@ -50,7 +50,7 @@
 					<li><a class="link-style-menu stateLogOut" id="bienvenida">Bienvenido:</a></li>
 					<div class="border"></div>
 					<script>
-						if (localStorage.getItem('email') !== null){
+						if(localStorage.getItem('email') !== null){
 							document.getElementById('bienvenida').innerHTML = 'Bienvenido<br>' + localStorage.getItem('email');
 						}
 					</script>
@@ -58,29 +58,19 @@
 			</div>
 		</header>
 
-		<div class="body-contenedor">
+		<div class="body-sign-in-and-up">
 			<form id="formulario" action="index.html" method="post">
-                <h1>Forma de pago</h1><br><hr><hr><br>
-                <label class="form-label">Nombre completo</label><br>
-                <input type="text" name="name" class="input-style" placeholder="Nombre" required><br>
-                <label class="form-label">Numero de Tarjeta</label><br>
-                <input type="number" name="numero" class="input-style" placeholder="Numero de tarjeta" required><br><br>
-                <label class="form-label">Fecha de vencimiento</label><br>
-                <input type="number" name="mes" placeholder="Mes" required>/
-				<input type="number" name="año" placeholder="año" required><br><br>
-                <label class="form-label">Codigo de Seguridad</label><br>
-                <input type="number" name="codigo" class="input-style" placeholder="CVC" required><br>				
-                <label class="form-label">Monto</label><br>
-                <select name="monto" class="input-style" required>
-					<option value="500">$500</option>
-					<option value="1000">$1000</option>
-					<option value="5000">$5000</option>
-				  </select><br>
+				<label class="form-label">Registrar Vacunacion</label><br>
+				<select name="tipovacuna" class="input-style" required>
+					<option value="A">Vacuna A (Enfermedades)</option>
+					<option value="B">Vacuna B (Rabia)</option>
+				</select>
+				<input type="number" name="dosis" class="input-style" placeholder="Dosis" required><br>
+                <input type="date" name="fechavacuna" class="input-style" placeholder="Fecha de vacunacion" required><br>
 				<p class="mensaje-error"></p>
-				<input type="submit" id="submitLog" value="Realizar donacion" class="continuar-y-registrarme-btn">
-				
+				<input type="submit" id="submitLog" value="Registrar Vacunacion" class="continuar-y-registrarme-btn">
 			</form>
         </div>
 	</body>
-    <script src="js/validarDatosPago.js" type="module"></script>
+    <script src="js/registrarVacunacion.js" type="module"></script>
 </html>

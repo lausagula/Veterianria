@@ -50,25 +50,26 @@ fetch (( url+"/php/mostrar-turnos-dia.php"),{
         
         if (datos.estado === "Aceptado"){
 
-            var buttonAtender = document.createElement('button');
-            buttonAtender.textContent = 'Atendido';   
-            buttonAtender.setAttribute('data-id_turno', datos.id_turno);
-            buttonAtender.setAttribute('data-id_cliente', datos.id_cliente);
+            //var buttonAtender = document.createElement('button');
+            //buttonAtender.textContent = 'Atendido';   
+            //buttonAtender.setAttribute('data-id_turno', datos.id_turno);
+            //buttonAtender.setAttribute('data-id_cliente', datos.id_cliente);
             
             var buttonCancelar = document.createElement('button');
             buttonCancelar.textContent = 'Cancelar';
             buttonCancelar.setAttribute('data-id_turno', datos.id_turno);
 
             document.getElementById('contenedorDatos').appendChild(div);
-            document.getElementById('contenedorDatos').appendChild(buttonAtender);
+            //document.getElementById('contenedorDatos').appendChild(buttonAtender);
             document.getElementById('contenedorDatos').appendChild(buttonCancelar);
 
-            buttonAtender.addEventListener('click', function(event) {
-                var formD = new FormData();
-                var id_turno = event.target.dataset.id_turno;
-                var id_cliente = event.target.dataset.id_cliente;
-                formD.append('id_turno',id_turno);
-                formD.append('id_cliente',id_cliente);
+            //buttonAtender.addEventListener('click', function(event) {
+             //   var formD = new FormData();
+            //    var id_turno = event.target.dataset.id_turno;
+             //   var id_cliente = event.target.dataset.id_cliente;
+             //   formD.append('id_turno',id_turno);
+              //  formD.append('id_cliente',id_cliente);
+              //  window.location.href = (url + '/miPerfil.html?id='+id_cliente); 
                 // fetch (( url+"/php/cambiarEstadoC.php"),{
                 //     method: 'POST',
                 //     body: formD   
@@ -82,8 +83,8 @@ fetch (( url+"/php/mostrar-turnos-dia.php"),{
                 //         consola.log('hubo un error');
                 //     }
                 // })
-                console.log('Turno atendido');
-            })
+                //console.log('Turno atendido');
+            //})
             
             
             buttonCancelar.addEventListener('click', function(event) {

@@ -16,7 +16,7 @@
             }
             echo json_encode(array('exito' => true, 'data' => $dato ,'mensaje' => 'Se realizo la consulta con exito'));
         } else {
-            echo json_encode(array('exito' => false, 'mensaje' => 'No se encontraron datos disponibles'));
+            echo json_encode(array('exito' => false, 'mensaje' => 'No hay adopciones disponibles por el momento'));
         }
 
     }else{

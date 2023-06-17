@@ -39,6 +39,7 @@
         }else{
             $row = mysqli_fetch_assoc($resultado);
             $email = $row['mail'];
+            echo json_encode(array('exito' => true, 'mensaje' => 'El turno fue rechazado correctamente'));
         }
         
     }else{

@@ -60,7 +60,7 @@ fetch (url+"/php/mostrar-campañas.php")
 
                 var eliminarCampaña = document.createElement('button');
                 eliminarCampaña.className = 'botonDonar';
-                eliminarCampaña.textContent = 'Eliminar';
+                eliminarCampaña.textContent = 'Eliminar Campaña';
                 eliminarCampaña.setAttribute('idCampaña', datos.id_campaña);
 
                 document.getElementById('contenedorDatos').appendChild(div);

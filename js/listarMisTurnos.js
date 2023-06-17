@@ -6,7 +6,11 @@ var idCliente = idUrl.searchParams.get("id");
 console.log(idCliente);
 
 
-fetch ((url+"/php/listarMisTurnos.php?id="+idCliente),{
+// Lo puse asi porque me tiraba error con los botones
+var idCli = localStorage.getItem('idUsuario');
+
+
+fetch ((url+"/php/listarMisTurnos.php?id="+idCli),{
     method: 'POST',
     body: datos
 })
@@ -50,7 +54,7 @@ fetch ((url+"/php/listarMisTurnos.php?id="+idCliente),{
             var idInputCliente = document.createElement('input');
             idInputCliente.setAttribute("id", "id_cliente");
              idInputCliente.setAttribute("type", "hidden");
-            idInputCliente.setAttribute("value", idCliente);
+            idInputCliente.setAttribute("value", idCli);
             form.appendChild(idInputCliente);
              div.appendChild(document.createElement('br'));
     
@@ -81,21 +85,26 @@ fetch ((url+"/php/listarMisTurnos.php?id="+idCliente),{
                 var from = new FormData();
                 from.append('id_turno',datos.id_turno);
                 
-
+                let respuesta = confirm("¿Estás seguro que desea cancelar el turno");
+    
                 event.preventDefault();
-                fetch((url + "/php/cancelarTurno.php"), {
-                    method : 'POST' ,
-                    body : from
-                })
-                .then(res => res.json())
-                .then(data  => { 
-                    console.log (data);
-                    if (data.exito){
-                        location.reload();
-                    }else{ 
-                        alert(data.mensaje);
-                    }
-                });
+
+                if (respuesta === true){
+                    fetch((url + "/php/cancelarTurno.php"), {
+                        method : 'POST' ,
+                        body : from
+                    })
+                    .then(res => res.json())
+                    .then(data  => { 
+                        console.log (data);
+                        if (data.exito){
+                            location.reload();
+                        }else{ 
+                            alert(data.mensaje);
+                        }
+                    });
+                }
+               
             });
         }
         });

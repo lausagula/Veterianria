@@ -8,25 +8,28 @@ var fecha;
 
 function asignarHorario(bloque) {
     var horaTexto = prompt("Ingresa la hora exacta del turno (HH:MM)", "");
-  
     // Formatear el texto ingresado en un objeto Date
     var partesHora = horaTexto.split(":"); // Dividir el texto en partes separadas por ":"
     var hora = parseInt(partesHora[0]); // Obtener la hora como número entero
     var minutos = parseInt(partesHora[1]); // Obtener los minutos como número entero
 
-    if (formatoHora.test(horaTexto)){
-        if((hora < 8) || (hora > 19)){
+    // Modificar despues lo del horario vacio
+    if ((horaTexto == "")&&(horaTexto.trim() == "")){
+        alert('El horario no puede estar vacio.');
+    }else if (formatoHora.test(horaTexto)){
+        //Modificar cuando es menor a 8 de la mañana y cuando es mayor a 20
+        if((hora < 8) || (hora > 20)){
             alert('Ingrese un horario valido.');
             return false;
         }else{
-            if((bloque == "Mañana") && (hora > 12)){
-                alert('Horario invalido para turno mañana');
+            // Bloque horario Mañana (8 - 13),Bloque horario Tarde (15 - 20)
+            if((bloque == "Mañana") && (hora > 13)){
+                alert('Seleccione un horario dentro del rango (08:00 - 13:00 hs)');
                 return false;
-            }else if((bloque == "Tarde") && (hora < 13)){
-                alert('Horario invalido para turno tarde');
+            }else if((bloque == "Tarde") && (hora < 15)){
+                alert('Seleccione un horario dentro del rango (15:00 - 20:00 hs)');
                 return false;
             }
-        
     
         fecha = new Date();
         fecha.setHours(hora);
@@ -37,7 +40,9 @@ function asignarHorario(bloque) {
     }else{
         alert('Ingrese un horario valido.');
     }
-  
+
+    
+    
 }
 
 
@@ -143,8 +148,10 @@ fetch ((url+"/php/listarTurnos.php"),{
             });        
             buttonRechazar.addEventListener('click', function(event) {
                 event.preventDefault();
+                let seRechazo = false;
                 var motivo = prompt('Motivo:');
                 if ((motivo != "") && (motivo.trim() != "")){
+                    seRechazo = true;
                     var from = new FormData();
                     from.append('id_turno',event.target.dataset.id_turno);
                     from.append('dia',event.target.dataset.dia);
@@ -169,9 +176,13 @@ fetch ((url+"/php/listarTurnos.php"),{
                     });
 
                 }else{
-                    alert('Motivo vacio. Ingrese informacion');
+                    alert('El motivo no puede estar vacio.');
                 }
-                console.log('rechazado js');
+                //Arreglar esta parte despues
+                if (seRechazo){
+                    window.location.href = (url+'/listar-turnos.html'); 
+                    alert("El turno fue rechazado correctamente");
+                }
             }); 
         });
         console.log(data);

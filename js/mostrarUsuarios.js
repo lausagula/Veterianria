@@ -69,6 +69,7 @@ fetch (url+"/php/mostrarUsuarios.php")
 
         botonPerfil.addEventListener('click', function () {
             console.log('Se hizo clic en el botón');
+            localStorage.setItem('emailTitulo',datos.mail);
             localStorage.setItem('idUsuario',datos.id_cliente ); 
             window.location.href = (url+'/miPerfil.html');  //------Modificar url
         });
@@ -80,7 +81,6 @@ fetch (url+"/php/mostrarUsuarios.php")
         div.appendChild(document.createElement('br'));
         div.appendChild(botonPerfil);
 
-        
         
         div.appendChild(document.createElement('br'));
         div.appendChild(document.createElement('br'));

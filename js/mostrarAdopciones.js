@@ -72,7 +72,7 @@ fetch (url+"/php/mostrar-adopciones.php")
                 
                 document.getElementById('contenedorDatos').appendChild(div);
                 var button = document.createElement('button');
-                button.textContent = 'Adoptar';
+                button.textContent = 'Contactar';
                 button.setAttribute('data-email', datos.mail);
                 button.setAttribute('data-raza_perro', datos.raza_perro);
 
@@ -82,10 +82,16 @@ fetch (url+"/php/mostrar-adopciones.php")
                 document.getElementById('contenedorDatos').appendChild(button);
 
                 if (localStorage.getItem('loggedAdm') === 'true'){
+                    
+
                     var buttonEstado = document.createElement('button');
-                    buttonEstado.textContent = 'Cambiar estado';
+                    buttonEstado.textContent = 'Cambiar estado adopcion';
                     buttonEstado.setAttribute('data-id_adopcion', datos.id_adopcion); 
                     document.getElementById('contenedorDatos').appendChild(buttonEstado);
+
+                    if (datos.estado == 1){
+                        buttonEstado.disabled = true;
+                    }
         
                     buttonEstado.addEventListener('click', function(event) {
                         var formD = new FormData();
@@ -99,7 +105,7 @@ fetch (url+"/php/mostrar-adopciones.php")
                         .then(data  => {
                             if(data.exito){
                                 window.location.href = (url+'/verAdopciones.html');
-                                alert('Estado actualizado');
+                                alert('Estado de adopción actualizado');
                             }else{
                                 console.log(data.mensaje);
                             }

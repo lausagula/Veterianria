@@ -18,13 +18,19 @@
 					<div class="border"></div>
 					<li>
 						<a class="link-style-menu">SERVICIOS</a>
-						<select onchange="if (this.value) window.location.href = this.value;">
+						<select  onchange="if (this.value) window.location.href = this.value;">
 							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+							<option class="option-select-menu" value="miPerfil.html">Mi perfil</option>
 							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
 							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option class="option-select-menu" value="formCampaniaDonacion.html">Registrar campaña de donacion</option>
+							<option class="option-select-menu" value="mostrarCampañasD.html">Mostrar campaña de donacion</option>
 							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
 							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
 							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
+							<option class="option-select-menu" value="mostrarDonaciones.html">Mostrar Donaciones</option>
+							<option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
+							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
 							<option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
 						</select>
 					</li>
@@ -94,6 +100,7 @@
         </div>
 	</body>
     <script src="js/cargarAdopcion.js" type="module"></script>
+	<script src="js/actualizarUrls.js" type="module"></script>
 	<script src="js/cambiarEstadoBotones.js"></script>
 	<script src="js/cerrarSesion.js"></script>
 </html>

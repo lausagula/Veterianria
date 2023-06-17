@@ -19,11 +19,16 @@
                     <a class="link-style-menu">SERVICIOS</a>
                     <select onchange="if (this.value) window.location.href = this.value;">
                         <option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+                        <option class="option-select-menu" value="miPerfil.html">Mi perfil</option>
                         <option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
                         <option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+                        <option class="option-select-menu" value="formCampaniaDonacion.html">Registrar campaña de donacion</option>
+                        <option class="option-select-menu" value="mostrarCampañasD.html">Mostrar campaña de donacion</option>
                         <option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
                         <option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
                         <option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
+                        <option class="option-select-menu" value="mostrarDonaciones.html">Mostrar Donaciones</option>
+                        <option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
                         <option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
                         <option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
                     </select>
@@ -54,7 +59,9 @@
                 const aux = localStorage.getItem('emailTitulo');
                 document.getElementById('read-only').value = aux;
             </script>
+            <span class="required-field">*</span>
             <input type="text" name="name" class="input-style" placeholder="Nombre del perro" required><br>
+            <span class="required-field">*</span>
             <select name="raza" class="input-style" required>
                 <option value="">Selecciona una raza</option>
                 <option value="Labrador Retriever">Labrador Retriever</option>
@@ -62,14 +69,17 @@
                 <option value="Bulldog">Bulldog</option>
                 <option value="Caniche">Caniche</option>
                 <option value="Mestizo">Mestizo</option>
-              </select>
-            <input type="text" name="color" class="input-style" placeholder="Color" required><br>
+            </select>
+            <br>
+            <span class="required-field">*</span>
+            <input type="text" name="color" class="input-style" placeholder="Color" required><br> 
+            <span class="required-field">*</span>
             <input type="date" name="nacimiento" class="input-style" placeholder="Fecha de nacimiento" required><br>
             <input type="text" name="observaciones" class="input-style" value="Sin Observaciones" placeholder="Observaciones (opcional)"><br><br>
             Foto (opcional) <br><br>
             <input type="file" name="foto"><br><br>
-            Disponibilidad para cruza:
-            <select name="disponibilidad_cruza" required>
+           
+            <select name="disponibilidad_cruza" hidden required>
                 <option value="0">No</option>
                 <option value="1">Si</option>
             </select><br>

@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="initial-scale=1">
-		<title>¡Oh My Dog! - Realizar donacion</title>
+		<title>¡Oh My Dog! - Registro consulta</title>
 		<link rel="stylesheet" href="css/style.css">
 		<script src="https://code.jquery.com/jquery-latest.js"></script>
 	</head>
@@ -20,22 +20,13 @@
 						<a class="link-style-menu">SERVICIOS</a>
 						<select onchange="if (this.value) window.location.href = this.value;">
 							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
-							<option class="option-select-menu" value="miPerfil.html">Mi perfil</option>
 							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
 							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
-							<option class="option-select-menu" value="formCampaniaDonacion.html">Registrar campaña de donacion</option>
-							<option class="option-select-menu" value="mostrarCampañasD.html">Mostrar campaña de donacion</option>
 							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
 							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
 							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
-							<option class="option-select-menu" value="mostrarDonaciones.html">Mostrar Donaciones</option>
-							<option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
-							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
-							<option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
 						</select>
 					</li>
-					<div class="border"></div>
-					<li><a class="link-style-menu ver-usuarios option-menu" href="mostrarUsuarios.html">LISTAR USUSARIOS</a></li>
 					<div class="border"></div>
 					<li><a class="link-style-menu ocultar-nos option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
 					<div class="border"></div>
@@ -58,29 +49,27 @@
 			</div>
 		</header>
 
-		<div class="body-contenedor">
+		<div class="body-sign-in-and-up">
 			<form id="formulario" action="index.html" method="post">
-                <h1>Forma de pago</h1><br><hr><hr><br>
-                <label class="form-label">Nombre completo</label><br>
-                <input type="text" name="name" class="input-style" placeholder="Nombre" required><br>
-                <label class="form-label">Numero de Tarjeta</label><br>
-                <input type="number" name="numero" class="input-style" placeholder="Numero de tarjeta" required><br><br>
-                <label class="form-label">Fecha de vencimiento</label><br>
-                <input type="number" name="mes" placeholder="Mes" required>/
-				<input type="number" name="año" placeholder="año" required><br><br>
-                <label class="form-label">Codigo de Seguridad</label><br>
-                <input type="number" name="codigo" class="input-style" placeholder="CVC" required><br>				
-                <label class="form-label">Monto</label><br>
-                <select name="monto" class="input-style" required>
-					<option value="500">$500</option>
-					<option value="1000">$1000</option>
-					<option value="5000">$5000</option>
-				  </select><br>
-				<p class="mensaje-error"></p>
-				<input type="submit" id="submitLog" value="Realizar donacion" class="continuar-y-registrarme-btn">
-				
+				<label class="form-label">Registrar Consulta</label><br>
+				<input type="button" id ="btonVacunacion" name="vacunacion"  value="Registrar Vacunacion" ><br>
 			</form>
         </div>
+
+		<script>
+			const urlParams = new URLSearchParams(window.location.search);
+  			const id = urlParams.get('id');
+
+			let idCli = localStorage.getItem('idUsuario');
+			
+			document.getElementById('btonVacunacion').addEventListener('click', function() {
+				redirectToPage('http://localhost:8080/nueva/Veterinaria/formVacunacion.html?id='+id);
+			});
+
+			
+			function redirectToPage(page) {
+				window.location.href = page;
+			}
+		</script>
 	</body>
-    <script src="js/validarDatosPago.js" type="module"></script>
 </html>
