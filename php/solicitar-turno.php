@@ -1,24 +1,27 @@
 <?php 
     include ("conexion.php");
 
-    $email = $_POST['email'];
-
-    $sql = "SELECT id_cliente FROM clientes WHERE (mail = '$email')";
-    $resultado = mysqli_query($con, $sql);
-    $fila = $resultado->fetch_assoc(); //obtengo fila.
-    
-    $idCliente = $fila['id_cliente'];
-
-    $fecha = $_POST['fecha'];
     $servicio =  $_POST['servicio'];
+    $id_cliente = $_POST['idUsuario'];
+    $fecha = $_POST['fecha'];
     $horario = $_POST['horario'];
+    $id_perro = $_POST['selectPerros'];
 
-    $sql = "INSERT INTO turnos_pendientes (dia, servicio, bloque_horario, id_cliente) VALUES ('$fecha', '$servicio', '$horario', '$idCliente')";
-    if (mysqli_query($con, $sql)) {
-        echo '<script language="javascript">alert("La solicitud del turno ha sido enviada correctamente");window.location.href="http://localhost:8080/nueva/Veterinaria/index.html";</script>';
-        //--------------------------------------------------------------------------------------------^^ MODIFICAR URL ^^----------------
-        echo "Insercion turno exitosa";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    if ($servicio == 'castracion'){
+        $consulta = "SELECT * FROM practicas WHERE id_perro = '$id_perro' AND tipo = '$servicio'";
+        $resultado = mysqli_query($con,$consulta);
+
+        if(mysqli_num_rows($resultado) > 0){
+            echo json_encode(array('exito' => false, 'mensaje' => 'Ya se encuentra una castración realizada'));
+        }
+
+    }else{
+
+        $sql = "INSERT INTO turnos_pendientes (dia, servicio, bloque_horario, id_cliente, id_perro) VALUES ('$fecha', '$servicio', '$horario', '$id_cliente', '$id_perro')";
+        if (mysqli_query($con, $sql)) {
+            echo json_encode(array('exito' => true, 'mensaje' => 'Insercion turno exitosa'));
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($con);
+        }
     }
 ?>

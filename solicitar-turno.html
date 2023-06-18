@@ -6,20 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
         <title>¡Oh My Dog! - Solicitar turno</title>
-		<script>
-			function validarFecha() {
-				var fechaInput = document.getElementById("fecha").value;
-				var fechaSeleccionada = new Date(fechaInput);
-				var fechaActual = new Date();
-	
-				if (fechaSeleccionada < fechaActual) {
-					alert("La fecha seleccionada debe ser mayor a la fecha actual.");
-					return false;
-				}
-	
-				return true;
-			}
-		</script>
     </head>
     <body>
         <header>
@@ -73,9 +59,9 @@
 		</header>
 
 		<div class="body-sign-in-and-up">
-            <form id="formulario" action="php/solicitar-turno.php" method="post" onsubmit="return validarFecha()" >
+            <form id="formulario" action="index.html" method="post">  
                 <label class="form-label">Solicitar turno</label><br>
-                <input type="date" id="fecha" name="fecha" class="input-style" placeholder="Fecha" required><br>
+                <input type="date" id="fecha" name="fecha" class="input-style" placeholder="Fecha" required><br><br>
                 Servicio:
                 <select name="servicio" id="servicio" required>
 					<option value="aplicacion-vacuna">Aplicación de vacuna</option>
@@ -83,21 +69,21 @@
 					<option value="desparacitacion">Desparasitaci&oacute;n</option>
 					<option value="consulta-general">Consulta general</option>
 					<option value="urgencias">Urgencias</option>-->
-                </select> <br>
+                </select> <br><br>
                 Horario:
                 <input type="radio" name="horario" value="Mañana" required>Mañana 
-                <input type="radio" name="horario" value="Tarde" required>Tarde <br>
-				<input type="hidden" name="email" id="email" value="">
-				<script>
-					email = document.getElementById("email");
-					email.value = localStorage.getItem("email");
-					console.log(email.value);
-				</script>
+                <input type="radio" name="horario" value="Tarde" required>Tarde <br><br>
+				Seleccionar perro:
+				<select name="selectPerros" id="perros" required>
+					<option value="" selected disabled>Selecciona un perro</option>
+				</select>
 				<p class="mensaje-error"></p>
+				<script src="js/listarPerros.js" type="module"></script> 
                 <input type="submit" value="Enviar" id="submit-turno" class="continuar-y-registrarme-btn"> <br>
             </form>
         </div>
     </body>
+	<script src="js/solicitarTurno.js" type="module"></script>
     <script src="js/cambiarEstadoBotones.js"></script>	
 	<script src="js/cerrarSesion.js"></script>
 </html>

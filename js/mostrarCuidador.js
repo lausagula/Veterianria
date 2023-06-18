@@ -28,13 +28,6 @@ fetch (( url+"/php/mostrarCuidador.php"),{
         div.appendChild(apellidoTitulo);
         div.appendChild(document.createTextNode(datos.apellido));
 
-        // Email
-        var emailTitulo = document.createElement('strong');
-        emailTitulo.textContent = 'Email: ';
-        div.appendChild(document.createElement('br'));
-        div.appendChild(emailTitulo);
-        div.appendChild(document.createTextNode(datos.mail));
-
         // Zona
         var zonaTitulo = document.createElement('strong');
         zonaTitulo.textContent = 'Zona: ';
