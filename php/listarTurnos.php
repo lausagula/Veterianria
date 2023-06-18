@@ -6,7 +6,7 @@
 
     if($inc){
 
-        $consulta = "SELECT * FROM turnos_pendientes WHERE estado = 1";
+        $consulta = "SELECT * FROM turnos_pendientes";
         $resultado = mysqli_query($con, $consulta);
 
         if (mysqli_num_rows($resultado) > 0){

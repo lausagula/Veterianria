@@ -95,6 +95,7 @@ fetch ((url+"/php/listarTurnos.php"),{
             buttonAceptar.setAttribute('data-dia', datos.dia);
             buttonAceptar.setAttribute('data-servicio', datos.servicio);
             buttonAceptar.setAttribute('data-id_cliente', datos.id_cliente);
+            buttonAceptar.setAttribute('data-id_perro', datos.id_perro);
 
             form.appendChild(buttonAceptar);
 
@@ -106,6 +107,8 @@ fetch ((url+"/php/listarTurnos.php"),{
             buttonRechazar.setAttribute('data-id_turno', datos.id_turno);
             buttonRechazar.setAttribute('data-servicio', datos.servicio);
             buttonRechazar.setAttribute('data-id_cliente', datos.id_cliente);
+            buttonRechazar.setAttribute('data-id_perro', datos.id_perro);
+
             form.appendChild(buttonRechazar);
 
             //ponemos todo
@@ -124,6 +127,7 @@ fetch ((url+"/php/listarTurnos.php"),{
                     fromD.append('dia',event.target.dataset.dia);
                     fromD.append('servicio',event.target.dataset.servicio);
                     fromD.append('id_cliente',event.target.dataset.id_cliente);
+                    fromD.append('id_perro',event.target.dataset.id_perro);
                     fromD.append('horario',horario);
                     
 
@@ -157,6 +161,7 @@ fetch ((url+"/php/listarTurnos.php"),{
                     from.append('dia',event.target.dataset.dia);
                     from.append('servicio',event.target.dataset.servicio);
                     from.append('id_cliente',event.target.dataset.id_cliente);
+                    from.append('id_perro',event.target.dataset.id_perro);
                     from.append('motivo',motivo);
                     from.append('horario',0);
 

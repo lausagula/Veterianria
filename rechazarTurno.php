@@ -13,9 +13,10 @@
 
     $id_turno = $_POST['id_turno'];
     $id_cliente = $_POST['id_cliente'];
+    $id_perro = $_POST['id_perro'];
     $motivo = $_POST['motivo'];
     $dia = $_POST['dia'];
-    $horario =  $_POST['horario'];;
+    $horario =  $_POST['horario'];
     $servicio = $_POST['servicio'];
     $estado = 'Rechazado';
 
@@ -24,15 +25,14 @@
         $consulta = "SELECT mail FROM clientes WHERE id_cliente = '$id_cliente'";
         $resultado = mysqli_query($inc,$consulta);
 
-        $eliminarPendientes = "UPDATE turnos_pendientes SET estado = 0 WHERE id_turno = '$id_turno'";
-        
+        $eliminarPendientes = "DELETE FROM turnos_pendientes WHERE id_turno = '$id_turno'";        
         $result = mysqli_query($inc, $eliminarPendientes);
 
-        $actualizar = "INSERT INTO turnos (id_turno, dia, servicio, horario, id_cliente, estado) VALUES ('$id_turno', '$dia', '$servicio', '$horario', '$id_cliente', '$estado')";
+        $actualizar = "INSERT INTO turnos (id_turno, dia, servicio, horario, id_perro, id_cliente, estado) VALUES ('$id_turno', '$dia', '$servicio', '$horario', '$id_perro', '$id_cliente', '$estado')";
         $update = mysqli_query($inc, $actualizar);
 
 
-        if ((!$resultado) ||  (!$update) || (!$eliminarPendientes)){
+        if ((!$resultado) ||  (!$update) || (!$result)){
             echo json_encode(array('exito' => false, 'mensaje' => 'Error al cargar datos  ' . mysqli_error($inc)));
             exit;
 
@@ -46,6 +46,8 @@
         echo json_encode(array('exito' => false, 'mensaje' => 'Error de conexión'));
         exit;
     }
+
+    $body = "Querido cliente: " . "<br>Su turno del dia " . $dia . " fue rechazdo por el siguiente motivo: " . $motivo . ". <br>Por favor reserve un turno en un horario o dia distinto, disculpe las molestias.<br> Saludos, veterinaria.";
 
 
     use PHPMailer\PHPMailer\PHPMailer;
@@ -73,7 +75,7 @@
 
         $mail->isHTML(true);
         $mail->Subject = 'Aviso';
-        $mail->Body = $motivo;
+        $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
 
