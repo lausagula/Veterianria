@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="initial-scale=1">
-		<title>¡Oh My Dog! - Registrar Vacunacion</title>
+		<title>¡Oh My Dog! - Registro consulta</title>
 		<link rel="stylesheet" href="css/style.css">
 		<script src="https://code.jquery.com/jquery-latest.js"></script>
 	</head>
@@ -20,22 +20,13 @@
 						<a class="link-style-menu">SERVICIOS</a>
 						<select onchange="if (this.value) window.location.href = this.value;">
 							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
-							<option class="option-select-menu" value="miPerfil.html">Mi perfil</option>
 							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
 							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
-							<option class="option-select-menu" value="formCampaniaDonacion.html">Registrar campaña de donacion</option>
-							<option class="option-select-menu" value="mostrarCampañasD.html">Mostrar campaña de donacion</option>
 							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
 							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
 							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
-							<option class="option-select-menu" value="mostrarDonaciones.html">Mostrar Donaciones</option>
-							<option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
-							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
-							<option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
 						</select>
 					</li>
-					<div class="border"></div>
-					<li><a class="link-style-menu ver-usuarios option-menu" href="mostrarUsuarios.html">LISTAR USUSARIOS</a></li>
 					<div class="border"></div>
 					<li><a class="link-style-menu ocultar-nos option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
 					<div class="border"></div>
@@ -50,7 +41,7 @@
 					<li><a class="link-style-menu stateLogOut" id="bienvenida">Bienvenido:</a></li>
 					<div class="border"></div>
 					<script>
-						if(localStorage.getItem('email') !== null){
+						if (localStorage.getItem('email') !== null){
 							document.getElementById('bienvenida').innerHTML = 'Bienvenido<br>' + localStorage.getItem('email');
 						}
 					</script>
@@ -60,17 +51,13 @@
 
 		<div class="body-sign-in-and-up">
 			<form id="formulario" action="index.html" method="post">
-				<label class="form-label">Registrar Vacunacion</label><br>
-				<select name="tipovacuna" class="input-style" required>
-					<option value="A">Vacuna A (Enfermedades)</option>
-					<option value="B">Vacuna B (Rabia)</option>
-				</select>
-				<input type="number" name="dosis" class="input-style" placeholder="Dosis" required><br>
-                <input type="date" name="fechavacuna" class="input-style" placeholder="Fecha de vacunacion" required><br>
+				<label class="form-label">Registrar Urgencia</label><br>
+				<input type="text" name="servicio" class="input-style" value="urgencia" id="read-only" style="color: #808080;" readonly required><br>
+                <input type="text" name="observacion" class="input-style" placeholder="Observaciones" required><br>
 				<p class="mensaje-error"></p>
 				<input type="submit" id="submitLog" value="Registrar Vacunacion" class="continuar-y-registrarme-btn">
 			</form>
         </div>
 	</body>
-    <script src="js/registrarVacunacion.js" type="module"></script>
+	<script src="js/validarRegistroUrgencia.js" type="module"></script>
 </html>

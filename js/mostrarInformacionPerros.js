@@ -48,15 +48,16 @@ fetch ((url+"/php/mostrarInformacionPerros.php") ,{
         if (localStorage.getItem('loggedAdm') === 'true'){
             
             
-            // Boton Registrar Consulta
+            // Boton Registrar Consulta Urgencia
             var botonRegistrarConsulta = document.createElement('button');
-            botonRegistrarConsulta.textContent = 'Registrar Consulta';
+            botonRegistrarConsulta.textContent = 'Registrar Urgencia';
 
             botonRegistrarConsulta.addEventListener('click', function () {
                 console.log('Se hizo clic en el botón de registrar Consulta');
+                localStorage.setItem('id_perro',datos.id_perro);
                 //localStorage.setItem('emailTitulo',datos.mail );
                 sessionStorage.setItem('fecha_nacimiento', datos.nacimiento);
-                window.location.href = (url+'/formRegistarConsulta.html?id=' + datos.id_perro);
+                window.location.href = (url+'/formRegistarUrgencia.html?id=' + datos.id_perro);
             });
 
              // Agregar el botón al contenedor
@@ -90,11 +91,13 @@ fetch ((url+"/php/mostrarInformacionPerros.php") ,{
 
         botonHistoriaClinica.addEventListener('click', function () {
             console.log('Se hizo clic en el botón de ver historia clinica');
+            localStorage.setItem('id_perro',datos.id_perro);
             window.location.href = (url+'/historiaClinica.html?id=' + datos.id_perro);
         });
         botonLibretaVacunacion.addEventListener('click', function () {
             console.log('Se hizo clic en el botón de ver libreta de vacunacion');
             //localStorage.setItem('emailTitulo',datos.mail );
+            localStorage.setItem('id_perro',datos.id_perro);
             window.location.href = (url+'/libretaVacunacion.html?id='+datos.id_perro);
          });
 

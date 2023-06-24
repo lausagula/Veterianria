@@ -22,6 +22,13 @@ fetch (( url+"/php/mostrar-turnos-dia.php"),{
         div.appendChild(nombreTitulo);
         div.appendChild(document.createTextNode(datos.nombre));
 
+        // nombre perro
+        var nomPerroTitulo = document.createElement('strong');
+        nomPerroTitulo.textContent = 'Perro: ';           
+        div.appendChild(document.createElement('br'));           
+        div.appendChild(nomPerroTitulo);
+        div.appendChild(document.createTextNode(datos.nombre_perro));
+
         // servicio
         var servicioTitulo = document.createElement('strong');
         servicioTitulo.textContent = 'Servicio: ';
@@ -50,41 +57,52 @@ fetch (( url+"/php/mostrar-turnos-dia.php"),{
         
         if (datos.estado === "Aceptado"){
 
-            //var buttonAtender = document.createElement('button');
-            //buttonAtender.textContent = 'Atendido';   
-            //buttonAtender.setAttribute('data-id_turno', datos.id_turno);
-            //buttonAtender.setAttribute('data-id_cliente', datos.id_cliente);
+            var buttonAtender = document.createElement('button');
+            buttonAtender.textContent = 'Atender';   
+            buttonAtender.setAttribute('data-id_turno', datos.id_turno);
+            buttonAtender.setAttribute('data-id_cliente', datos.id_cliente);
+            buttonAtender.setAttribute('data-servicio', datos.servicio);
+            buttonAtender.setAttribute('data-id_perro', datos.id_perro);
+            buttonAtender.setAttribute('data-horario', datos.horario);
             
             var buttonCancelar = document.createElement('button');
             buttonCancelar.textContent = 'Cancelar';
             buttonCancelar.setAttribute('data-id_turno', datos.id_turno);
 
             document.getElementById('contenedorDatos').appendChild(div);
-            //document.getElementById('contenedorDatos').appendChild(buttonAtender);
+            document.getElementById('contenedorDatos').appendChild(buttonAtender);
             document.getElementById('contenedorDatos').appendChild(buttonCancelar);
 
-            //buttonAtender.addEventListener('click', function(event) {
-             //   var formD = new FormData();
-            //    var id_turno = event.target.dataset.id_turno;
-             //   var id_cliente = event.target.dataset.id_cliente;
-             //   formD.append('id_turno',id_turno);
-              //  formD.append('id_cliente',id_cliente);
-              //  window.location.href = (url + '/miPerfil.html?id='+id_cliente); 
-                // fetch (( url+"/php/cambiarEstadoC.php"),{
-                //     method: 'POST',
-                //     body: formD   
-                // })
-                // .then(res => res.json())                   //------MODIFICAR-------
-                // .then(data  => {
-                //     if(data.exito){
-                //         window.location.href = (url+'/mostrarCuidador.html');
-                //         alert('Estado actualizado');
-                //     }else{
-                //         consola.log('hubo un error');
-                //     }
-                // })
-                //console.log('Turno atendido');
-            //})
+            buttonAtender.addEventListener('click', function(event) {
+                var formD = new FormData();
+                var id_turno = event.target.dataset.id_turno;
+                var id_cliente = event.target.dataset.id_cliente;
+                var servicio = event.target.dataset.servicio;
+                var id_perro = event.target.dataset.id_perro;
+                var horario = event.target.dataset.horario;
+                formD.append('id_turno',id_turno);
+                formD.append('id_cliente',id_cliente);
+                localStorage.setItem('id_cliente', id_cliente);
+                localStorage.setItem('servicioCliente', servicio);
+                localStorage.setItem('id_perro', id_perro);
+                localStorage.setItem('horario', horario);
+
+                window.location.href = (url+'/registroConsulta.html');
+
+                fetch (( url+"/php/cambiarEstadoConsulta.php"),{
+                    method: 'POST',
+                    body: formD   
+                })
+                .then(res => res.json())
+                .then(data  => {
+                    if(data.exito){
+                        console.log('Turno atendido');
+                    }else{
+                        consola.log('hubo un error');
+                    }
+                })
+                
+            })
             
             
             buttonCancelar.addEventListener('click', function(event) {

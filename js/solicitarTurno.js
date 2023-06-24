@@ -16,6 +16,12 @@ function validarFecha() {
     if (fechaSeleccionada < fechaActual) {
         alert("La fecha seleccionada debe ser mayor a la fecha actual.");
         return false;
+    }else if(fechaSeleccionada.getDay() === 0){
+        alert("Los dias domingo la veterinaria permanece cerrada.");
+        return false;
+    }else if((fechaSeleccionada.getDay() === 6) && (document.getElementById("horario").value === 'Tarde')){
+        alert("Los dias Sabado la veterinaria solo atiendo por la mañana.");
+        return false;
     }
 
     return true;
@@ -24,11 +30,18 @@ function validarFecha() {
 
 
 function enviarDatos(datos){
-    fetch((url+"/php/solicitar-turno.php"), { //modificar valida castracion dentro del php
+    fetch((url+"/php/solicitar-turno.php"), { 
         method : 'POST' ,
         body : datos
     })
-    .then(res => res.json())
+    .then(res => {
+        console.log(res);
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error("Error en la solicitud");
+        }
+    })
     .then(data  => { 
         if (data.exito){
             mostrarMensaje(elemento,data.mensaje);
@@ -43,7 +56,7 @@ function enviarDatos(datos){
 }
 
 formulario.addEventListener('submit' , function(e){
-    e.preventDefault
+    e.preventDefault();
     
     let datos = new FormData (formulario);
     datos.append('idUsuario', localStorage.getItem('idUsuario'));

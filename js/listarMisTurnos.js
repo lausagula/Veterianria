@@ -21,9 +21,18 @@ fetch ((url+"/php/listarMisTurnos.php?id="+idCli),{
         data.data.forEach(datos => {
             var div = document.createElement('div');  
             var form = document.createElement('form');
+
+            // nombre perro
+            var nomPerroTitulo = document.createElement('strong');
+            nomPerroTitulo.textContent = 'Perro: ';
+            div.appendChild(document.createElement('br'));
+            div.appendChild(nomPerroTitulo);
+            div.appendChild(document.createTextNode(datos.nombre_perro));
+
             // fecha
             var fechaTitulo = document.createElement('strong');
             fechaTitulo.textContent = 'Fecha: ';
+            div.appendChild(document.createElement('br'));
             div.appendChild(fechaTitulo);
             div.appendChild(document.createTextNode(datos.dia));
 

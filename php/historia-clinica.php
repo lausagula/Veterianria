@@ -4,12 +4,11 @@
 
     $inc = include ("conexion.php");
     $id_perro = $_POST['id_perro'];
-    $practica = $_POST['practica'];
     $tipo = $_POST['libreta'];
     $mensaje = '';
     if($inc){
 
-        $consulta = "SELECT * FROM $practica WHERE id_perro = $id_perro"  ;
+        $consulta = "SELECT * FROM practicas WHERE id_perro = $id_perro"  ;
         $resultado = mysqli_query($con,$consulta);
 
         if ($tipo == 'historia'){

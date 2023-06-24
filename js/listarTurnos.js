@@ -93,6 +93,7 @@ fetch ((url+"/php/listarTurnos.php"),{
             buttonAceptar.setAttribute("value", "Aceptar");
             buttonAceptar.setAttribute('data-id_turno', datos.id_turno);
             buttonAceptar.setAttribute('data-dia', datos.dia);
+            buttonAceptar.setAttribute('data-bloque', datos.bloque_horario);
             buttonAceptar.setAttribute('data-servicio', datos.servicio);
             buttonAceptar.setAttribute('data-id_cliente', datos.id_cliente);
             buttonAceptar.setAttribute('data-id_perro', datos.id_perro);
@@ -119,8 +120,8 @@ fetch ((url+"/php/listarTurnos.php"),{
             //listeners
             buttonAceptar.addEventListener('click', function(event) {
                 event.preventDefault();
-
-                if (asignarHorario(datos.bloque_horario)){
+                var bloque = event.target.dataset.bloque;
+                if (asignarHorario(bloque)){
                     var horario = fecha.getHours() + ":" + fecha.getMinutes();
                     var fromD = new FormData();
                     fromD.append('id_turno',event.target.dataset.id_turno);

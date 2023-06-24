@@ -54,7 +54,7 @@
     <div class="body-contenedor">
         <form id="formulario" action="" method="post" enctype="multipart/form-data">
             <label class="form-label">Registrar perro</label><br>
-            <input type="email" name="mail" id="read-only" class="input-style" readonly required><br>
+            <input type="email" name="mail" id="read-only" class="input-style" style="color: #808080;" readonly required><br>
             <script>	
                 const aux = localStorage.getItem('emailTitulo');
                 document.getElementById('read-only').value = aux;
@@ -72,13 +72,13 @@
             </select>
             <br>
             <span class="required-field">*</span>
-            <input type="text" name="color" class="input-style" placeholder="Color" required><br> 
+            <input type="text" name="color" class="input-style" placeholder="Color" required><br> <br>
+            Fecha de acimiento <br>
             <span class="required-field">*</span>
             <input type="date" name="nacimiento" class="input-style" placeholder="Fecha de nacimiento" required><br>
             <input type="text" name="observaciones" class="input-style" value="Sin Observaciones" placeholder="Observaciones (opcional)"><br><br>
             Foto (opcional) <br><br>
             <input type="file" name="foto"><br><br>
-           
             <select name="disponibilidad_cruza" hidden required>
                 <option value="0">No</option>
                 <option value="1">Si</option>

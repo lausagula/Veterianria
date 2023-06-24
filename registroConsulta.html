@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="initial-scale=1">
+		<title>¡Oh My Dog! - Registrar Vacunacion</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://code.jquery.com/jquery-latest.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<img src="img/Logo1-removebg-preview.png" id="imghome">
+			<div id="menu"> x
+				<ul id="ul-style-menu">
+					<div class="border"></div>
+					<li><a class="link-style-menu option-menu" href="index.html">INICIO</a></li>
+					<div class="border"></div>
+                    <li>
+						<a class="link-style-menu">SERVICIOS</a>
+						<select onchange="if (this.value) window.location.href = this.value;">
+							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+							<option class="option-select-menu" value="miPerfil.html">Mi perfil</option>
+							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
+							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option class="option-select-menu" value="formCampaniaDonacion.html">Registrar campaña de donacion</option>
+							<option class="option-select-menu" value="mostrarCampañasD.html">Mostrar campaña de donacion</option>
+							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
+							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
+							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
+							<option class="option-select-menu" value="mostrarDonaciones.html">Mostrar Donaciones</option>
+							<option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
+							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
+							<option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
+						</select>
+					</li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ver-usuarios option-menu" href="mostrarUsuarios.html">LISTAR USUSARIOS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-nos option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-con option-menu" href="contact-us.html">CONTACTO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu solicitar-turno option-menu" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateSing registrar-menu option-menu" href="sign-up.html">REGISTRAR USUARIO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateLogOut" id="logOut" href="index.html">CERRAR SESION</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateLogOut" id="bienvenida">Bienvenido:</a></li>
+					<div class="border"></div>
+					<script>
+						if(localStorage.getItem('email') !== null){
+							document.getElementById('bienvenida').innerHTML = 'Bienvenido<br>' + localStorage.getItem('email');
+						}
+					</script>
+				</ul>
+			</div>
+		</header>
+
+		<div class="body-sign-in-and-up" id="regis-consulta">
+			<form id="formulario" action="index.html" method="post">
+				<label class="form-label">Registrar consulta</label><br><br>
+                Servicio <br>
+                <input type="text" name="servicio" class="input-style" id="read-only" style="color: #808080;" readonly><br>
+                <script>
+                    const aux = localStorage.getItem('servicioCliente');
+					document.getElementById('read-only').value = aux;
+                </script>
+                <script>
+                    var contenedor = document.getElementById('formulario');
+                    var serv = document.getElementById('read-only').value;
+                    if((serv == 'vacuna-rabia') || (serv == 'vacuna-enfermedad')){
+                        let select = document.createElement('select');
+                        select.name = 'dosis';
+                        select.classList.add('input-style');
+                        select.required = true;
+                        let option1 = document.createElement('option');
+                        option1.value = 1;
+                        option1.textContent = 'Dosis 1';
+                        select.appendChild(option1);
+                        let option2 = document.createElement('option');
+                        option2.value = 2;
+                        option2.textContent = 'Dosis 2';
+                        select.appendChild(option2);
+                        contenedor.appendChild(select);
+                    }else if((serv == 'desparacitacion')){
+                        var input = document.createElement('input');
+                        input.type = 'number';
+                        input.name = 'dosis';
+                        input.classList.add('input-style');
+                        input.placeholder = 'Dosis en ml'
+                        input.required = true;
+                        input.min = 0.1;
+                        contenedor.appendChild(input);
+                    }
+
+                    var inputText = document.createElement('input');
+                    inputText.type = 'text';
+                    inputText.name = 'observacion';
+                    inputText.classList.add('input-style');
+                    inputText.placeholder = 'observacion'
+                    contenedor.appendChild(inputText);
+
+                    var p = document.createElement('p');
+                    p.classList.add('mensaje-error');
+                    contenedor.appendChild(p);
+
+                    var input = document.createElement('input');
+                    input.type = 'submit';
+                    input.id = 'submitLog';
+                    input.value = 'Registrar Vacunacion';
+                    input.classList.add('continuar-y-registrarme-btn');
+                    contenedor.appendChild(input);
+
+                </script>	
+			</form>
+        </div>
+	</body>
+    <script src="js/registrarConsulta.js" type="module"></script>
+</html>
