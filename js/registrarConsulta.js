@@ -14,6 +14,30 @@ function necesitaSegundaDosis(datos){
     return false;
 }
 
+function descuentos(id_cliente,monto){
+
+    let datosNuevo = new FormData ();
+    datosNuevo.append('id_cliente',localStorage.getItem('id_cliente'));
+    datosNuevo.append('monto', monto);
+
+    if(monto != null){
+        fetch((url+"/php/reducir-descuento.php"),{
+            method: 'POST',
+            body: datosNuevo
+        })
+        .then(response => response.json())       
+        .then(data => {
+            if(data.exito){
+                console.log(data.mensaje);
+            }else{
+                mostrarMensaje(data.mensaje);
+                alert(data.mensaje);
+            }
+        })
+        .catch(error => console.error(error));
+    }
+}
+
 function turnoSiguienteDosis(){
     let datosNuevo = new FormData ();
     datosNuevo.append('id_cliente',localStorage.getItem('id_cliente'));
@@ -47,6 +71,7 @@ function enviarDatos (datos){
     .then(data => {
         if(data.exito){
             mostrarMensaje(data.mensaje);
+            descuentos(localStorage.getItem('id_cliente') ,datos.get('descuento'));
             if(necesitaSegundaDosis(datos)){
                 turnoSiguienteDosis();
             }

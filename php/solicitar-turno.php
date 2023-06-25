@@ -94,25 +94,25 @@
         }    
     }
     
-    if (($servicio == 'vacuna-enfermedad') || ($servicio == 'desparacitacion') || ($servicio == 'vacuna-rabia')){
+    
 
-        $consultaTurnosPendientes = "SELECT * FROM turnos_pendientes WHERE id_perro = '$id_perro' AND servicio = '$servicio'";
-        $consulta1 = mysqli_query($con,$consultaTurnosPendientes);
+    $consultaTurnosPendientes = "SELECT * FROM turnos_pendientes WHERE id_perro = '$id_perro' AND servicio = '$servicio'";
+    $consulta1 = mysqli_query($con,$consultaTurnosPendientes);
 
-        if(mysqli_num_rows($consulta1) > 0){
-            echo json_encode(array('exito' => false, 'mensaje' => 'Ya existe un turno pendiente para este servicio al mismo perro'. mysqli_error($con)));
-            return;
-        }
-
-        $consultaTurnos = "SELECT * FROM turnos WHERE id_perro = '$id_perro' AND servicio = '$servicio'";
-        $consulta2 = mysqli_query($con,$consultaTurnos);
-        
-        if(mysqli_num_rows($consulta2) > 0){
-            echo json_encode(array('exito' => false, 'mensaje' => 'Ya existe un turno programado para este servicio al mismo perro'. mysqli_error($con)));
-            return;
-        }
-        
+    if(mysqli_num_rows($consulta1) > 0){
+        echo json_encode(array('exito' => false, 'mensaje' => 'Ya existe un turno pendiente para este servicio al mismo perro'. mysqli_error($con)));
+        return;
     }
+
+    $consultaTurnos = "SELECT * FROM turnos WHERE id_perro = '$id_perro' AND servicio = '$servicio'";
+    $consulta2 = mysqli_query($con,$consultaTurnos);
+    
+    if(mysqli_num_rows($consulta2) > 0){
+        echo json_encode(array('exito' => false, 'mensaje' => 'Ya existe un turno programado para este servicio al mismo perro'. mysqli_error($con)));
+        return;
+    }
+    
+    
 
     $sql = "INSERT INTO turnos_pendientes (dia, servicio, bloque_horario, id_cliente, id_perro) VALUES ('$fecha', '$servicio', '$horario', '$id_cliente', '$id_perro')";
     if (mysqli_query($con, $sql)) {
