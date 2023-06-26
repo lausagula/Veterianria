@@ -7,6 +7,30 @@ function mostrarMensaje (mensaje){
     elemento.innerHTML = mensaje;
 }
 
+function descuentos(id_cliente,monto){
+
+    let datosNuevo = new FormData ();
+    datosNuevo.append('id_cliente',localStorage.getItem('idUsuario'));
+    datosNuevo.append('monto', monto);
+
+    if(monto != null){
+        fetch((url+"/php/reducir-descuento.php"),{
+            method: 'POST',
+            body: datosNuevo
+        })
+        .then(response => response.json())       
+        .then(data => {
+            if(data.exito){
+                console.log(data.mensaje);
+            }else{
+                mostrarMensaje(data.mensaje);
+                alert(data.mensaje);
+            }
+        })
+        .catch(error => console.error(error));
+    }
+}
+
 function enviarDatos (datos){
     fetch((url+"/php/registrar-urgencia.php"),{ 
         method: 'POST',
@@ -16,6 +40,7 @@ function enviarDatos (datos){
     .then(data => {
         if(data.exito){
             mostrarMensaje(data.mensaje);
+            descuentos(localStorage.getItem('id_cliente'), datos.get('descuento'));
             alert(data.mensaje);
             localStorage.removeItem('id_perro');
             window.location.href = (url + '/mostrarInformacionPerro.html');

@@ -54,6 +54,11 @@
 				<label class="form-label">Registrar Urgencia</label><br>
 				<input type="text" name="servicio" class="input-style" value="urgencia" id="read-only" style="color: #808080;" readonly required><br>
                 <input type="text" name="observacion" class="input-style" placeholder="Observaciones" required><br>
+				Descuentos <br>
+				<select name="descuento" id="desc">
+					<option value="" selected disabled>Selecciona un monto</option>
+				</select><br><br>
+				<script src="js/listarDescuentos.js" type="module"></script>
 				<p class="mensaje-error"></p>
 				<input type="submit" id="submitLog" value="Registrar Vacunacion" class="continuar-y-registrarme-btn">
 			</form>
