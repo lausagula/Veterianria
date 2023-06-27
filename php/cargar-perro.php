@@ -10,6 +10,7 @@
     $color = $_POST['color'];
     $nacimiento = $_POST['nacimiento'];
     $observacion = $_POST['observaciones'];
+    $sexo = $_POST['sexo'];
     //$foto = $_POST['foto'];
     $disponibilidad_cruza = $_POST['disponibilidad_cruza'];
 
@@ -22,10 +23,10 @@
         $id_cliente = $fila['id_cliente'];
 
         if (empty($_FILES['foto']['tmp_name'])) {
-            $insertar = "INSERT INTO perros (nombre, raza, color, nacimiento, observaciones, disponibilidad_cruza, id_cliente) VALUES ('$name', '$raza', '$color', '$nacimiento', '$observacion', '$disponibilidad_cruza', '$id_cliente')";
+            $insertar = "INSERT INTO perros (nombre, raza, color, nacimiento, sexo, observaciones, disponibilidad_cruza, id_cliente) VALUES ('$name', '$raza', '$color', '$nacimiento', '$sexo', '$observacion', '$disponibilidad_cruza', '$id_cliente')";
         } else {
             $foto = $_FILES['foto']['name'];
-            $insertar = "INSERT INTO perros (nombre, raza, color, nacimiento, observaciones, foto, disponibilidad_cruza, id_cliente) VALUES ('$name', '$raza', '$color', '$nacimiento', '$observacion', '$foto', '$disponibilidad_cruza', '$id_cliente')"; 
+            $insertar = "INSERT INTO perros (nombre, raza, color, nacimiento, sexo, observaciones, foto, disponibilidad_cruza, id_cliente) VALUES ('$name', '$raza', '$color', '$nacimiento', '$sexo', '$observacion', '$foto', '$disponibilidad_cruza', '$id_cliente')"; 
         }
 
         $query = mysqli_query($con, $insertar);

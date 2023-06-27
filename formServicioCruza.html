@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="initial-scale=1">
+		<title>¡Oh My Dog! - Registro perro para cruza</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://code.jquery.com/jquery-latest.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<img src="img/Logo1-removebg-preview.png" id="imghome">
+			<div id="menu"> x
+				<ul id="ul-style-menu">
+					<div class="border"></div>
+					<li><a class="link-style-menu option-menu" href="index.html">INICIO</a></li>
+					<div class="border"></div>
+                    <li>
+						<a class="link-style-menu">SERVICIOS</a>
+						<select onchange="if (this.value) window.location.href = this.value;">
+							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
+							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
+							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
+							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
+						</select>
+					</li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-nos option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-con option-menu" href="contact-us.html">CONTACTO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu solicitar-turno option-menu" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateSing registrar-menu option-menu" href="sign-up.html">REGISTRAR USUARIO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateLogOut" id="logOut" href="index.html">CERRAR SESION</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateLogOut" id="bienvenida">Bienvenido:</a></li>
+					<div class="border"></div>
+					<script>
+						if (localStorage.getItem('email') !== null){
+							document.getElementById('bienvenida').innerHTML = 'Bienvenido<br>' + localStorage.getItem('email');
+						}
+					</script>
+				</ul>
+			</div>
+		</header>
+
+		<div class="body-contenedor">
+			<form id="formulario" method="post">
+				<label class="form-label">Registrar Perro para Cruza</label><br>
+                <p>Estos datos seran visibles para el resto de los usuarios !</p><br>
+                <input type="text" name="nombre" class="input-style" id="read-only" style="color: #808080;" readonly required><br>
+                <script>
+                    const aux = localStorage.getItem('nombre_perro');
+					document.getElementById('read-only').value = aux;
+                </script>
+                <input type="text" name="raza" class="input-style" id="raza_perro" style="color: #808080;" readonly required><br>
+                <input type="text" name="sexo" class="input-style" id="sexo_perro" style="color: #808080;" readonly required><br>
+                <input type="text" name="color" class="input-style" id="color_perro" style="color: #808080;" readonly required><br>
+                <input type="text" name="fecha" class="input-style" id="fecha_perro" style="color: #808080;" readonly required><br><br>
+				<script src="js/datosPerroCruza.js" type="module"></script>
+                <span class="required-field" id="span_celo">Fecha ultimo celo</span><br>
+                <input type="date" name="fechaCelo" class="input-style" id="fecha_celo" required><br>
+				<p class="mensaje-error"></p>
+				<input type="submit" id="submitLog" value="Registrar" class="continuar-y-registrarme-btn">
+			</form>
+        </div>
+	</body>
+	<script src="js/validarPerroCruza.js" type="module"></script>
+</html>

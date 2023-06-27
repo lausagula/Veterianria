@@ -85,7 +85,7 @@ fetch (( url+"/php/mostrarCuidador.php"),{
                         consola.log('hubo un error');
                     }
                 })
-              })         
+            })         
 
             
         }

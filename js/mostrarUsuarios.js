@@ -38,18 +38,18 @@ fetch (url+"/php/mostrarUsuarios.php")
         div.appendChild(telefonoTitulo);
         div.appendChild(document.createTextNode(datos.telefono));
 
-          // Tipo usuario
-          var tipoTitulo = document.createElement('strong');
-          tipoTitulo.textContent = 'Tipo Usuario: ';
-          div.appendChild(document.createElement('br'));
-          div.appendChild(tipoTitulo);
-          console.log ("ver");
-          console.log (datos.es_administrador == 1);
-          if (datos.es_administrador == 1){
-              div.appendChild(document.createTextNode("Administrador"));
-          }else{
-              div.appendChild(document.createTextNode("Usuario Comun"));
-          }
+        // Tipo usuario
+        var tipoTitulo = document.createElement('strong');
+        tipoTitulo.textContent = 'Tipo Usuario: ';
+        div.appendChild(document.createElement('br'));
+        div.appendChild(tipoTitulo);
+        console.log ("ver");
+        console.log (datos.es_administrador == 1);
+        if (datos.es_administrador == 1){
+            div.appendChild(document.createTextNode("Administrador"));
+        }else{
+            div.appendChild(document.createTextNode("Usuario Comun"));
+        }
 
         // Boton registrar Perro
         var botonRegistrar = document.createElement('button');

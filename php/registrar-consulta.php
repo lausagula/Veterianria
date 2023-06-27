@@ -12,6 +12,12 @@
     $fecha = date('Y-m-d');
 
     if($con){
+
+        if($servicio == 'castracion'){
+            $actualizar = "UPDATE perros SET disponibilidad_cruza = 0 WHERE id_perro = '$id_perro' AND disponibilidad_cruza = 1";
+            $resultado = mysqli_query($con,$actualizar);
+        }
+
         if ((isset($observacion)) && (isset($dosis))){
             $insertar = "INSERT INTO practicas (tipo, dosis, dia, observacion, id_perro) VALUES ('$servicio', '$dosis', '$fecha', '$observacion', '$id_perro')";
             $query = mysqli_query($con,$insertar);

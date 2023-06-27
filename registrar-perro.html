@@ -63,7 +63,7 @@
             <input type="text" name="name" class="input-style" placeholder="Nombre del perro" required><br>
             <span class="required-field">*</span>
             <select name="raza" class="input-style" required>
-                <option value="">Selecciona una raza</option>
+                <option value="" selected disabled>Selecciona una raza</option>
                 <option value="Labrador Retriever">Labrador Retriever</option>
                 <option value="Golden Retriever">Dogo Argentino</option>
                 <option value="Bulldog">Bulldog</option>
@@ -77,9 +77,15 @@
             <span class="required-field">*</span>
             <input type="date" name="nacimiento" class="input-style" placeholder="Fecha de nacimiento" required><br>
             <input type="text" name="observaciones" class="input-style" value="Sin Observaciones" placeholder="Observaciones (opcional)"><br><br>
+            Sexo <br>
+            <select name="sexo" id="sexo" class="input-style" required>
+                <option value="hembra">Hembra</option>
+                <option value="macho">Macho</option>
+            </select><br><br>
             Foto (opcional) <br><br>
             <input type="file" name="foto"><br><br>
-            <select name="disponibilidad_cruza" hidden required>
+            Disonibilidad para Cruza <br>
+            <select name="disponibilidad_cruza" class="input-style" required>
                 <option value="0">No</option>
                 <option value="1">Si</option>
             </select><br>

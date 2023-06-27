@@ -36,6 +36,13 @@ fetch ((url+"/php/mostrarInformacionPerros.php") ,{
         div.appendChild(razaTitulo);
         div.appendChild(document.createTextNode(datos.raza));
 
+        // Sexo
+        var sexoTitulo = document.createElement('strong');
+        sexoTitulo.textContent = 'Raza: ';
+        div.appendChild(document.createElement('br'));
+        div.appendChild(sexoTitulo);
+        div.appendChild(document.createTextNode(datos.sexo));
+
         // Color
         var colorTitulo = document.createElement('strong');
         colorTitulo.textContent = 'Color: ';
@@ -43,6 +50,16 @@ fetch ((url+"/php/mostrarInformacionPerros.php") ,{
         div.appendChild(colorTitulo);
         div.appendChild(document.createTextNode(datos.color));
 
+        // Disponibilidad Cruza
+        var disponibilidad = document.createElement('strong');
+        disponibilidad.textContent = 'Disponiblidad para cruza: ';
+        div.appendChild(document.createElement('br'));
+        div.appendChild(disponibilidad);
+        if (datos.disponibilidad_cruza == 1){
+            div.appendChild(document.createTextNode("Disponible"));
+        }else{
+            div.appendChild(document.createTextNode("No Disponible"));
+        }
        
 
         if (localStorage.getItem('loggedAdm') === 'true'){
@@ -71,14 +88,21 @@ fetch ((url+"/php/mostrarInformacionPerros.php") ,{
         var botonLibretaVacunacion = document.createElement('button');
         botonLibretaVacunacion.textContent = 'Libreta Sanitaria';
 
-         // Agregar el botón al contenedor
-         div.appendChild(document.createElement('br'));
-         div.appendChild(botonHistoriaClinica);
+        // Agregar el botón al contenedor
+        div.appendChild(document.createElement('br'));
+        div.appendChild(botonHistoriaClinica);
 
-          // Agregar el botón al contenedor
-          div.appendChild(document.createElement('br'));
-          div.appendChild(botonLibretaVacunacion);
+        // Agregar el botón al contenedor
+        div.appendChild(document.createElement('br'));
+        div.appendChild(botonLibretaVacunacion);
 
+        // Agregar boton disponibilidad para cruza
+
+        var botonCruza = document.createElement('button');
+        botonCruza.textContent = 'Cambiar disponibilida para cruza';
+                
+        div.appendChild(document.createElement('br'));
+        div.appendChild(botonCruza);
     
         div.appendChild(document.createElement('br'));
         div.appendChild(document.createElement('br'));
@@ -99,7 +123,37 @@ fetch ((url+"/php/mostrarInformacionPerros.php") ,{
             //localStorage.setItem('emailTitulo',datos.mail );
             localStorage.setItem('id_perro',datos.id_perro);
             window.location.href = (url+'/libretaVacunacion.html?id='+datos.id_perro);
-         });
+        });
+
+        botonCruza.addEventListener('click', function(){
+
+            if (datos.disponibilidad_cruza == 1){
+                var formD = new FormData();
+                formD.append('id_perro',datos.id_perro);
+                formD.append('disponibilidad',datos.disponibilidad_cruza);
+                fetch (( url+"/php/cambiarEstadoCruza.php"),{   
+                    method: 'POST',
+                    body: formD
+                })
+                .then(res => res.json())
+                .then(data  => {
+                    if(data.exito){
+                        window.location.href = (url+'/mostrarInformacionPerro.html');
+                        alert(data.mensaje);
+                    }else{
+                        alert(data.mensaje);
+                    }
+                })
+            }else{
+                localStorage.setItem('id_perro',datos.id_perro);
+                localStorage.setItem('nombre_perro',datos.nombre);
+                localStorage.setItem('disponibilidad',datos.disponibilidad_cruza);
+                window.location.href = (url+'/formServicioCruza.html');
+            }
+            
+            
+
+        });
 
 
         });
