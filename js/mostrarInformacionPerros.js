@@ -60,6 +60,13 @@ fetch ((url+"/php/mostrarInformacionPerros.php") ,{
         }else{
             div.appendChild(document.createTextNode("No Disponible"));
         }
+
+        // Foto        
+        div.appendChild(document.createElement('br'));
+        var img = document.createElement('img');
+        img.src = url + '/php/cargar-foto.php?id=' + datos.id_perro;
+        img.width = 200;
+        div.appendChild(img);
        
 
         if (localStorage.getItem('loggedAdm') === 'true'){

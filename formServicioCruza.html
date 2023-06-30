@@ -53,18 +53,22 @@
 			<form id="formulario" method="post">
 				<label class="form-label">Registrar Perro para Cruza</label><br>
                 <p>Estos datos seran visibles para el resto de los usuarios !</p><br>
-                <input type="text" name="nombre" class="input-style" id="read-only" style="color: #808080;" readonly required><br>
+				Nombre <br>
+                <input type="text" name="nombre" class="input-style" id="read-only" style="color: #808080;" readonly required><br><br>
                 <script>
                     const aux = localStorage.getItem('nombre_perro');
 					document.getElementById('read-only').value = aux;
                 </script>
-                <input type="text" name="raza" class="input-style" id="raza_perro" style="color: #808080;" readonly required><br>
-                <input type="text" name="sexo" class="input-style" id="sexo_perro" style="color: #808080;" readonly required><br>
-                <input type="text" name="color" class="input-style" id="color_perro" style="color: #808080;" readonly required><br>
+				Raza <br>
+                <input type="text" name="raza" class="input-style" id="raza_perro" style="color: #808080;" readonly required><br><br>
+				Sexo <br>
+                <input type="text" name="sexo" class="input-style" id="sexo_perro" style="color: #808080;" readonly required><br><br>
+				Color <br>
+                <input type="text" name="color" class="input-style" id="color_perro" style="color: #808080;" readonly required><br><br>
+				Nacimiento <br>
                 <input type="text" name="fecha" class="input-style" id="fecha_perro" style="color: #808080;" readonly required><br><br>
 				<script src="js/datosPerroCruza.js" type="module"></script>
-                <span class="required-field" id="span_celo">Fecha ultimo celo</span><br>
-                <input type="date" name="fechaCelo" class="input-style" id="fecha_celo" required><br>
+				<p>Incentivo a la adopcion <a href="">click aqui</a></p>
 				<p class="mensaje-error"></p>
 				<input type="submit" id="submitLog" value="Registrar" class="continuar-y-registrarme-btn">
 			</form>

@@ -64,6 +64,17 @@
                         echo json_encode(array('exito' => false, 'mensaje' => 'Para perros mayores a 4 meses deben esperar al menos 1 año entre las dosis.'. mysqli_error($con)));
                         return;
                     }
+                }else{
+                    $fecha_aplicacion = $row['dia'];
+                    $aplicacion = new DateTime($fecha_aplicacion);
+                    $diferencia_dosis = $aplicacion->diff($fecha_actual);
+                    $cant_dias_dosis = $diferencia_dosis->days;
+                    if($cant_dias_dosis < 365 ){
+                        echo json_encode(array('exito' => false, 'mensaje' => 'Para perros debe esperar al menos 1 año para recibir el refuerzo.'. mysqli_error($con)));
+                        return;
+                    }
+
+
                 }
             }
         }
@@ -87,6 +98,15 @@
 
                     if (($cant_dias_dosis < 365)){
                         echo json_encode(array('exito' => false, 'mensaje' => 'Debe esperar al menos 1 año entre las dosis.'. mysqli_error($con)));
+                        return;
+                    }
+                }else{
+                    $fecha_aplicacion = $row['dia'];
+                    $aplicacion = new DateTime($fecha_aplicacion);
+                    $diferencia_dosis = $aplicacion->diff($fecha_actual);
+                    $cant_dias_dosis = $diferencia_dosis->days;
+                    if($cant_dias_dosis < 365 ){
+                        echo json_encode(array('exito' => false, 'mensaje' => 'Para perros debe esperar al menos 1 año para recibir el refuerzo.'. mysqli_error($con)));
                         return;
                     }
                 }

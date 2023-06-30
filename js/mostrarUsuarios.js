@@ -43,8 +43,6 @@ fetch (url+"/php/mostrarUsuarios.php")
         tipoTitulo.textContent = 'Tipo Usuario: ';
         div.appendChild(document.createElement('br'));
         div.appendChild(tipoTitulo);
-        console.log ("ver");
-        console.log (datos.es_administrador == 1);
         if (datos.es_administrador == 1){
             div.appendChild(document.createTextNode("Administrador"));
         }else{

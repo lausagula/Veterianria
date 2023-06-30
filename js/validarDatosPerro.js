@@ -21,7 +21,7 @@ function enviarDatos(datos){
            // var idCliente = urlCLiente.searchParams.get("id");
             //console.log(idCliente+" validar perro");
             //window.location.href = (url+'/index.html?id='+idCliente);
-             window.location.href = (url+'/index.html');
+            window.location.href = (url+'/index.html');
         }else{ 
             mostrarMensaje(elemento,data.mensaje);
         }

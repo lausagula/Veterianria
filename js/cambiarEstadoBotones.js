@@ -2,6 +2,7 @@ var registroCP = document.querySelector('option[value="form-RegistroCP.html"]');
 var registroAdopcion = document.querySelector('option[value="cargarAdopcion.html"]');
 var cargarCampaña = document.querySelector('option[value="formCampaniaDonacion.html"]');
 var mostrarCampaña = document.querySelector('option[value="mostrarCampañasD.html"]');
+var mostrarDonaciones = document.querySelector('option[value="mostrarDonaciones.html"]');
 var turnosDelDia = document.querySelector('option[value="turnosDelDia.html"]');
 var listarTurnosPendientes = document.querySelector('option[value="listar-turnos.html"]');
 var listarMisTurnos = document.querySelector('option[value="listar-mis-turnos.html"]');
@@ -34,6 +35,7 @@ if (localStorage.getItem('loggedIn') == 'true') {
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
     mostrarCampaña.style.display = 'flex';
+
     solicitarTurno.style.display = 'none';
     perfilUsuario.style.display = 'none';
     turnosDelDia.style.display = 'none';
@@ -58,6 +60,7 @@ if (localStorage.getItem('loggedIn') == 'true') {
         solicitarTurno.style.display = 'flex';
         listarTurnosPendientes.style.display = 'none';
         listarMisTurnos.style.display = 'flex';
+        mostrarDonaciones.style.display = 'flex';
         cargarCampaña.style.display = 'none';
         perfilUsuario.style.display = 'flex';
         
@@ -84,6 +87,7 @@ if (localStorage.getItem('loggedIn') == 'true') {
     solicitarTurno.style.display = 'none';
     listarTurnosPendientes.style.display = 'none';
     mostrarCampaña.style.display = 'flex';
+    mostrarDonaciones.style.display = 'none';
     turnosDelDia.style.display = 'none';
     listarMisTurnos.style.display = 'none';
     perfilUsuario.style.display = 'none';

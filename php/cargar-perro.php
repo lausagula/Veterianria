@@ -25,8 +25,10 @@
         if (empty($_FILES['foto']['tmp_name'])) {
             $insertar = "INSERT INTO perros (nombre, raza, color, nacimiento, sexo, observaciones, disponibilidad_cruza, id_cliente) VALUES ('$name', '$raza', '$color', '$nacimiento', '$sexo', '$observacion', '$disponibilidad_cruza', '$id_cliente')";
         } else {
-            $foto = $_FILES['foto']['name'];
-            $insertar = "INSERT INTO perros (nombre, raza, color, nacimiento, sexo, observaciones, foto, disponibilidad_cruza, id_cliente) VALUES ('$name', '$raza', '$color', '$nacimiento', '$sexo', '$observacion', '$foto', '$disponibilidad_cruza', '$id_cliente')"; 
+            $image = $_FILES['foto']['tmp_name'];
+            $imageContenido = addslashes(file_get_contents($image));
+
+            $insertar = "INSERT INTO perros (nombre, raza, color, nacimiento, sexo, observaciones, foto, disponibilidad_cruza, id_cliente) VALUES ('$name', '$raza', '$color', '$nacimiento', '$sexo', '$observacion', '$imageContenido', '$disponibilidad_cruza', '$id_cliente')"; 
         }
 
         $query = mysqli_query($con, $insertar);
@@ -34,7 +36,7 @@
         if ($query) {
             echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));
         } else {            
-            echo json_encode(array('exito' => false, 'mensaje' => 'Error al procesar la solicitud'));
+            echo json_encode(array('exito' => false, 'mensaje' => 'Error al procesar la solicitud' . mysqli_error($con)));
         }
     } else {
         echo json_encode(array('exito' => false, 'mensaje' => 'No se encontró el cliente con el correo especificado'));
