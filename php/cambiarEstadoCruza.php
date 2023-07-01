@@ -23,7 +23,7 @@
         $actualizar = "UPDATE perros SET disponibilidad_cruza = (CASE WHEN disponibilidad_cruza = 1 THEN 0 ELSE 1 END) WHERE id_perro = '$id_perro'";
         $resultado = mysqli_query($con,$actualizar);
         if($resultado){
-            echo json_encode(array('exito' => true, 'mensaje' => 'Se realizo el cambio con exito' . $disponibilidad));
+            echo json_encode(array('exito' => true, 'mensaje' => 'Se realizo el cambio con exito'));
         } else {
             echo json_encode(array('exito' => false, 'mensaje' =>  'Error en la consulta. ' . mysqli_error($con)));
         }

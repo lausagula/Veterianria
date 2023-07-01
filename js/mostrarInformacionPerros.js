@@ -110,6 +110,28 @@ fetch ((url+"/php/mostrarInformacionPerros.php") ,{
                 
         div.appendChild(document.createElement('br'));
         div.appendChild(botonCruza);
+
+        if (datos.disponibilidad_cruza == 1){
+
+            // Agregar boton ver candidatos para
+
+            var botonCandidatos = document.createElement('button');
+            botonCandidatos.textContent = 'Candidatos para cruza';
+                    
+            div.appendChild(document.createElement('br'));
+            div.appendChild(botonCandidatos);
+
+            botonCandidatos.addEventListener('click', function(){
+
+                localStorage.setItem('cruzaIdPerro',datos.id_perro);
+                localStorage.setItem('cruzaIdCliente',datos.id_cliente);
+                localStorage.setItem('cruzaSexo',datos.sexo);
+                localStorage.setItem('cruzaRaza',datos.raza);
+
+                window.location.href = (url+'/mostrarCandidatosCruza.html');
+                
+            });
+        }
     
         div.appendChild(document.createElement('br'));
         div.appendChild(document.createElement('br'));

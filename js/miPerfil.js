@@ -54,18 +54,23 @@ fetch ((url+"/php/mi-perfil.php"),{
             div.appendChild(document.createElement('br'));
             div.appendChild(document.createElement('br'));
 
+            var botonRegistrar = document.createElement('button');
+            botonRegistrar.textContent = 'Registrar Perro';
+
+            var buttonVerPerros = document.createElement('button');
+            buttonVerPerros.textContent = 'Informacion de los Perros';
+
             var buttonDonaciones = document.createElement('button');
             buttonDonaciones.textContent = 'Ver donaciones';
 
-            var buttonVerPerros = document.createElement('button');
-            buttonVerPerros.textContent = 'Informacion Perros';
-
             div.appendChild(document.createElement('br'));
-            div.appendChild(buttonDonaciones);
+            div.appendChild(botonRegistrar);
     
             div.appendChild(document.createElement('br'));
             div.appendChild(buttonVerPerros);
-    
+
+            div.appendChild(document.createElement('br'));
+            div.appendChild(buttonDonaciones);
             
             div.appendChild(document.createElement('br'));
             div.appendChild(document.createElement('br'));
@@ -82,6 +87,12 @@ fetch ((url+"/php/mi-perfil.php"),{
             buttonVerPerros.addEventListener('click', function(event) {
                 console.log('Mostrar Informacion de perros');
                 window.location.href = (url+'/mostrarInformacionPerro.html');
+            });
+
+            botonRegistrar.addEventListener('click', function () {
+                console.log('Se hizo clic en el botón');
+                localStorage.setItem('emailTitulo',datos.mail );
+                window.location.href = (url+'/registrar-perro.html');
             });
             
         });

@@ -40,14 +40,6 @@ fetch((url+"/php/datos-perro-cruza.php"), {
             sexoPerro.value = datos.sexo;
 
 
-            if (datos.sexo == 'macho'){
-                const span = document.getElementById('span_celo');
-                const input = document.getElementById('fecha_celo');
-                span.setAttribute('contenteditable', 'false');
-                span.hidden = true;
-                input.disabled = true;
-                input.hidden = true;
-            }
         });        
 
     }else{ 

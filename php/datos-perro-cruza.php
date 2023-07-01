@@ -7,7 +7,7 @@
 
     $id_perro = $_POST['id_perro'];
     
-    $insertar = "SELECT * FROM perros WHERE id_perro = '$id_perro' LIMIT 1";
+    $insertar = "SELECT id_perro, nombre, raza, color, nacimiento, sexo, observaciones, disponibilidad_cruza, id_cliente FROM perros WHERE id_perro = '$id_perro' LIMIT 1";
     $resultado = mysqli_query($con,$insertar);
 
     if ($resultado){
