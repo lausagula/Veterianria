@@ -3,15 +3,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="initial-scale=1">
-		<title>¡Oh My Dog! - Registro cuidadores</title>
+		<title>¡Oh My Dog! - Registrar perro perdidos</title>
 		<link rel="stylesheet" href="css/style.css">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="https://code.jquery.com/jquery-latest.js"></script>
 	</head>
 
 	<body>
 		<header>
 			<img src="img/Logo1-removebg-preview.png" id="imghome">
-			<div id="menu">
+			<div id="menu"> x
 				<ul id="ul-style-menu">
 					<div class="border"></div>
 					<li><a class="link-style-menu option-menu" href="index.html">INICIO</a></li>
@@ -20,26 +20,17 @@
 						<a class="link-style-menu">SERVICIOS</a>
 						<select onchange="if (this.value) window.location.href = this.value;">
 							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
-							<option class="option-select-menu" value="miPerfil.html">Mi perfil</option>
 							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
 							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
-							<option class="option-select-menu" value="formCampaniaDonacion.html">Registrar campaña de donacion</option>
 							<option class="option-select-menu" value="formPerroBuscado.html">Registrar Perro Buscado</option>
 							<option class="option-select-menu" value="mostrarPerrosBuscados.html">Mostrar Perros Buscados</option>
 							<option class="option-select-menu" value="formPerroPerdidos.html">Registrar Perro Perdidos</option>
 							<option class="option-select-menu" value="mostrarPerrosPerdidos.html">Mostrar Perros Perdidos</option>
-							<option class="option-select-menu" value="mostrarCampañasD.html">Mostrar campaña de donacion</option>
 							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
 							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
 							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
-							<option class="option-select-menu" value="mostrarDonaciones.html">Mostrar Donaciones</option>
-							<option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
-							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
-							<option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
 						</select>
 					</li>
-					<div class="border"></div>
-					<li><a class="link-style-menu ver-usuarios" class="option-menu" href="mostrarUsuarios.html">LISTAR USUSARIOS</a></li>
 					<div class="border"></div>
 					<li><a class="link-style-menu ocultar-nos option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
 					<div class="border"></div>
@@ -62,26 +53,43 @@
 			</div>
 		</header>
 
-		<div class="body-sign-in-and-up">
-			<form id="formulario" action="index.html" method="post">
-				<label class="form-label">Formulario de Registro para Cuidadores y Paseadores</label><br>
-				<input type="text" name="name" class="input-style" placeholder="Nombre" required><br>
-				<input type="text" name="lastName" class="input-style" placeholder="Apellido" required><br>
-				<input type="email" name="email" id="log-in-email" class="input-style" placeholder="Email"><br>
-				<select name="service" class="input-style" required>
-					<option value="" selected disabled>Selecciona un servicio</option>
-					<option value="cuidador">Cuidador</option>
-					<option value="paseador">Paseador</option>
-					<!-- Agrega más opciones si es necesario -->
-				  </select><br>
-				<input type="text" name="place" class="input-style" placeholder="Lugar" required><br>
+		<div class="body-contenedor">
+			<form id="formulario" method="post" enctype="multipart/form-data">
+				<label class="form-label">Registrar Perro Buscado</label><br>
+                <input type="email" name="email" class="input-style" id="read-only" style="color: #808080;" readonly required><br><br>
+                <script>
+                    const aux = localStorage.getItem('email');
+					document.getElementById('read-only').value = aux;
+                </script>
+                Raza <br>
+                <select name="raza" class="input-style" required>
+                    <option value="" selected disabled>Selecciona una raza</option>
+                    <option value="Labrador Retriever">Labrador Retriever</option>
+                    <option value="Golden Retriever">Dogo Argentino</option>
+                    <option value="Bulldog">Bulldog</option>
+                    <option value="Caniche">Caniche</option>
+                    <option value="Mestizo">Mestizo</option>
+                </select><br><br>
+				Zona <br>
+                <input type="text" name="zona" class="input-style" placeholder="Zona" required><br><br>
+				Fecha aproximada <br>
+                <input type="date" name="fecha" class="input-style" required><br><br>
+                Sexo <br>
+                <select name="sexo" class="input-style" required>
+                    <option value="" selected disabled>Seleccionar sexo</option>
+                    <option value="hembra">Hembra</option>
+                    <option value="macho">Macho</option>
+                </select><br><br>
+				Caracteristicas <br>
+                <input type="text" name="caracteristicas" class="input-style" placeholder="Caracteristicas" required><br><br>
+                Comportamiento <br>
+                <input type="text" name="comportamiento" class="input-style" placeholder="Comportamiento" required><br><br>
+                Foto <br>
+                <input type="file" name="foto" accept="image/*" required><br><br>
 				<p class="mensaje-error"></p>
 				<input type="submit" id="submitLog" value="Registrar" class="continuar-y-registrarme-btn">
-				
 			</form>
         </div>
 	</body>
-	<script src="js/v-cuidador-paseador.js" type="module"></script>
-	<script src="js/cambiarEstadoBotones.js"></script>
-	<script src="js/cerrarSesion.js"></script>
+	<script src="js/validarPerroPerdido.js" type="module"></script>
 </html>

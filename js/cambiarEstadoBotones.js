@@ -1,6 +1,10 @@
 var registroCP = document.querySelector('option[value="form-RegistroCP.html"]');
 var registroAdopcion = document.querySelector('option[value="cargarAdopcion.html"]');
 var cargarCampaña = document.querySelector('option[value="formCampaniaDonacion.html"]');
+var registrarBuscado = document.querySelector('option[value="formPerroBuscado.html"]');
+var registrarPerdidos = document.querySelector('option[value="formPerroPerdidos.html"]');
+var mostrarPerrosBuscados = document.querySelector('option[value="mostrarPerrosBuscados.html"]');
+var mostrarPerrosPerdidos = document.querySelector('option[value="mostrarPerrosPerdidos.html"]');
 var mostrarCampaña = document.querySelector('option[value="mostrarCampañasD.html"]');
 var mostrarDonaciones = document.querySelector('option[value="mostrarDonaciones.html"]');
 var turnosDelDia = document.querySelector('option[value="turnosDelDia.html"]');
@@ -35,6 +39,8 @@ if (localStorage.getItem('loggedIn') == 'true') {
     ocultarContacto.style.display = 'none';
     ocultarNosotros.style.display = 'none';
     mostrarCampaña.style.display = 'flex';
+    mostrarPerrosBuscados.style.display = 'flex';
+    mostrarPerrosPerdidos.style.display = 'flex';
 
     solicitarTurno.style.display = 'none';
     perfilUsuario.style.display = 'none';
@@ -91,4 +97,8 @@ if (localStorage.getItem('loggedIn') == 'true') {
     turnosDelDia.style.display = 'none';
     listarMisTurnos.style.display = 'none';
     perfilUsuario.style.display = 'none';
+    registrarBuscado.style.display = 'none';
+    registrarPerdidos.style.display = 'none';
+    mostrarPerrosBuscados.style.display = 'flex';
+    mostrarPerrosPerdidos.style.display = 'flex';
 }

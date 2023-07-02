@@ -245,10 +245,10 @@ header{
 	vertical-align: middle;
     border: 1px solid #3d3d3d;
     border-radius: 10px;
-    width: 800px;
-    height: 800px;
+    width: 1000px;
+    height: 1200px;
 	margin-top: 130px;
-	padding-top: 50px;
+	padding-top: 20px;
 }
 
 .body-contenedor hr{

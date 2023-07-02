@@ -74,7 +74,7 @@ fetch ((url+"/php/listar-candidatos.php") ,{
 
         });
     }else{
-        console.log("No hay ningun perro registrado");
+        console.log("No hay ningun perro disponible para la cruza");
         var p = document.createElement('p');
         p.textContent = data.mensaje;
         contenedor.appendChild(p);
