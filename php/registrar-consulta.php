@@ -9,6 +9,7 @@
     $servicio = $_POST['servicio'];
     $observacion = $_POST['observacion'];
     $dosis = $_POST['dosis'];
+    $peso = $_POST['peso'];
     $fecha = date('Y-m-d');
 
     if($con){
@@ -19,17 +20,17 @@
         }
 
         if ((isset($observacion)) && (isset($dosis))){
-            $insertar = "INSERT INTO practicas (tipo, dosis, dia, observacion, id_perro) VALUES ('$servicio', '$dosis', '$fecha', '$observacion', '$id_perro')";
+            $insertar = "INSERT INTO practicas (tipo, dosis, peso, dia, observacion, id_perro) VALUES ('$servicio', '$dosis', '$peso', '$fecha', '$observacion', '$id_perro')";
             $query = mysqli_query($con,$insertar);
-            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));
+            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente 1'));
         }else if((isset($observacion)) && (!isset($dosis))){
-            $insertar = "INSERT INTO practicas (tipo, dia, observacion, id_perro) VALUES ('$servicio', '$fecha', '$observacion', '$id_perro')";
+            $insertar = "INSERT INTO practicas (tipo, peso, dia, observacion, id_perro) VALUES ('$servicio', '$peso', '$fecha', '$observacion', '$id_perro')";
             $query = mysqli_query($con,$insertar);
-            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));
+            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente 2'));
         }else if((!isset($observacion)) && (isset($dosis))){
-            $insertar = "INSERT INTO practicas (tipo, dosis, dia, id_perro) VALUES ('$servicio', '$dosis', '$fecha', '$id_perro')";
+            $insertar = "INSERT INTO practicas (tipo, dosis, peso, dia, id_perro) VALUES ('$servicio', '$dosis', '$peso', '$fecha', '$id_perro')";
             $query = mysqli_query($con,$insertar);
-            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));
+            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente 3'));
         }else{        
             echo json_encode(array('exito' => false, 'mensaje' => 'Error al procesar la solicitud'));
         }

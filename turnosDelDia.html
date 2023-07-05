@@ -35,6 +35,7 @@
 							<option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
 							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
 							<option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
+							<option class="option-select-menu" value="mostrarHorarioGuardia.html">Veterinarias de guardia</option>
 						</select>
 					</li>
 					<div class="border"></div>
@@ -62,16 +63,21 @@
 			</div>
 		</header>
 
-		<div class="body-sign-in-and-up">
+		<div class="body-contenedor">
             <form id="formulario" action="mostrarTurnosDia.html" method="post">
-                <label class="form-label">Turnos del dia</label><br><br>
+                <label class="form-label">Turnos de hoy</label><br><br>	
                 Seleccione un dia: <br>
-                <input type="date" id="fecha" name="fecha" class="input-style" placeholder="Fecha" required><br>
+                <input type="date" id="fecha" name="fecha" placeholder="Fecha" required><br>
 				<p class="mensaje-error"></p>
-                <input type="submit" value="Buscar" id="submit-turno" class="continuar-y-registrarme-btn" onclick="localStorage.setItem('fechaT',document.getElementById('fecha').value)"> <br>
+                <input type="submit" value="Buscar" id="submit-turno" onclick="localStorage.setItem('fechaT',document.getElementById('fecha').value)"> <br>
             </form>
+			<br><br>
+			<div id="contenedorDatos">
+
+			</div>
         </div>
     </body>
+	<script src="js/mostrarTurnosHoy.js" type="module"></script>
     <script src="js/cambiarEstadoBotones.js"></script>
 	<script src="js/cerrarSesion.js"></script>
 </html>

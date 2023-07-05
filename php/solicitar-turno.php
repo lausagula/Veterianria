@@ -124,7 +124,7 @@
         return;
     }
 
-    $consultaTurnos = "SELECT * FROM turnos WHERE id_perro = '$id_perro' AND servicio = '$servicio'";
+    $consultaTurnos = "SELECT * FROM turnos WHERE id_perro = '$id_perro' AND servicio = '$servicio' AND estado = 'Aceptado'";
     $consulta2 = mysqli_query($con,$consultaTurnos);
     
     if(mysqli_num_rows($consulta2) > 0){

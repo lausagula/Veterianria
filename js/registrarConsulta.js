@@ -1,4 +1,4 @@
-import {url} from './url.js';
+ import {url} from './url.js';
 var formulario = document.getElementById('formulario');
 var elemento = document.querySelector(".mensaje-error");
 var fechaActual = new Date ();

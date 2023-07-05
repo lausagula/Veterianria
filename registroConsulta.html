@@ -36,6 +36,7 @@
 							<option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
 							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
 							<option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
+							<option class="option-select-menu" value="mostrarHorarioGuardia.html">Veterinarias de guardia</option>
 						</select>
 					</li>
 					<div class="border"></div>
@@ -93,6 +94,19 @@
                         option2.textContent = 'Dosis 2';
                         select.appendChild(option2);
                         contenedor.appendChild(select);
+						contenedor.appendChild(document.createElement('br'));
+						contenedor.appendChild(document.createElement('br'));
+						let inputP = document.createElement('input');
+						inputP.type = 'number';
+						inputP.min = 0.1;
+						inputP.name = 'peso';
+						inputP.placeholder = 'Peso en kg'
+						inputP.classList.add('input-style');
+						inputP.required = true;
+						contenedor.appendChild(inputP);
+						contenedor.appendChild(document.createTextNode('  kg'));
+						contenedor.appendChild(document.createElement('br'));
+
                     }else if((serv == 'desparacitacion')){
                         var input = document.createElement('input');
                         input.type = 'number';
@@ -100,8 +114,20 @@
                         input.classList.add('input-style');
                         input.placeholder = 'Dosis en ml'
                         input.required = true;
-                        input.min = 0.1;
+                        input.min = 1;
                         contenedor.appendChild(input);
+						contenedor.appendChild(document.createElement('br'));
+						contenedor.appendChild(document.createElement('br'));
+						let inputP = document.createElement('input');
+						inputP.type = 'number';
+						inputP.min = 1;
+						inputP.name = 'peso';
+						inputP.placeholder = 'Peso en kg'
+						inputP.classList.add('input-style');
+						inputP.required = true;
+						contenedor.appendChild(inputP);
+						contenedor.appendChild(document.createTextNode('  kg'));
+						contenedor.appendChild(document.createElement('br'));
                     }
 
                     var inputText = document.createElement('input');
@@ -118,7 +144,7 @@
                     var input = document.createElement('input');
                     input.type = 'submit';
                     input.id = 'submitLog';
-                    input.value = 'Registrar Vacunacion';
+                    input.value = 'Registrar Consulta';
                     input.classList.add('continuar-y-registrarme-btn');
                     contenedor.appendChild(input);
 
