@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="initial-scale=1">
+		<title>¡Oh My Dog! - Regístrate</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<img src="img/Logo1-removebg-preview.png" id="imghome">
+			<div id="menu">
+				<ul id="ul-style-menu">
+					<div class="border"></div>
+					<li><a class="link-style-menu" href="index.html">INICIO</a></li>
+					<div class="border"></div>
+					<li>
+						<a class="link-style-menu">SERVICIOS</a>
+						<select onchange="if (this.value) window.location.href = this.value;">
+							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+							<option class="option-select-menu" value="miPerfil.html">Mi perfil</option>
+							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
+							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option class="option-select-menu" value="formCampaniaDonacion.html">Registrar campaña de donacion</option>
+							<option class="option-select-menu" value="formPerroBuscado.html">Registrar Perro Buscado</option>
+							<option class="option-select-menu" value="mostrarPerrosBuscados.html">Mostrar Perros Buscados</option>
+							<option class="option-select-menu" value="formPerroPerdidos.html">Registrar Perro Perdidos</option>
+							<option class="option-select-menu" value="mostrarPerrosPerdidos.html">Mostrar Perros Perdidos</option>
+							<option class="option-select-menu" value="mostrarCampañasD.html">Mostrar campaña de donacion</option>
+							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
+							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
+							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
+							<option class="option-select-menu" value="mostrarDonaciones.html">Mostrar Donaciones</option>
+							<option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
+							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
+							<option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
+						</select>
+					</li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-nos" href="about-us.html">SOBRE NOSOTROS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-con" href="contact-us.html">CONTACTO</a></li>
+					<div class="border"></div>
+					
+					<div class="border"></div>
+				</ul>
+			</div>
+		</header>
+
+		<div class="body-sign-in-and-up">
+			<h1>Veterinarias de guardias</h1>
+            <iframe src="horarioGuardia/guradia.pdf" width="630" height="680"></iframe>
+        </div>
+	</body>
+	<script src="js/cerrarSesion.js"></script>
+</html>

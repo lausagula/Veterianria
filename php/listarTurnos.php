@@ -6,7 +6,7 @@
 
     if($inc){
 
-        $consulta = "SELECT * FROM turnos_pendientes";
+        $consulta = "SELECT * FROM turnos_pendientes t inner join perros p where t.id_perro = p.id_perro;";
         $resultado = mysqli_query($con, $consulta);
 
         if (mysqli_num_rows($resultado) > 0){

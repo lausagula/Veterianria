@@ -16,6 +16,7 @@ function enviarDatos(datos){
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if(data.exito){
             alert(data.mensaje);
             window.location.href = (url + '/index.html');

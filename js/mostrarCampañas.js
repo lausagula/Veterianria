@@ -73,9 +73,7 @@ fetch (url+"/php/mostrar-campañas.php")
                     let datos = new FormData();
                     datos.append('idCampaña',localStorage.getItem('idCampaña'));
     
-                    let respuesta = confirm("¿Estás seguro que desea eliminar la campaña " + localStorage.getItem('nomCampaña') + "?");
-    
-                    if (respuesta === true){
+                    if (confirm("¿Estás seguro que desea eliminar la campaña?")){
                         fetch( (url+"/php/eliminar-campaña.php"), {
                             method : 'POST' ,
                             body : datos

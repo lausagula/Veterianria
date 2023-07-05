@@ -19,10 +19,12 @@ fetch ((url+"/php/listar-candidatos.php") ,{
 })
 .then(res => res.json())
 .then(data  => {
+    console.log(data);
     if(data.exito){
         data.data.forEach(datos => {
 
         var div = document.createElement('div');        
+            
         // Nombre
         var nombreTitulo = document.createElement('strong');
         nombreTitulo.textContent = 'Nombre: ';
@@ -52,7 +54,7 @@ fetch ((url+"/php/listar-candidatos.php") ,{
 
         // Contacto
         var contacto = document.createElement('strong');
-        contacto.textContent = 'Disponiblidad para cruza: ';
+        contacto.textContent = 'Contacto: ';
         div.appendChild(document.createElement('br'));
         div.appendChild(contacto);
         div.appendChild(document.createTextNode(datos.contacto));

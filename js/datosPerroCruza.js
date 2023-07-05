@@ -1,5 +1,6 @@
 import {url} from './url.js';
 var elemento = document.querySelector(".mensaje-error");
+var form = new FormData();
 
 
 function mostrarMensaje (mensaje){
@@ -8,7 +9,6 @@ function mostrarMensaje (mensaje){
 
     
 
-var form = new FormData();
 form.append('id_perro',localStorage.getItem('id_perro'));
 
 fetch((url+"/php/datos-perro-cruza.php"), {
@@ -23,11 +23,8 @@ fetch((url+"/php/datos-perro-cruza.php"), {
         const fechaPerro = document.getElementById('fecha_perro');
         const sexoPerro = document.getElementById('sexo_perro');
         
-
         data.perro.forEach(datos => {
             
-            
-
             raza.textContent = datos.raza;
             raza.value = datos.raza;
             color.textContent = datos.color;
@@ -38,8 +35,6 @@ fetch((url+"/php/datos-perro-cruza.php"), {
 
             sexoPerro.textContent = datos.sexo;
             sexoPerro.value = datos.sexo;
-
-
         });        
 
     }else{ 

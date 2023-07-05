@@ -2,7 +2,6 @@ import {url} from './url.js'
 var formulario = document.getElementById('formulario');
 var elemento = document.querySelector(".mensaje-error");
 
-
 function mostrarMensaje (mensaje){
     elemento.innerHTML = mensaje;
 }
@@ -31,8 +30,6 @@ formulario.addEventListener('submit', function(event) {
         }
     })
     .catch(error => console.error(error));
-    
-    
     
 });
 

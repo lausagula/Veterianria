@@ -58,11 +58,12 @@ fetch ((url+"/php/listarTurnos.php"),{
             var div = document.createElement('div');  
             var form = document.createElement('form');
 
-            // id_turno
-            var idTitulo = document.createElement('strong');
-            idTitulo.textContent = 'ID turno: ';
-            div.appendChild(idTitulo);
-            div.appendChild(document.createTextNode(datos.id_turno));
+            // turno para el perro
+            var nombrePerroTitulo = document.createElement('strong');
+            nombrePerroTitulo.textContent = 'Nombre del perro: ';
+            div.appendChild(nombrePerroTitulo);
+            div.appendChild(document.createTextNode(datos.nombre));
+
             
             // Fecha
             var fechaTitulo = document.createElement('strong');

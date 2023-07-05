@@ -93,12 +93,10 @@ fetch ((url+"/php/listarMisTurnos.php?id="+idCli),{
               buttonCancelar.addEventListener('click', function(event) {
                 var from = new FormData();
                 from.append('id_turno',datos.id_turno);
-                
-                let respuesta = confirm("¿Estás seguro que desea cancelar el turno");
-    
-                event.preventDefault();
 
-                if (respuesta === true){
+                event.preventDefault();
+              
+                if (confirm("¿Estás seguro que desea cancelar el turno")){
                     fetch((url + "/php/cancelarTurno.php"), {
                         method : 'POST' ,
                         body : from

@@ -155,33 +155,32 @@ fetch ((url+"/php/mostrarInformacionPerros.php") ,{
         });
 
         botonCruza.addEventListener('click', function(){
-
-            if (datos.disponibilidad_cruza == 1){
-                var formD = new FormData();
-                formD.append('id_perro',datos.id_perro);
-                formD.append('disponibilidad',datos.disponibilidad_cruza);
-                fetch (( url+"/php/cambiarEstadoCruza.php"),{   
-                    method: 'POST',
-                    body: formD
-                })
-                .then(res => res.json())
-                .then(data  => {
-                    if(data.exito){
-                        window.location.href = (url+'/mostrarInformacionPerro.html');
-                        alert(data.mensaje);
-                    }else{
-                        alert(data.mensaje);
-                    }
-                })
-            }else{
-                localStorage.setItem('id_perro',datos.id_perro);
-                localStorage.setItem('nombre_perro',datos.nombre);
-                localStorage.setItem('disponibilidad',datos.disponibilidad_cruza);
-                window.location.href = (url+'/formServicioCruza.html');
+            if (confirm("Estas seguro que quieres cambiar la disponibilidad de tu perro?")){
+                alert ("Se cambio la disponibilidad.");
+                if (datos.disponibilidad_cruza == 1){
+                    var formD = new FormData();
+                    formD.append('id_perro',datos.id_perro);
+                    formD.append('disponibilidad',datos.disponibilidad_cruza);
+                    fetch (( url+"/php/cambiarEstadoCruza.php"),{   
+                        method: 'POST',
+                        body: formD
+                    })
+                    .then(res => res.json())
+                    .then(data  => {
+                        if(data.exito){
+                            window.location.href = (url+'/mostrarInformacionPerro.html');
+                            alert(data.mensaje);
+                        }else{
+                            alert(data.mensaje);
+                        }
+                    })
+                }else{
+                    localStorage.setItem('id_perro',datos.id_perro);
+                    localStorage.setItem('nombre_perro',datos.nombre);
+                    localStorage.setItem('disponibilidad',datos.disponibilidad_cruza);
+                    window.location.href = (url+'/formServicioCruza.html');
+                }
             }
-            
-            
-
         });
 
 

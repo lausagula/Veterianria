@@ -18,13 +18,13 @@ fetch (( url+"/php/mostrar-turnos-dia.php"),{
 
         // nombre
         var nombreTitulo = document.createElement('strong');
-        nombreTitulo.textContent = 'Nombre: ';           
+        nombreTitulo.textContent = 'Nombre del dueño: ';           
         div.appendChild(nombreTitulo);
         div.appendChild(document.createTextNode(datos.nombre));
 
         // nombre perro
         var nomPerroTitulo = document.createElement('strong');
-        nomPerroTitulo.textContent = 'Perro: ';           
+        nomPerroTitulo.textContent = 'Nombre del perro: ';           
         div.appendChild(document.createElement('br'));           
         div.appendChild(nomPerroTitulo);
         div.appendChild(document.createTextNode(datos.nombre_perro));
