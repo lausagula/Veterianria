@@ -88,6 +88,7 @@ formulario.addEventListener('submit', function(event) {
     event.preventDefault();
     let datos = new FormData (formulario);
     datos.append('id_perro',localStorage.getItem('id_perro'));
+    datos.append('fechaT',localStorage.getItem('fechaT'));
     enviarDatos(datos);
 });
 

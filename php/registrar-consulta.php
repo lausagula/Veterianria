@@ -8,9 +8,11 @@
     $id_perro = $_POST['id_perro'];
     $servicio = $_POST['servicio'];
     $observacion = $_POST['observacion'];
-    $dosis = $_POST['dosis'];
+    $dosis = isset($_POST['dosis']) ? $_POST['dosis'] : null;
     $peso = $_POST['peso'];
-    $fecha = date('Y-m-d');
+    //$dosis = $_POST['dosis'];
+    $fecha = $_POST['fechaT'];
+    //$fecha = date('Y-m-d');
 
     if($con){
 

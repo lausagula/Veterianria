@@ -1,94 +1,83 @@
 import {url} from './url.js'
 var  contenedor = document.getElementById('contenedorDatos');
-var divVacunacion = document.querySelector('.vacunaciones');
-var divDesparasitacion = document.querySelector('.desparasitaciones');
 var datos = new FormData();
 let urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get('id');
+
 console.log ("ida" + id);
 datos.append ('id_perro',id);
-// hayVacunacion modificar espara que si hay vacunas y no desparasitacion , no muestre que la libreta esta vacia 
-var hayVacunacion = false;
 
 
-function mostrarPracticas(tipoPractica, tituloPractica, atributosPractica,divInsertar) {
-    datos.append('practica', tipoPractica);
-    datos.append('libreta', 'libreta');
+function imprimirPractica(elemento, clase) {
+    var div = document.createElement('div');
+    var practicaTitulo = document.createElement('strong');
+    practicaTitulo.textContent = 'Fecha de la práctica: ';
+    div.appendChild(practicaTitulo);
+    div.appendChild(document.createTextNode(elemento.tipo));
+    div.appendChild(document.createElement('br'));
+    div.appendChild(document.createElement('br'));
 
-    let h2 = document.createElement('h2');
-    h2.textContent = tituloPractica;
-    divInsertar.appendChild(h2);
+    var fechaTitulo = document.createElement('strong');
+    fechaTitulo.textContent = 'Fecha de la práctica: ';
+    div.appendChild(fechaTitulo);
+    div.appendChild(document.createTextNode(elemento.dia));
+    div.appendChild(document.createElement('br'));
+    div.appendChild(document.createElement('br'));
 
+    var dosisTitulo = document.createElement('strong');
+    dosisTitulo.textContent = 'Dosis: ';
+    div.appendChild(dosisTitulo);
+    div.appendChild(document.createTextNode(elemento.dosis));
+    div.appendChild(document.createElement('br'));
+    div.appendChild(document.createElement('br'));
+    
+    var element = document.querySelector(clase);
+    element.appendChild(div);
+    
+    return div;
+  }
+  
+  function obtenerLibretaSanitaria() {
     fetch((url + "/php/historia-clinica.php"), {
-            method: 'POST',
-            body: datos
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.exito) {
-                data.data.forEach(datos => {
-                    hayVacunacion = true; 
-                    var div = document.createElement('div');
-
-                    atributosPractica.forEach(atributo => {
-                        var atributoTitulo = document.createElement('strong');
-                        atributoTitulo.textContent = atributo.label + ': ';
-                        div.appendChild(document.createElement('br'));
-                        div.appendChild(atributoTitulo);
-                        if (atributo.label == 'Aplicación de Vacuna tipo'){
-                            div.appendChild(document.createTextNode(datos[atributo.nombre] + ' ' + (datos[atributo.nombre] == 'A' ? '(Enfermedades)' : '(Contra Rabia)')));
-                        }else{
-                            div.appendChild(document.createTextNode(datos[atributo.nombre]));
-                        }
-                    });
-
-                    div.appendChild(document.createElement('br'));
-                    div.appendChild(document.createElement('br'));
-
-                    document.getElementById('contenedorDatos').appendChild(div);
-                    divInsertar.appendChild(div);
-                });
-
-            } else {
-                if (!hayVacunacion){
-                    console.log("No hay prácticas cargadas");
-                    var p = document.createElement('p');
-                    p.textContent = data.mensaje;
-                    contenedor.appendChild(p);
-                }
+        method: 'POST',
+        body: datos
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.exito) {
+            let contador = 0; // es para saber si la libreta esta vacia o no, no me quedo otra opcion de hacerlo asi.
+          data.data.forEach(element => {
+            
+            console.log(element.tipo);
+            
+            switch (element.tipo) {
+              case "vacuna-enfermedad":
+                imprimirPractica(element, '.vacunaciones');
+                contador ++;
+                console.log("Imprime Vacuna Enfermedades");
+                break;
+              case "vacuna-rabia":
+                imprimirPractica(element, '.vacunaciones');
+                contador ++;
+                console.log("Imprime Vacuna Rabia");
+                break;
+              case "desparacitacion":
+                imprimirPractica(element, '.desparasitacion');
+                contador ++;
+                console.log("Imprime Desparasitacion");
+                break;
             }
 
-        })
-        .catch(error => console.error(error));
-}
-console.log('A' == 'A' ? 'Enfermedades' : 'Contra Rabia');
-
-var atributosVacunacion =  [{
-    label: 'Aplicación de Vacuna tipo',
-    nombre: 'tipo_vacuna'
-}, {
-    label: 'Fecha de la práctica',
-    nombre: 'fecha_practica'
-}, {
-    label: 'Número de dosis',
-    nombre: 'dosis'
-}];
-
-var atributosDesparasitacion =  [{
-    label: 'Fecha de la práctica',
-    nombre: 'fecha_practica'
-}, {
-    label: 'Cantidad de dosis aplicada',
-    nombre: 'canti_dosis'
-}];
-
-
-
-// Llamada a la función para mostrar las desparasitaciones
-mostrarPracticas('practicadesparasitacion', 'Desparasitaciones',atributosDesparasitacion,divDesparasitacion);
-// Llamada a la función para mostrar las vacunaciones
-mostrarPracticas('practicavacunacion', 'Vacunaciones',atributosVacunacion,divVacunacion);
-
-
-
+          });
+          if(contador == 0){
+            alert("La libreta sanitaria esta vacia.");
+          }
+        } else {
+          
+        }
+  
+      })
+      .catch(error => console.error(error));
+  }
+  
+  obtenerLibretaSanitaria();

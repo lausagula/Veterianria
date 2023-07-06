@@ -5,87 +5,88 @@ var divVacunacion = document.querySelector('.vacunaciones');
 var divDesparasitacion = document.querySelector('.desparasitaciones');
 let urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get('id');
+
 console.log ("ida" + id);
 datos.append ('id_perro',id);
-// hayVacunacion modificar espara que si hay vacunas y no desparasitacion , no muestre que la libreta esta vacia 
-var hayVacunacion = false;
 
-function mostrarPracticas(tipoPractica, tituloPractica, atributosPractica, divInsertar, detalleId) {
-    datos.append('practica', tipoPractica);
-    datos.append('libreta', 'historia');
 
-    let h2 = document.createElement('h2');
-    h2.textContent = tituloPractica;
-    divInsertar.appendChild(h2);
 
+
+
+function imprimirPractica(elemento, clase,idPractica) {
+    var div = document.createElement('div');
+    var fechaTitulo = document.createElement('strong');
+    fechaTitulo.textContent = 'Fecha de la práctica: ';
+    div.appendChild(fechaTitulo);
+    div.appendChild(document.createTextNode(elemento.dia));
+    div.appendChild(document.createElement('br'));
+    div.appendChild(document.createElement('br'));
+    
+    var element = document.querySelector(clase);
+    element.appendChild(div);
+
+    var botonVerDetalle = document.createElement('button');
+    botonVerDetalle.textContent = 'Ver detalle practica';
+
+    div.appendChild(document.createElement('br'));
+    div.appendChild(botonVerDetalle);
+    
+    
+
+    botonVerDetalle.addEventListener('click', function () {
+        console.log('Se muestra detalle de esa practica');
+        console.log (elemento);
+        localStorage.setItem('jsonData', JSON.stringify(elemento));
+        window.location.href = (url + '/verDetallePractica.html?id=' + idPractica);
+    });
+    
+    return div;
+  }
+  
+  function obtenerHistorialClinico() {
     fetch((url + "/php/historia-clinica.php"), {
-            method: 'POST',
-            body: datos
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.exito) {
-                data.data.forEach(datos => {
-                    var div = document.createElement('div');
-                    hayVacunacion = true; 
-                    atributosPractica.forEach(atributo => {
-                        var atributoTitulo = document.createElement('strong');
-                        atributoTitulo.textContent = atributo.label + ': ';
-                        div.appendChild(document.createElement('br'));
-                        div.appendChild(atributoTitulo);
-                        if (atributo.label == 'Aplicación de Vacuna tipo'){
-                            div.appendChild(document.createTextNode(datos[atributo.nombre]+ ' ' + (datos[atributo.nombre] == 'A' ? '(Enfermedades)' : '(Contra Rabia)')));
-                        }else{
-                            div.appendChild(document.createTextNode(datos[atributo.nombre]));
-                        }
-                        
-                    });
-
-                    div.appendChild(document.createElement('br'));
-                    div.appendChild(document.createElement('br'));
-
-                    document.getElementById('contenedorDatos').appendChild(div);
-                    divInsertar.appendChild(div);
-
-                    var botonVerDetalle = document.createElement('button');
-                    botonVerDetalle.textContent = 'Ver detalle practica';
-
-                    div.appendChild(document.createElement('br'));
-                    div.appendChild(botonVerDetalle);
-
-                    div.appendChild(document.createElement('br'));
-                    div.appendChild(document.createElement('br'));
-
-                    botonVerDetalle.addEventListener('click', function () {
-                        console.log('Se muestra detalle de esa practica');
-                        localStorage.setItem('jsonData', JSON.stringify(data));
-                        window.location.href = (url + '/verDetallePractica.html?id=' + datos[detalleId] + '&fun=' + (tipoPractica === 'practicavacunacion' ? 1 : 2));
-                    });
-                });
-            } else {
-                if (!hayVacunacion){
-                    console.log("No hay prácticas cargadas");
-                    var p = document.createElement('p');
-                    p.textContent = data.mensaje;
-                    contenedor.appendChild(p);
-                }   
-                
+        method: 'POST',
+        body: datos
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.exito) {
+          data.data.forEach(element => {
+            console.log(element.tipo);
+            switch (element.tipo) {
+              case "castracion":
+                imprimirPractica(element, '.castracion',3);
+                console.log("Imprimie castracion");
+                break;
+              case "vacuna-enfermedad":
+                imprimirPractica(element, '.vacunacion-e',1);
+                console.log("Imprime Vacuna Enfermedades");
+                break;
+              case "vacuna-rabia":
+                imprimirPractica(element, '.vacunacion-r',1);
+                console.log("Imprime Vacuna Rabia");
+                break;
+              case "desparacitacion":
+                imprimirPractica(element, '.desparasitacion',2);
+                console.log("Imprime Desparasitacion");
+                break;
+              case "consulta-general":
+                imprimirPractica(element, '.consulta-general',3);
+                console.log("Imprime Vacuna Rabia");
+                break;
+              case "urgencia":
+                imprimirPractica(element, '.urgencia',3);
+                console.log("Imprime consulta general o urgencia");
+                break;
             }
-        })
-        .catch(error => console.error(error));
-}
-
-var atributosVacunacion =  [{
-    label: 'Aplicación de Vacuna tipo',
-    nombre: 'tipo_vacuna'
-}];
-
-var atributosDesparasitacion =  [{
-    label: 'Fecha de la práctica',
-    nombre: 'fecha_practica'
-}];
-
-
-mostrarPracticas('practicadesparasitacion', 'Desparasitaciones', atributosDesparasitacion, divDesparasitacion, 'id_desparasitacion');
-mostrarPracticas('practicavacunacion', 'Vacunaciones', atributosVacunacion, divVacunacion, 'id_vacuna');
+          });
+  
+        } else {
+          alert("No tiene historia clínica");
+        }
+  
+      })
+      .catch(error => console.error(error));
+  }
+  
+  obtenerHistorialClinico();
