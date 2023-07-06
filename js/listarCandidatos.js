@@ -46,18 +46,28 @@ fetch ((url+"/php/listar-candidatos.php") ,{
         div.appendChild(document.createTextNode(datos.color));
 
         // Observaciones
-        var observacion = document.createElement('strong');
-        observacion.textContent = 'Disponiblidad para cruza: ';
-        div.appendChild(document.createElement('br'));
-        div.appendChild(observacion);
-        div.appendChild(document.createTextNode(datos.observaciones));
+        if (datos.observaciones != null){
+            var observacion = document.createElement('strong');
+            observacion.textContent = 'Disponiblidad para cruza: ';
+            div.appendChild(document.createElement('br'));
+            div.appendChild(observacion);
+            div.appendChild(document.createTextNode(datos.observaciones));
+        }
 
         // Contacto
         var contacto = document.createElement('strong');
         contacto.textContent = 'Contacto: ';
         div.appendChild(document.createElement('br'));
         div.appendChild(contacto);
-        div.appendChild(document.createTextNode(datos.contacto));
+        div.appendChild(document.createTextNode(datos.mail));
+
+        // Telefono
+        var telefono = document.createElement('strong');
+        telefono.textContent = 'Telefono: ';
+        div.appendChild(document.createElement('br'));
+        div.appendChild(telefono);
+        div.appendChild(document.createTextNode(datos.telefono));
+
 
         // Foto        
         div.appendChild(document.createElement('br'));

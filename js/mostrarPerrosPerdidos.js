@@ -126,12 +126,10 @@ fetch (url+"/php/mostrar-perros-perdidos.php")
 
             if(datos.estado == 0){
                     buttonContactar.addEventListener('click', function(event) {
-
-                    // var email = event.target.dataset.email;
-                    // var raza = event.target.dataset.raza_perro;
-                    // localStorage.setItem('razaPerro', raza);
-                    // localStorage.setItem('emailAdopcion', email);
-                    // window.location.href = (url+'/formAdopcion.html');
+                    localStorage.setItem('razaPerro', datos.raza_perro);
+                    localStorage.setItem('tipoServicio', 'perro perdido');
+                    localStorage.setItem('mailAviso', datos.mail);
+                    window.location.href = (url+'/formPerroBP.html');
                 })
             }
 

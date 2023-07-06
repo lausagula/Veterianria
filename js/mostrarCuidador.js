@@ -95,9 +95,9 @@ fetch (( url+"/php/mostrarCuidador.php"),{
         
 
         button.addEventListener('click', function(event) {
-            var email = event.target.dataset.email;
-            window.location.href = (url+'/formCuidador.html');
-            console.log('Email de contacto:', email);
+            localStorage.setItem('emailAviso',datos.mail);
+            localStorage.setItem('tipoServicio','cuidador');
+            window.location.href = (url+'/formContactarPC.html');
           });            
         });
     }else{
