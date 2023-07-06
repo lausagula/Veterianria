@@ -71,10 +71,15 @@
                 <label>Nombre completo</label><br>
 				<input type="text" name="name" class="input-style" placeholder="Nombre" required><br><br>
                 <label>Email</label><br>
-				<input type="email" name="email" class="input-style" id="read-only" placeholder="Email" style="color: #808080;" readonly required><br><br>
+				<input type="email" name="email" class="input-style" id="read-only" placeholder="Email" required><br><br>
 				<script>	
 					const aux = localStorage.getItem('email');
-					document.getElementById('read-only').value = aux;
+					if (aux != undefined){
+                        let input = document.getElementById('read-only');
+					    input.value = aux;
+                        input.setAttribute('readonly', 'readonly');
+                        input.style.color = '#808080';
+                    }
 				</script>
                 <label>Telefono</label><br>
                 <input type="number" name="telefono" class="input-style" minlength="7" maxlength="7" placeholder="Telefono" required><br><br>
