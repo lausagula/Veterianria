@@ -11,8 +11,9 @@
     $dosis = isset($_POST['dosis']) ? $_POST['dosis'] : null;
     $peso = $_POST['peso'];
     //$dosis = $_POST['dosis'];
-    $fecha = $_POST['fechaT'];
-    //$fecha = date('Y-m-d');
+    //$fecha = $_POST['fechaT'];
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
+    $fecha = date('Y-m-d');
 
     if($con){
 
@@ -24,7 +25,7 @@
         if ((isset($observacion)) && (isset($dosis))){
             $insertar = "INSERT INTO practicas (tipo, dosis, peso, dia, observacion, id_perro) VALUES ('$servicio', '$dosis', '$peso', '$fecha', '$observacion', '$id_perro')";
             $query = mysqli_query($con,$insertar);
-            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente 1'));
+            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente 1' . $fecha));
         }else if((isset($observacion)) && (!isset($dosis))){
             $insertar = "INSERT INTO practicas (tipo, peso, dia, observacion, id_perro) VALUES ('$servicio', '$peso', '$fecha', '$observacion', '$id_perro')";
             $query = mysqli_query($con,$insertar);
