@@ -27,6 +27,7 @@ function descuentos(id_cliente,monto){
         })
         .then(response => response.json())       
         .then(data => {
+            console.log (data);
             if(data.exito){
                 console.log(data.mensaje);
             }else{
@@ -69,6 +70,7 @@ function enviarDatos (datos){
     })
     .then(response => response.json())       
     .then(data => {
+        console.log (data);
         if(data.exito){
             mostrarMensaje(data.mensaje);
             descuentos(localStorage.getItem('id_cliente') ,datos.get('descuento'));

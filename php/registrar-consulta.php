@@ -8,8 +8,11 @@
     $id_perro = $_POST['id_perro'];
     $servicio = $_POST['servicio'];
     $observacion = $_POST['observacion'];
+
+    // En dosis y Peso , puse lo del null porque en consultaGeneral,castracion y urgencia no tienen esos campos.
     $dosis = isset($_POST['dosis']) ? $_POST['dosis'] : null;
-    $peso = $_POST['peso'];
+    $peso = isset($_POST['peso']) ? $_POST['peso'] : null;
+    //$peso = $_POST['peso'];
     //$dosis = $_POST['dosis'];
     //$fecha = $_POST['fechaT'];
     date_default_timezone_set('America/Argentina/Buenos_Aires');

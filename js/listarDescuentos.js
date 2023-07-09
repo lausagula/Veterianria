@@ -1,15 +1,15 @@
 import {url} from './url.js';    
 
 var form = new FormData();
-form.append('idUsuario',localStorage.getItem('idUsuario'));
-
+form.append('idUsuario',localStorage.getItem('id_cliente'));
+console.log (localStorage.getItem('idUsuario'));
 fetch((url+"/php/listar-descuentos.php"), {  
     method : 'POST' ,
     body : form
 })
 .then(res => res.json())
 .then(data  => { 
-
+    console.log (data);
     if (data.exito){
         const descuentos = data.descuentos; 
 
