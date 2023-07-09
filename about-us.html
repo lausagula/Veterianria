@@ -1,0 +1,80 @@
+<!DOCTYPE <!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="initial-scale=1">
+		<title>¡Oh My Dog! Sobre Nosotros</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://code.jquery.com/jquery-latest.js"></script>
+	</head>
+
+	<body>
+
+		<header>
+			<img src="img/Logo1-removebg-preview.png" id="imghome">
+			<div id="menu">
+				<ul id="ul-style-menu">
+					<div class="border"></div>
+					<li><a class="link-style-menu" class="option-menu" href="index.html">INICIO</a></li>
+					<div class="border"></div>
+					<li>
+						<a class="link-style-menu option-select-menu" href="index.html">SERVICIOS</a>
+						<select  onchange="if (this.value) window.location.href = this.value;">
+							<option class="option-select-menu" value="" selected disabled>Selecciona una opción</option>
+							<option class="option-select-menu" value="miPerfil.html">Mi perfil</option>
+							<option class="option-select-menu" value="form-RegistroCP.html">Registrar Cuidador/Paseador</option>
+							<option class="option-select-menu" value="cargarAdopcion.html">Registrar Perro para adopcion</option>
+							<option class="option-select-menu" value="formCampaniaDonacion.html">Registrar campaña de donacion</option>
+							<option class="option-select-menu" value="formPerroBuscado.html">Registrar Perro Buscado</option>
+							<option class="option-select-menu" value="mostrarPerrosBuscados.html">Mostrar Perros Buscados</option>
+							<option class="option-select-menu" value="formPerroPerdidos.html">Registrar Perro Perdidos</option>
+							<option class="option-select-menu" value="mostrarPerrosPerdidos.html">Mostrar Perros Perdidos</option>
+							<option class="option-select-menu" value="mostrarCampañasD.html">Mostrar campaña de donacion</option>
+							<option class="option-select-menu" value="mostrarPaseador.html">Mostrar Paseadores</option>
+							<option class="option-select-menu" value="mostrarCuidador.html">Mostrar Cuidadores</option>
+							<option class="option-select-menu" value="verAdopciones.html">Mostrar Adopciones</option>
+							<option class="option-select-menu" value="mostrarDonaciones.html">Mostrar Donaciones</option>
+							<option class="option-select-menu listar-turnos" value="listar-mis-turnos.html">Listar mis turnos</option>
+							<option class="option-select-menu listar-turnos" value="listar-turnos.html">Listar turnos pendientes</option>
+							<option class="option-select-menu" value="turnosDelDia.html">Turnos del dia</option>
+							<option class="option-select-menu" value="mostrarHorarioGuardia.html">Veterinarias de guardia</option>
+						</select>
+					</li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ver-usuarios" class="option-menu" href="mostrarUsuarios.html">LISTAR USUSARIOS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu" class="option-menu" href="about-us.html">SOBRE NOSOTROS</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu ocultar-con" class="option-menu" href="contact-us.html">CONTACTO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateSing" class="option-menu" href="sign-in.html">INICIAR SESION</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu solicitar-turno" class="option-menu" href="solicitar-turno.html">SOLICITAR TURNO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateSing registrar-menu registrar-ususario" class="option-menu" href="sign-up.html">REGISTRAR USUARIO</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateLogOut" id="logOut" href="index.html">CERRAR SESION</a></li>
+					<div class="border"></div>
+					<li><a class="link-style-menu stateLogOut" id="bienvenida">Bienvenido:</a></li>
+					<div class="border"></div>
+					<script>
+						if (localStorage.getItem('email') !== null){
+							document.getElementById('bienvenida').innerHTML = 'Bienvenido<br>' + localStorage.getItem('email');
+						}
+					</script>
+				</ul>
+			</div>
+		</header>
+        <div class="body-contenedor" id="contenedorDatos">
+            <h1>Sobre Nosotros</h1><br>
+            <hr>
+            <p>
+                Somos una veterinaria especializada en perros, con horario de atención de lunes a viernes de 8 a 13 y de 15 a 20, y los sábados de 8 a 13. 
+                Ofrecemos servicios veterinarios completos y cada perro tiene su propio perfil con historial médico. Además, facilitamos la publicación de perros perdidos o buscados, y contamos con paseadores y cuidadores disponibles. También brindamos servicios de cruza de perros y contribuimos a campañas para ayudar a veterinarias hogares y perros necesitados. ¡Únete a nuestra comunidad de amantes de los perros!
+            </p>
+        </div>
+	</body>
+	<script src="js/actualizarUrls.js" type="module"></script>
+	<script src="js/cambiarEstadoBotones.js"></script>	
+	<script src="js/cerrarSesion.js"></script>
+</html>
