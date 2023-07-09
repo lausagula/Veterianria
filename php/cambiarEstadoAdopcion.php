@@ -12,7 +12,7 @@
         if($resultado){
             echo json_encode(array('exito' => true, 'mensaje' => 'Se realizo la consulta con exito'));
         } else {
-            echo json_encode(array('exito' => false, 'mensaje' =>  'NO se'));
+            echo json_encode(array('exito' => false, 'mensaje' =>  'Error' . mysqli_error($con)));
         }
 
     }else{

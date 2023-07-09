@@ -5,9 +5,11 @@ var  contenedor = document.getElementById('contenedorDatos');
 fetch (url+"/php/mostrar-adopciones.php")
 .then(res => res.json())
 .then(data  => {
-    var div = document.createElement('div');
+    
     if(data.exito){
         data.data.forEach(datos => {            
+
+            var div = document.createElement('div');
 
             console.log(data.data.length);
             
@@ -126,7 +128,7 @@ fetch (url+"/php/mostrar-adopciones.php")
                     localStorage.setItem('emailAdopcion', email);
                     window.location.href = (url+'/formAdopcion.html');
                 });
-            }else if (data.data.length = 1){
+            }else if (data.data.length == 1){
                 div.appendChild(document.createTextNode('No hay adopciones disponibles por el momento'));
                 document.getElementById('contenedorDatos').appendChild(div);
             }

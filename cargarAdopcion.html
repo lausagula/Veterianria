@@ -64,37 +64,37 @@
 		</header>
 
 		<div class="body-contenedor">
-			<form id="formulario" action="adopciones.html" method="post">        
+			<form id="formulario" method="post">        
 				<label class="form-label">Registrar adopción</label><br><br>
-				Raza:
+				Raza: <br>
 				<select name="raza_perro" class="input-style" required>
 					<option value="Mestizo">Mestizo</option>
 					<option value="Caniche">Caniche</option>
 					<option value="Bulldog">Bulldog</option>					
 					<option value="Labrador Retriever">Labrador Retriever</option>
 					<option value="Golden Retriever">Dogo Argentino</option>
-				</select><br>
-				Sexo:
+				</select><br><br>
+				Sexo: <br>
                 <select name="sexo" class="input-style"  required>
                     <option value="M">Macho</option>
                     <option value="H">Hembra</option>
-                </select><br>
-				Edad:
-				<input type="text" name="edad" class="input-style" placeholder="Edad" required><br>
-				Ubicacion:
+                </select><br><br>
+				Edad: <br>
+				<input type="text" name="edad" class="input-style" placeholder="Edad" required><br><br>
+				Ubicacion: <br>
 				<select name="zona" class="input-style"required>
 					<option value="moreno">Plaza Moreno</option>
 					<option value="facultad">Facultad</option>
 					<option value="estadio">Estadio</option>
 					<option value="hospital">Hospital</option>
 					<option value="catedral">Catedral</option>
-				</select><br>
-				Caracteristicas
-                <input type="text" name="caracteristicas" class="input-style" placeholder="Caracteristicas" required><br>
-				Comportamiento:
-                <input type="text" name="comportamiento" class="input-style" placeholder="Comportamiento" required><br>
-				Email
-                <input type="email" name="email" class="input-style" placeholder="email" id="read-only" style="color: #808080;" readonly><br>
+				</select><br><br>
+				Caracteristicas <br>
+                <input type="text" name="caracteristicas" class="input-style" placeholder="Caracteristicas" required><br><br>
+				Comportamiento: <br>
+                <input type="text" name="comportamiento" class="input-style" placeholder="Comportamiento" required><br><br>
+				Email <br>
+                <input type="email" name="email" class="input-style" placeholder="email" id="read-only" style="color: #808080;" readonly><br><br>
 				<script>	
 					const aux = localStorage.getItem('email');
 					document.getElementById('read-only').value = aux;

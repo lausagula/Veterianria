@@ -25,15 +25,15 @@
         if ((isset($observacion)) && (isset($dosis))){
             $insertar = "INSERT INTO practicas (tipo, dosis, peso, dia, observacion, id_perro) VALUES ('$servicio', '$dosis', '$peso', '$fecha', '$observacion', '$id_perro')";
             $query = mysqli_query($con,$insertar);
-            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente 1' . $fecha));
+            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente'));
         }else if((isset($observacion)) && (!isset($dosis))){
             $insertar = "INSERT INTO practicas (tipo, peso, dia, observacion, id_perro) VALUES ('$servicio', '$peso', '$fecha', '$observacion', '$id_perro')";
             $query = mysqli_query($con,$insertar);
-            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente 2'));
+            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente '));
         }else if((!isset($observacion)) && (isset($dosis))){
             $insertar = "INSERT INTO practicas (tipo, dosis, peso, dia, id_perro) VALUES ('$servicio', '$dosis', '$peso', '$fecha', '$id_perro')";
             $query = mysqli_query($con,$insertar);
-            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente 3'));
+            echo json_encode(array('exito' => true, 'mensaje' => 'Se registró correctamente '));
         }else{        
             echo json_encode(array('exito' => false, 'mensaje' => 'Error al procesar la solicitud'));
         }
