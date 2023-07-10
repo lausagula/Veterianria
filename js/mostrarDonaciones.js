@@ -41,6 +41,20 @@ fetch ((url+"/php/mostrar_donaciones.php"),{
             div.appendChild(document.createElement('br'));
             div.appendChild(montoTitulo);
             div.appendChild(document.createTextNode(datos.monto));
+
+            // ESTADO
+            var montoTitulo = document.createElement('strong');
+            montoTitulo.textContent = 'Descuento: ';
+            div.appendChild(document.createElement('br'));
+            div.appendChild(montoTitulo);
+            if(datos.tiene_descuento == true){
+                div.appendChild(document.createTextNode('disponible'));
+            }else{
+                div.appendChild(document.createTextNode('usado'));
+            }
+            
+
+
             
             div.appendChild(document.createElement('br'));
 
